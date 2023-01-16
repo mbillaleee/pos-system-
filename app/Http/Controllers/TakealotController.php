@@ -26,21 +26,17 @@ class TakealotController extends Controller
                 ->make(true);
             }
         }else{
-        if($users->user_role == 1){
-            $user_id = $users->id;
-        }else{
-            $user_id = $users->parent_id;
-        }
+      
 
         if(request()->ajax()) {
-            return datatables()->of(Takealot::select('*')->where('user_id',$user_id))
+            return datatables()->of(Takealot::select('*')->where('shop_id',$users->shop_id))
             ->addColumn('action', 'takealot.action')
             ->rawColumns(['action'])
             ->addIndexColumn()
             ->make(true);
         }
     }
-        $takealot_api = TakealotApi::where('user_id',$user_id)->latest()->first();
+        $takealot_api = TakealotApi::where('shop_id',$users->shop_id)->latest()->first();
         return view('takealot.product',compact('takealot_api'));
     }
 
@@ -82,9 +78,7 @@ class TakealotController extends Controller
         $takealotIds = $request->api_id;
 
         $users = Auth::user();
-        if($users->user_role == 1){
-            $user_id = $users->id;
-        }elseif($users->user_role == 3){
+        if($users->user_role == 3){
             return redirect()->back()->with('error','You can not update!');
         }else{
             $user_id = $users->parent_id;
@@ -97,7 +91,7 @@ class TakealotController extends Controller
             }else{
                 $takealots = TakealotApi::create([
                     'api_key' => $request->api_key,
-                    'user_id' => $user_id,
+                    'shop_id' => $users->shop_id
                 ]); 
             }
                          
@@ -115,9 +109,7 @@ class TakealotController extends Controller
     public function report(Request $request){
         // dd($request->all());
         $users = Auth::user();
-        if($users->user_role == 1){
-            $user_id = $users->id;
-        }elseif($users->user_role == 3){
+        if($users->user_role == 3){
             return redirect()->back()->with('error','You can not See!');
         }else{
             $user_id = $users->parent_id;
@@ -127,7 +119,7 @@ class TakealotController extends Controller
 
             $from_date = date('Y-m-d', strtotime($dt[0]));
             $to_date = date('Y-m-d', strtotime($dt[1]));
-            $top_selling_product = TakealotSale::selectRaw('sum(quantity) as sale_item, sum(selling_price) as sale_price, product_name')->where('sale_status','!=','Returned')->whereBetween('order_date', [date('Y-m-d H:i:s', strtotime($from_date." 00:00:00")), date('Y-m-d H:i:s', strtotime($to_date." 23:59:59"))])->where('user_id',$user_id)->groupBy('product_name')->orderBy('sale_item','desc')->get();
+            $top_selling_product = TakealotSale::selectRaw('sum(quantity) as sale_item, sum(selling_price) as sale_price, product_name')->where('sale_status','!=','Returned')->whereBetween('order_date', [date('Y-m-d H:i:s', strtotime($from_date." 00:00:00")), date('Y-m-d H:i:s', strtotime($to_date." 23:59:59"))])->where('shop_id',$users->shop_id)->groupBy('product_name')->orderBy('sale_item','desc')->get();
             $search_result = null;
             // $search_result = TakealotSale::where('sale_status','Shipped to Customer')->whereBetween('order_date', [date('Y-m-d H:i:s', strtotime($from_date." 00:00:00")), date('Y-m-d H:i:s', strtotime($to_date." 23:59:59"))])->where('user_id',$user_id)->latest()->get();
             $selling_price = 0;
@@ -139,7 +131,7 @@ class TakealotController extends Controller
             $search_result = null;
             $from_date = date('Y-m-d', strtotime($dt[0]));
             $to_date = date('Y-m-d', strtotime($dt[1]));
-            $top_selling_product = TakealotSale::selectRaw('sum(quantity) as sale_item, sum(selling_price) as sale_price, product_name')->where('sale_status','Returned')->whereBetween('order_date', [date('Y-m-d H:i:s', strtotime($from_date." 00:00:00")), date('Y-m-d H:i:s', strtotime($to_date." 23:59:59"))])->where('user_id',$user_id)->groupBy('product_name')->orderBy('sale_item','desc')->get();
+            $top_selling_product = TakealotSale::selectRaw('sum(quantity) as sale_item, sum(selling_price) as sale_price, product_name')->where('sale_status','Returned')->whereBetween('order_date', [date('Y-m-d H:i:s', strtotime($from_date." 00:00:00")), date('Y-m-d H:i:s', strtotime($to_date." 23:59:59"))])->where('shop_id',$users->shop_id)->groupBy('product_name')->orderBy('sale_item','desc')->get();
             // $search_result = TakealotSale::where('sale_status','Returned')->whereBetween('order_date', [date('Y-m-d H:i:s', strtotime($from_date." 00:00:00")), date('Y-m-d H:i:s', strtotime($to_date." 23:59:59"))])->where('user_id',$user_id)->latest()->get();
             $selling_price = 0;
             foreach($top_selling_product as $sr){
@@ -150,7 +142,7 @@ class TakealotController extends Controller
         $top_selling_product = null;
         $from_date = date('Y-m-d', strtotime($dt[0]));
         $to_date = date('Y-m-d', strtotime($dt[1]));
-        $search_result = TakealotSale::where('sale_status',$request->sales_status)->whereBetween('order_date', [date('Y-m-d H:i:s', strtotime($from_date." 00:00:00")), date('Y-m-d H:i:s', strtotime($to_date." 23:59:59"))])->where('user_id',$user_id)->latest()->get();
+        $search_result = TakealotSale::where('sale_status',$request->sales_status)->whereBetween('order_date', [date('Y-m-d H:i:s', strtotime($from_date." 00:00:00")), date('Y-m-d H:i:s', strtotime($to_date." 23:59:59"))])->where('shop_id',$users->shop_id)->latest()->get();
         $selling_price = 0;
         foreach($search_result as $sr){
             $selling_price += $sr->selling_price;
@@ -186,9 +178,7 @@ class TakealotController extends Controller
     public function product_sync()
     {
         $users = Auth::user();
-        if($users->user_role == 1){
-            $user_id = $users->id;
-        }elseif($users->user_role == 3){
+       if($users->user_role == 3){
             return redirect()->back()->with('error','You can not sync!');
         }else{
             $user_id = $users->parent_id;
@@ -198,7 +188,7 @@ class TakealotController extends Controller
     //     'apiKey' => 'b61a80dfaa06c34ea7a16927295c2d0de7022f0c2ae57bec9eed18da3d52d0e4ee024a8deb0cd96bcd315ae5352a619c4bbb89b36307d8ec9ff866388fb5c320',
     //      'limit' => 10,
     // ]);
-    $api_take = TakealotApi::where('user_id',$user_id)->latest()->first();
+    $api_take = TakealotApi::where('shop_id',$users->shop_id)->latest()->first();
         if($api_take){
     $tapi = $api_take->api_key;
                                 
@@ -236,7 +226,7 @@ class TakealotController extends Controller
                         
             foreach($result['offers'] as $product){   
                 // dd($product['leadtime_stock']);
-                $exist_data = Takealot::where('tsin',$product['tsin_id'])->where('user_id',$user_id)->first();
+                $exist_data = Takealot::where('tsin',$product['tsin_id'])->where('shop_id',$users->shop_id)->first();
                 if($exist_data == null){
                     $takealots = new Takealot;
                     $takealots->tsin = $product['tsin_id'];
@@ -253,7 +243,7 @@ class TakealotController extends Controller
                     $takealots->barcode = $product['barcode'];
                     $takealots->status = $product['status'];
                     $takealots->takealot_url = $product['offer_url'];
-                    $takealots->user_id = $user_id;
+                    $takealots->shop_id = $users->shop_id;
                     $takealots->save();
                 }
 
@@ -275,14 +265,12 @@ class TakealotController extends Controller
 
     public function update_qty_up() {
         $users = Auth::user();
-        if($users->user_role == 1){
-            $user_id = $users->id;
-        }elseif($users->user_role == 3){
+       if($users->user_role == 3){
             return redirect()->back()->with('error','You can not update!');
         }else{
             $user_id = $users->parent_id;
         }
-        $mypos_data_takealot = MyPos::where('user_id',$user_id)->where('tsin','!=',Null)->get();
+        $mypos_data_takealot = MyPos::where('shop_id',$users->shop_id)->where('tsin','!=',Null)->get();
 
         foreach($mypos_data_takealot as $mpos) {
            

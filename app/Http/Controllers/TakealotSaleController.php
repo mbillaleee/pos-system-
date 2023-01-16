@@ -22,19 +22,15 @@ class TakealotSaleController extends Controller
                 ->make(true);
             }
         }else{
-        if($users->user_role == 1){
-            $user_id = $users->id;
-        }else{
-            $user_id = $users->parent_id;
-        }
+   
 
         if(request()->ajax()) {
-            return datatables()->of(TakealotSale::select('*')->where('user_id',$user_id))
+            return datatables()->of(TakealotSale::select('*')->where('shop_id',$users->shop_id))
             ->addIndexColumn()
             ->make(true);
         }
     }
-        $takealot_api = TakealotApi::where('user_id',$user_id)->latest()->first();
+        $takealot_api = TakealotApi::where('shop_id',$users->shop_id)->latest()->first();
         return view('takealot.sales',compact('takealot_api'));
     }
 
@@ -47,15 +43,13 @@ class TakealotSaleController extends Controller
 
     public function sales_sync(){
         $users = Auth::user();
-        if($users->user_role == 1){
-            $user_id = $users->id;
-        }elseif($users->user_role == 3){
+       if($users->user_role == 3){
             return redirect()->back()->with('error','You can not sync!');
         }else{
-            $user_id = $users->parent_id;
+            $shop_id = $users->shop_id;
         }
 
-        $api_take = TakealotApi::where('user_id',$user_id)->latest()->first();
+        $api_take = TakealotApi::where('shop_id',$shop_id)->latest()->first();
 
         if($api_take){
         $tapi = $api_take->api_key;
@@ -106,7 +100,7 @@ class TakealotSaleController extends Controller
                         $dc = $product['dc'];
                         $tsin = $product['tsin'];
                                                             
-                        $exist_data = TakealotSale::where('order_item_id',$order_item_id)->where('user_id',$user_id)->first();
+                        $exist_data = TakealotSale::where('order_item_id',$order_item_id)->where('shop_id',$shop_id)->first();
                         if(isset($exist_data)){
                             $takealots = TakealotSale::findOrFail($exist_data->id);
                             $takealots->tsin = $tsin;
@@ -124,7 +118,7 @@ class TakealotSaleController extends Controller
                             $takealots->cust_name = $cust_name;
                             $takealots->sale_status = $status;
                             $takealots->dc = $dc;
-                            $takealots->user_id = $user_id;
+                            $takealots->shop_id = $users->shop_id;
                             $takealots->save();
                             
                         }

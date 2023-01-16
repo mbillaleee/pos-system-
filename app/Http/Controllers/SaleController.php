@@ -24,17 +24,11 @@ class SaleController extends Controller
     public function index()
     {
         $users = Auth::user();
-        if($users->user_role == 1){
-            $user_id = $users->id;
-        }elseif($users->user_role == 2){
-            $user_id = $users->parent_id;
-        }elseif($users->user_role == 4){
-            $user_id = $users->parent_id;
-        }
+   
     
         if($users->user_role == 1 || $users->user_role == 2 || $users->user_role == 4){
             if(request()->ajax()) {
-                 $sales = Sale::where('user_id',$user_id)->get();
+                 $sales = Sale::where('shop_id',$users->shop_id)->get();
                 // $sales = Sale::all();  //change korte hobe......
                 return datatables()->of($sales)
                 ->addColumn('customer_id', function($sales){
@@ -69,16 +63,10 @@ class SaleController extends Controller
     {
         // dd('ok');
         $users = Auth::user();
-        if($users->user_role == 1){
-            $user_id = $users->id;
-        }elseif($users->user_role == 2){
-            $user_id = $users->parent_id;
-        }elseif($users->user_role == 4){
-            $user_id = $users->parent_id;
-        }
+    
         if($users->user_role != 3){  //  if($users->user_role == 1 || $users->user_role == 3){
-            $customers = Customer::where('user_id',$user_id)->get();
-            $products = Product::where('user_id',$user_id)->get();
+            $customers = Customer::where('shop_id',$users->shop_id)->get();
+            $products = Product::where('shop_id',$users->shop_id)->get();
             return view('sale.create', compact('customers', 'products'));
             // return redirect()->back();
         }else{
@@ -97,15 +85,7 @@ class SaleController extends Controller
         // dd($request->all());
 
         $users = Auth::user();
-        if($users->user_role == 1){
-            $user_id = $users->id;
-        }elseif($users->user_role == 2){
-            $user_id = $users->parent_id;
-        }elseif($users->user_role == 4){
-            $user_id = $users->parent_id;
-        }
-        
-
+    
        $validator = Validator::make($request->all(), [
         'customer_id' => 'required|max:255',
         'reference_num' => 'nullable',
@@ -159,7 +139,7 @@ class SaleController extends Controller
     $acctrans->chartofacc_id=6;
     $acctrans->credit=$request->grand_total; 
     $acctrans->customer_id=$request->customer_id;
-    $acctrans->user_id=$user_id;
+    $acctrans->shop_id=$users->shop_id;
     $acctrans->save();
 
     if($request->due_amount>0 && $request->paid_amount>0){
@@ -169,7 +149,7 @@ class SaleController extends Controller
     $acctrans2->chartofacc_id=$request->payment_method;
     $acctrans2->debit=$request->paid_amount;
     $acctrans2->customer_id=$request->customer_id;
-    $acctrans2->user_id=$user_id;
+    $acctrans2->shop_id=$users->shop_id;
     $acctrans2->save();
 
     $acctrans3 = new AccountTransection;
@@ -178,7 +158,7 @@ class SaleController extends Controller
     $acctrans3->chartofacc_id=8;
     $acctrans3->debit=$request->due_amount;
     $acctrans3->customer_id=$request->customer_id;
-    $acctrans3->user_id=$user_id;
+    $acctrans3->shop_id=$users->shop_id;
     $acctrans3->save();
     }elseif($request->due_amount>0 && $request->paid_amount<1){
         $acctrans4 = new AccountTransection;
@@ -187,7 +167,7 @@ class SaleController extends Controller
         $acctrans4->chartofacc_id=8;
         $acctrans4->debit=$request->due_amount;
         $acctrans4->customer_id=$request->customer_id;
-        $acctrans4->user_id=$user_id;
+        $acctrans4->shop_id=$users->shop_id;
         $acctrans4->save();
     }elseif($request->due_amount<1 && $request->paid_amount>0){
         $acctrans5 = new AccountTransection;
@@ -196,7 +176,7 @@ class SaleController extends Controller
         $acctrans5->chartofacc_id=$request->payment_method;
         $acctrans5->debit=$request->paid_amount;
         $acctrans5->customer_id=$request->customer_id;
-        $acctrans5->user_id=$user_id;
+        $acctrans5->shop_id=$users->shop_id;
         $acctrans5->save();
     }
     }

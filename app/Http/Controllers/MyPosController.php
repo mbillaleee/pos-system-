@@ -24,20 +24,15 @@ class MyPosController extends Controller
                 ->make(true);
             }
         }else{
-        if($users->user_role == 1){
-            $user_id = $users->id;
-        }else{
-            $user_id = $users->parent_id;
-        }
         if(request()->ajax()) {
-            return datatables()->of(MyPos::select('*')->where('user_id',$user_id))
+            return datatables()->of(MyPos::select('*')->where('shop_id',$users->shop_id))
             ->addColumn('action', 'mypos.action')
             ->rawColumns(['action'])
             ->addIndexColumn()
             ->make(true);
         }
     }
-        $mypos_api = MyPosApi::where('user_id',$user_id)->latest()->first();
+        $mypos_api = MyPosApi::where('shop_id',$users->shop_id)->latest()->first();
         return view('mypos.product', compact('mypos_api'));
     }
 
@@ -78,12 +73,10 @@ class MyPosController extends Controller
     {  
         $myposIds = $request->api_id;
         $users = Auth::user();
-        if($users->user_role == 1){
-            $user_id = $users->id;
-        }elseif($users->user_role == 3){
+       if($users->user_role == 3){
             return redirect()->back()->with('error','You can not update!');
         }else{
-            $user_id = $users->parent_id;
+            $shop_id = $users->shop_id;
         }
 
         if($myposIds != null){
@@ -93,7 +86,7 @@ class MyPosController extends Controller
             }else{
                 $mypos = MyPosApi::create([
                     'api_url' => $request->api_url,
-                    'user_id' => $user_id,
+                    'shop_id' => $users->shop_id
                 ]); 
             }
                          
@@ -110,14 +103,12 @@ class MyPosController extends Controller
     public function product_sync()
     {
         $users = Auth::user();
-        if($users->user_role == 1){
-            $user_id = $users->id;
-        }elseif($users->user_role == 3){
+       if($users->user_role == 3){
             return redirect()->back()->with('error','You can not sync!');
         }else{
-            $user_id = $users->parent_id;
+            $shop_id = $users->shop_id;
         }
-     $api_take = MyPosApi::where('user_id',$user_id)->latest()->first();
+     $api_take = MyPosApi::where('shop_id',$shop_id)->latest()->first();
      if($api_take){
      $url = $api_take->api_url;
 
@@ -131,7 +122,7 @@ class MyPosController extends Controller
     $result1 = json_decode($result, TRUE);
     // dd($result1);
     foreach($result1['products'] as $product){
-                $exist_data = MyPos::where('product_id',$product['id'])->where('user_id',$user_id)->first();
+                $exist_data = MyPos::where('product_id',$product['id'])->where('shop_id',$shop_id)->first();
                 if($exist_data != null){
                     $myproducts = MyPos::findOrFail($exist_data->id);
                     $myproducts->cost = $product['cost'];
@@ -151,7 +142,7 @@ class MyPosController extends Controller
                     $myproducts->quantity = $product['quantity'];
                     $myproducts->type = $product['type'];
                     $myproducts->price_group_name = 'Wholsale';
-                    $myproducts->user_id = $user_id;
+                    $myproducts->shop_id = $users->shop_id;
                     $myproducts->save();
                 }
         

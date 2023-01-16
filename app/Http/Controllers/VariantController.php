@@ -19,7 +19,7 @@ class VariantController extends Controller
     public function index()
     {
         $users = Auth::user();
-        if($users->user_role == 3){
+        if($users->user_role == 1){
             $variants = Variant::latest()->get();
             return view('variant.index',compact('variants'))
             ->with('i', 1);
@@ -37,9 +37,8 @@ class VariantController extends Controller
     {
         // dd('ok');
         $users = Auth::user();
-        if($users->user_role == 3){
+        if($users->user_role == 1){
             return view('variant.create');
-            
         }else{
             return redirect()->back();
         }
@@ -53,8 +52,9 @@ class VariantController extends Controller
      */
     public function store(Request $request)
     {
-        dd( $request->all());
-         $user_id = Auth::user()->id;
+        // dd( $request->all());
+        $users = Auth::user();
+        //  $users = Auth::user()->id;
         $validator = Validator::make($request->all(), [
             'vari_name' => 'required|max:255|unique:variants',
             // 'value_name' => 'required|max:255',
@@ -68,7 +68,7 @@ class VariantController extends Controller
         $variant = New Variant;
 
         $variant->vari_name=$request->vari_name;
-        $variant->user_id=$user_id;
+        $variant->shop_id=$users->shop_id;
         // $variant->save();
 
         if($variant->save()){
@@ -140,7 +140,6 @@ class VariantController extends Controller
 
         $variant->vari_name=$request->vari_name;
         // $variant->save();
-
         if($variant->save()){
             $id=$variant->id;
             // dd($variant->id);

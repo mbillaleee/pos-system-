@@ -26,6 +26,12 @@
                             <input type="text" class="form-control" id="name" name="name" value="{{ $customer->name }}">
                         </div>
                         <div class="col-md-6">
+                            <label for="company_name" class="form-label">Company Name <span
+                                    class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="company_name" name="company_name"
+                                value="{{ $customer->company_name }}">
+                        </div>
+                        <div class="col-md-6">
                             <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
                             <input type="email" class="form-control" id="email" name="email"
                                 value="{{ $customer->email }}">

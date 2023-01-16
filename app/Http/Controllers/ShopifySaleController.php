@@ -23,19 +23,15 @@ class ShopifySaleController extends Controller
                 ->make(true);
             }
         }else{
-        if($users->user_role == 1){
-            $user_id = $users->id;
-        }else{
-            $user_id = $users->parent_id;
-        }
+     
 
         if(request()->ajax()) {
-            return datatables()->of(ShopifySale::select('*')->where('user_id',$user_id))
+            return datatables()->of(ShopifySale::select('*')->where('shop_id',$users->shop_id))
             ->addIndexColumn()
             ->make(true);
         }
     }
-        $shopify_api = ShopifyApi::where('user_id',$user_id)->latest()->first();
+        $shopify_api = ShopifyApi::where('shop_id',$users->shop_id)->latest()->first();
         return view('shopify.sales',compact('shopify_api'));
     }
 
@@ -50,15 +46,13 @@ class ShopifySaleController extends Controller
     public function sales_sync(){
     
         $users = Auth::user();
-        if($users->user_role == 1){
-            $user_id = $users->id;
-        }elseif($users->user_role == 3){
+       if($users->user_role == 3){
             return redirect()->back()->with('error','You can not sync!');
         }else{
-            $user_id = $users->parent_id;
+            $shop_id = $users->shop_id;
         }
         
-        $api_take = ShopifyApi::where('user_id',$user_id)->latest()->first();
+        $api_take = ShopifyApi::where('shop_id',$shop_id)->latest()->first();
     
         if($api_take){
         $api = $api_take->api;
@@ -250,7 +244,7 @@ class ShopifySaleController extends Controller
                 $refunditemtotal = $refunditemprice * $refunditemqty;
                                                 
                 $refundtotalamount += $refunditemtotal;
-                $ssrefundquery = ShopifySaleRefund::where('sales_id',$orderid)->where('refund_id',$shopifyrefundid)->where('user_id',$user_id)->first();
+                $ssrefundquery = ShopifySaleRefund::where('sales_id',$orderid)->where('refund_id',$shopifyrefundid)->where('shop_id',$shop_id)->first();
                 // dd($ssrefundquery);
                 // execquery("SELECT * FROM `salesshopify_refund` WHERE `sales_id`='$orderid' AND `refund_id`='$shopifyrefundid' AND `user_id`='$userid'");
                 if($ssrefundquery == null){
@@ -261,7 +255,7 @@ class ShopifySaleController extends Controller
                     $ssrefundinsert->product_price = $refunditemprice;
                     $ssrefundinsert->quantity = $refunditemqty;
                     $ssrefundinsert->product_total = $refunditemtotal;
-                    $ssrefundinsert->user_id = $user_id;
+                    $ssrefundinsert->shop_id = $users->shop_id;
                     $ssrefundinsert->save();
                     // $ssrefundinsert = execquery("INSERT INTO `salesshopify_refund`(`sales_id`, `refund_id`, `product_name`, `product_price`, `quantity`, `product_total`, `user_id`) VALUES ('$orderid','$shopifyrefundid','$refunditemtitle','$refunditemprice','$refunditemqty','$refunditemtotal','$userid')");
                 }
@@ -290,7 +284,7 @@ class ShopifySaleController extends Controller
             $lineitemtotal = $lineitemprice * $lineitemqty;
                                                 
             $lineitemtotalamount += $lineitemtotal;
-            $sslineitemsquery = ShopifySaleDetail::where('sales_id',$orderid)->where('lineitems_id',$shopifylineitemsid)->where('user_id',$user_id)->first();
+            $sslineitemsquery = ShopifySaleDetail::where('sales_id',$orderid)->where('lineitems_id',$shopifylineitemsid)->where('shop_id',$shop_id)->first();
             // $sslineitemsquery = execquery("SELECT * FROM `salesshopify_details` WHERE `sales_id`='$orderid' AND `lineitems_id`='$shopifylineitemsid' AND `user_id`='$userid'");
             if($sslineitemsquery == null){
                 $sslineitemsinsert = new ShopifySaleDetail;
@@ -300,7 +294,7 @@ class ShopifySaleController extends Controller
                 $sslineitemsinsert->product_price = $lineitemprice;
                 $sslineitemsinsert->quantity = $lineitemqty;
                 $sslineitemsinsert->product_total = $lineitemtotal;
-                $sslineitemsinsert->user_id = $user_id;
+                $sslineitemsinsert->shop_id = $users->shop_id;
                 $sslineitemsinsert->save();
                 
                 // execquery("INSERT INTO `salesshopify_details`(`sales_id`, `lineitems_id`, `product_name`, `product_price`, `quantity`, `product_total`, `user_id`) VALUES ('$orderid','$shopifylineitemsid','$lineitemtitle','$lineitemprice','$lineitemqty','$lineitemtotal','$userid')");
@@ -319,7 +313,7 @@ class ShopifySaleController extends Controller
         }
 
         $salestotalamount = $subtotal-$refundtotalamount;
-        $query = ShopifySale::where('sales_id',$orderid)->where('user_id',$user_id)->first();
+        $query = ShopifySale::where('sales_id',$orderid)->where('shop_id',$shop_id)->first();
         
         // execquery("SELECT * FROM `salesshopify` where sales_id='$orderid' AND `user_id`='$userid'");
         if($query == null){
@@ -353,7 +347,7 @@ class ShopifySaleController extends Controller
             $shopifysalesquery->collectno = null;
             $shopifysalesquery->waybillno = null;
             $shopifysalesquery->booking_status = $fulfillment_status;
-            $shopifysalesquery->user_id = $user_id;
+            $shopifysalesquery->shop_id = $users->shop_id;
             $shopifysalesquery->save();
             
             // execquery("INSERT INTO `salesshopify`(`sales_id`, `sales_date`, `sales_time`, `cust_firstname`, `cust_lastname`, `total_amount`, `sales_status`, `payment_method`, `user_id`, `shipping_name`, `shipping_address1`, `shipping_address2`, `shipping_city`, `shipping_province`, `shipping_country`, `shipping_zip`, `shipping_phone`, `billing_name`, `billing_address1`, `billing_address2`, `billing_city`, `billing_province`, `billing_country`, `billing_zip`, `billing_phone`, `collectno`, `waybillno`, `booking_status`) VALUES 

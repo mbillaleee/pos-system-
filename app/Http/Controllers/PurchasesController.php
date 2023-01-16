@@ -24,19 +24,13 @@ class PurchasesController extends Controller
     public function index(Request  $request)
     {
         $users = Auth::user();
-        if($users->user_role == 1){
-            $user_id = $users->id;
-        }elseif($users->user_role == 2){
-            $user_id = $users->parent_id;
-        }elseif($users->user_role == 4){
-            $user_id = $users->parent_id;
-        }
+      
 
         // dd($request->all());
     
         if($users->user_role == 1 || $users->user_role == 2 || $users->user_role == 4){
             if(request()->ajax()) {
-                $purchases = Purchases::where('user_id',$user_id)->get();
+                $purchases = Purchases::where('shop_id',$users->shop_id)->get();
                 return datatables()->of($purchases)
                 ->addColumn('supplier_id', function($purchases){
                     return $purchases->suppliers['name'];
@@ -95,16 +89,10 @@ class PurchasesController extends Controller
     {
         // dd('ok');
         $users = Auth::user();
-        if($users->user_role == 1){
-            $user_id = $users->id;
-        }elseif($users->user_role == 2){
-            $user_id = $users->parent_id;
-        }elseif($users->user_role == 4){
-            $user_id = $users->parent_id;
-        }
+       
         if($users->user_role != 3){
-            $suppliers = Supplier::where('user_id',$user_id)->get();
-            $products = Product::where('user_id',$user_id)->get();
+            $suppliers = Supplier::where('shop_id',$users->shop_id)->get();
+            $products = Product::where('shop_id',$users->shop_id)->get();
             return view('purchase.create', compact('suppliers', 'products'));
             // return redirect()->back();
         }else{
@@ -123,13 +111,7 @@ class PurchasesController extends Controller
     //    dd($request->all());
     
     $users = Auth::user();
-    if($users->user_role == 1){
-        $user_id = $users->id;
-    }elseif($users->user_role == 2){
-        $user_id = $users->parent_id;
-    }elseif($users->user_role == 4){
-        $user_id = $users->parent_id;
-    }
+  
         // $user_id = Auth::user()->id;
         // $user_id = DB::table('users')->where('id',$request->id);
 
@@ -154,7 +136,7 @@ class PurchasesController extends Controller
     }
 
     $purchase= new Purchases;
-    $purchase->user_id=Auth::id();
+    $purchase->shop_id=$users->shop_id;
     $purchase->supplier_id=$request->supplier_id;
     $purchase->reference_num=$request->reference_num;
     $purchase->purchase_date=$request->purchase_date;
@@ -186,7 +168,7 @@ class PurchasesController extends Controller
         $acctrans->chartofacc_id=5;
         $acctrans->debit=$request->grand_total;
         $acctrans->supplier_id=$request->supplier_id;
-        $acctrans->user_id=$user_id;
+        $acctrans->shop_id=$users->shop_id;
         $acctrans->save();
 
         if($request->due_amount>0 && $request->paid_amount>0){
@@ -196,7 +178,7 @@ class PurchasesController extends Controller
         $acctrans2->chartofacc_id=$request->payment_method;
         $acctrans2->credit=$request->paid_amount;
         $acctrans2->supplier_id=$request->supplier_id;
-        $acctrans2->user_id=$user_id;
+        $acctrans2->shop_id=$users->shop_id;
         $acctrans2->save();
 
         $acctrans3 = new AccountTransection;
@@ -205,7 +187,7 @@ class PurchasesController extends Controller
         $acctrans3->chartofacc_id=7;
         $acctrans3->credit=$request->due_amount;
         $acctrans3->supplier_id=$request->supplier_id;
-        $acctrans3->user_id=$user_id;
+        $acctrans3->shop_id=$users->shop_id;
         $acctrans3->save();
         }elseif($request->due_amount>0 && $request->paid_amount<1){
             $acctrans4 = new AccountTransection;
@@ -214,7 +196,7 @@ class PurchasesController extends Controller
             $acctrans4->chartofacc_id=7;
             $acctrans4->credit=$request->due_amount;
             $acctrans4->supplier_id=$request->supplier_id;
-            $acctrans4->user_id=$user_id;
+            $acctrans4->shop_id=$users->shop_id;
             $acctrans4->save();
         }elseif($request->due_amount<1 && $request->paid_amount>0){
             $acctrans5 = new AccountTransection;
@@ -223,7 +205,7 @@ class PurchasesController extends Controller
             $acctrans5->chartofacc_id=$request->payment_method;
             $acctrans5->credit=$request->paid_amount;
             $acctrans5->supplier_id=$request->supplier_id;
-            $acctrans5->user_id=$user_id;
+            $acctrans5->shop_id=$users->shop_id;
             $acctrans5->save();
         }
     }

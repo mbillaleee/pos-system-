@@ -108,17 +108,7 @@
 
                             $users = Auth::user();
 
-                            if($users->user_role != 2){
-
-                                $user_id = $users->id;
-
-                            }else{
-
-                                $user_id = $users->parent_id;
-
-                            }
-
-                            $min_price = App\Models\MyPos::whereNotNull('tsin')->where('user_id',$user_id)->get();
+                            $min_price = App\Models\MyPos::whereNotNull('tsin')->where('shop_id',$users->shop_id)->get();
 
                         @endphp
 

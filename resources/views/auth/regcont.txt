@@ -1,0 +1,125 @@
+<?php
+
+namespace App\Http\Controllers\Auth;
+
+use App\Http\Controllers\Controller;
+use App\Providers\RouteServiceProvider;
+use App\Models\User;
+use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use App\Models\Currency;
+use App\Models\Shop;
+
+class RegisterController extends Controller
+{
+    /*
+    |--------------------------------------------------------------------------
+    | Register Controller
+    |--------------------------------------------------------------------------
+    |
+    | This controller handles the registration of new users as well as their
+    | validation and creation. By default this controller uses a trait to
+    | provide this functionality without requiring any additional code.
+    |
+    */
+
+    use RegistersUsers;
+
+    /**
+     * Where to redirect users after registration.
+     *
+     * @var string
+     */
+    protected $redirectTo = RouteServiceProvider::HOME;
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('guest');
+    }
+
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator(array $data)
+    {
+        
+        
+        return Validator::make($data, [
+            // 'business_name' => ['required', 'string', 'max:255'],
+            // 'start_date' => ['required', 'string', 'max:255'],
+            // 'upload_logo' => ['nullable', 'string', 'max:255'],
+            // 'currency' => ['required', 'string', 'max:255'],
+            // 'website' => ['nullable', 'string', 'max:255'],
+            // 'business_contact' => ['required', 'string', 'max:255'],
+            // 'alternate_contact' => ['nullable', 'string', 'max:255'],
+            // 'country' => ['required', 'string', 'max:255'],
+            // 'state' => ['required', 'string', 'max:255'],
+            // 'city' => ['required', 'string', 'max:255'],
+            // 'zip_code' => ['nullable', 'string', 'max:255'],
+            // 'land_mark' => ['required', 'string', 'max:255'],
+            // 'time_zone' => ['required', 'string', 'max:255'],
+
+
+
+
+
+            // 'fname' => ['required', 'string', 'max:255'],
+            // 'lname' => ['required', 'string', 'max:255'],
+            // 'username' => ['required', 'string', 'max:255', 'unique:users'],
+            // 'phone' => ['required', 'string', 'max:255', 'unique:users'],
+            // 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            // 'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+    }
+
+    /**
+     * Create a new user instance after a valid registration.
+     *
+     * @param  array  $data
+     * @return \App\Models\User
+     */
+    protected function create(array $data)
+    {
+        // dd($data);
+      
+       $shop_id = Shop::create([
+            'business_name' => $data['business_name'],
+            'start_date' => $data['start_date'],
+            'start_date' => $data['start_date'],
+            'upload_logo' => $data['upload_logo'],
+            'currency' => $data['currency'],
+            'website' => $data['website'],
+            'business_contact' => $data['business_contact'],
+            'alternate_contact' => $data['alternate_contact'],
+            'country' => $data['country'],
+            'state' => $data['state'],
+            'city' => $data['city'],
+            'zip_code' => $data['zip_code'],
+            'land_mark' => $data['land_mark'],
+            'time_zone' => $data['time_zone'],
+        ]);
+
+
+
+        return User::create([
+            'shop_id' => $shop_id->id,
+            'fname' => $data['fname'],
+            'lname' => $data['lname'],
+            'username' => $data['username'],
+            'email' => $data['email'],
+            'phone' => $data['phone'],
+            'user_role' => 1,
+            'password' => Hash::make($data['password']),
+        ]);
+    }
+}
+

@@ -30,6 +30,14 @@
                     </div>
 
                     <div class="col-md-6">
+                            <label for="company_name" class="form-label">Company Name <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="company_name" name="company_name">
+                            @error('company_name')
+                            <div class="error text-danger">{{ $message }}</div>
+                            @enderror
+                    </div>
+
+                    <div class="col-md-6">
                         <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
                         <input type="email" class="form-control" id="email" name="email">
                         @error('email')
@@ -78,9 +86,9 @@
                     <div class="col-md-6">
                         <label for="state" class="form-label">State <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="state" name="state">
-                        @error('state')
+                        <!-- @error('state')
                             <div class="error text-danger">{{ $message }}</div>
-                        @enderror
+                        @enderror -->
                     </div>
 
                     <div class="col-md-6">

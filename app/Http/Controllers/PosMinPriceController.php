@@ -21,14 +21,10 @@ class PosMinPriceController extends Controller
                 ->make(true);
             }
         }else{
-        if($users->user_role == 1){
-            $user_id = $users->id;
-        }else{
-            $user_id = $users->parent_id;
-        }
+      
 
         if(request()->ajax()) {
-            return datatables()->of(PosMinPrice::select('*')->where('user_id',$user_id)->latest())
+            return datatables()->of(PosMinPrice::select('*')->where('shop_id',$users->shop_id)->latest())
             ->addColumn('action', 'posminprice.action')
             ->rawColumns(['action'])
             ->addIndexColumn()
@@ -63,12 +59,10 @@ class PosMinPriceController extends Controller
     public function product_sync()
     {
         $users = Auth::user();
-        if($users->user_role == 1){
-            $user_id = $users->id;
-        }elseif($users->user_role == 3){
+        if($users->user_role == 3){
             return redirect()->back()->with('error','You can not sync!');
         }else{
-            $user_id = $users->parent_id;
+            $shop_id = $users->shop_id;
         }
     $login = "admin";
     $password = "pass";
@@ -138,7 +132,7 @@ class PosMinPriceController extends Controller
             $minsell = $courierandcost + $cal;
         }
 
-                $exist_data = PosMinPrice::where('pos_id',$id)->where('user_id',$user_id)->first();
+                $exist_data = PosMinPrice::where('pos_id',$id)->where('shop_id',$shop_id)->first();
                 if($exist_data != null){
                     $posminprice = PosMinPrice::findOrFail($exist_data->id);
                     $posminprice->product_name = $name;
@@ -165,7 +159,7 @@ class PosMinPriceController extends Controller
                     }else{
                     $posminprice->sku = 'C'.round($cost1).'M'.round($minsell);
                     }
-                    $posminprice->user_id = $user_id;
+                    $posminprice->shop_id = $shop_id;
                     $posminprice->save();
                 }                            
         

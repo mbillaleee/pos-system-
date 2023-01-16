@@ -167,78 +167,109 @@
                                 <select name="result" class="form-control" id="sel5" onchange="showresult(this.value)">
                                     <option value="0">--Please Select--</option>
                                     <option value="1">Single</option>
-                                    <option value="2">Variable</option>
+                                    <option value="2">Variant</option>
                                     <option value="3">Combo</option>
                                 </select>
                             </div>
 
                             
-                            <div class="form-group" id="fallowupdate" style="display:none;">
-                            <table class="table table-bordered mt-4" id="tbl_posts">
+
+                                <table class="table table-bordered mt-4" id="fallowupdate" style="display:none;">
                                     <thead>
                                     <tr>
-                                        <th width="25%">Variant</th>
-                                        <th>Variant value</th>
+                                        <th width="20%">Variant</th>
+                                        <th width="20%">Variant value</th>
                                         <th>Purchase Price *</th>
                                         <th>Sell Price *</th>
                                         <th>Image</th>
                                         <th style="text-align: center;"><button type="button" class="addRow btn btn-success"><i class="fa fa-plus"></i> </button></th>
                                     </tr>
                                     </thead>
-                                    <tbody id="sale_table">
+                                    <tbody id="variant_table">
                                     <tr>
                                         <td>
-                                            <select class="form-control product_id" id="product_id" name="product_id[]" style="width: 100%;" required>
-                                                <option  selected disabled>Select Product</option>
+                                            <select class="form-control variant_id" id="variant_id" name="variant_id[]" style="width: 100%;" required>
+                                                <option  selected disabled>Please Select</option>
                                                 @foreach($variants as $variant)
                                                 <option value="{{$variant->id}}">{{$variant->vari_name}}</option>
                                                 @endforeach
-                                                
-                                                
                                             </select>
                                         </td>
                                         <td>
-                                            <select class="form-control product_id" id="product_id" name="product_id[]" style="width: 100%;" required>
-                                                <option  selected disabled>Select Product</option>
-                                                @foreach($values as $value)
-                                                <option value="{{$value->id}}">{{$value->value_name}}</option>
-                                                @endforeach
-                                                
-                                                
+                                            <select class="form-select varient_value_id" id="varient_value_id" name="varient_value_id">
+                                                <option value="">Please Select</option>
                                             </select>
                                         </td>
+                                     
                                         <td>
-                                            <label>Product varient</label>
-                                            <select id="categoryList" class="form-control" name="category_id" required>
-                                            <option value="">select</option>
-                                            @foreach(App\Models\ProductVariant::all() as $key=> $product_varient)
-                                            <option value="{{$product_varient->id}}">{{$product_varient->variants_id}}</option>
-                                            @endforeach
-                                            </select>
+                                            <input type="number" class="form-control text-end vari_purch_price" id="vari_purch_price" name="vari_purch_price[]" placeholder="0.00">
                                         </td>
                                         <td>
-                                            <label>Product varient value</label>
-                                            <select name="subcategory"
-                                                class="form-control @error('subcategory') is-invalid @enderror">
-                                                <option value="">select</option>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <input type="number" class="form-control text-end price" id="price" name="price[]" placeholder="0.00">
-                                        </td>
-                                        <td>
-                                            <input type="number" class="form-control text-end price" id="price" name="price[]" placeholder="0.00">
+                                            <input type="number" class="form-control text-end vari_sell_price" id="vari_sell_price" name="vari_sell_price[]" placeholder="0.00">
                                         </td>
 
                                         <td>
-                                            <input type="file" class="form-control text-end total_amount" id="total_amount" name="total_amount[]" placeholder="0.00">
+                                            <input type="file" class="form-control text-end vari_image" id="vari_image" name="vari_image[]" placeholder="0.00">
                                         </td>
                                         <td style="text-align: center;"><button type="button" class="remove btn btn-danger"><i class="fa fa-close"></i></button></td>
                                     </tr>
 
                                     </tbody>
                                 </table>
-                            </div> 
+                       
+
+
+                                <table class="table table-bordered mt-4" id="combofallupdate" style="display:none;">
+                                    <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Quantity</th>
+                                        <th>Purchase Price *</th>
+                                        <th>Total</th>
+                                        <th style="text-align: center;"><button type="button" class="addRow2 btn btn-success"><i class="fa fa-plus"></i> </button></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="combo_table">
+                                    <tr>
+                                        <td>
+                                            <select class="form-control product_id" id="product_id" name="product_id[]" style="width: 100%;" required>
+                                                <option>Please Select</option>
+                                                @foreach($products as $product)
+                                                <option value="{{$product->id}}">{{$product->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </td>
+                                     
+                                        <td>
+                                            <input type="number" class="form-control text-end combo_quan" id="combo_quan" name="combo_quan[]" placeholder="0.00">
+                                        </td>
+                                        <td>
+                                            <input type="number" class="form-control text-end comb_pur_pri" id="comb_pur_pri" name="comb_pur_pri[]" placeholder="0.00" readonly>
+                                        </td>
+                                        <td>
+                                            <input type="number" class="form-control text-end total_amount" id="total_amount" name="total_amount[]" placeholder="0.00" readonly>
+                                        </td>
+
+                                        <td style="text-align: center;"><button type="button" class="remove btn btn-danger"><i class="fa fa-close"></i></button></td>
+                                    </tr>
+
+                                    </tbody>
+                                    <tfoot>
+                                    <tr>
+                                            <th colspan="3" class="text-end">Purchase Total:</th>
+                                            <th class="text-end">
+                                                <input type="text" class="form-control text-end sub_total" id="sub_total" name="sub_total" placeholder="0.00" readonly>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="3" class="text-end">Sell Price:</th>
+                                            <th class="text-end">
+                                                <input type="text" class="form-control text-end comb_sell_pri" id="sub_total" name="sub_total" placeholder="0.00">
+                                            </th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                           
                     </div>
                 
 
@@ -255,6 +286,86 @@
 @endsection
 
 @push('js')
+
+<script>
+function showresult(str) {
+  if (str == 2) {
+    $("#combofallupdate").css('display', 'none');
+      $("#fallowupdate").css('display', 'block');
+    }else if (str == 3) {
+    $("#fallowupdate").css('display', 'none');
+      $("#combofallupdate").css('display', 'block');
+    }else{
+        $("#fallowupdate").css('display', 'none');  
+        $("#combofallupdate").css('display', 'none'); 
+  } 
+}
+
+$('.addRow').on('click',function(){
+            addRow();
+        });
+        function addRow() {
+            var tr =  '<tr>'+
+                '<td>'+
+                    '<select class="form-control variant_id" id="variant_id" name="variant_id[]" style="width: 100%;" required>'+
+                        '<option  selected disabled>Select Product</option>'+
+                        '@foreach($variants as $variant)'+
+                        '<option value="{{$variant->id}}">{{$variant->vari_name}}</option>'+
+                    '@endforeach'+
+                    '</select>'+
+                '</td>'+
+                '<td>'+
+                '<select class="form-select varient_value_id" id="varient_value_id" name="varient_value_id">'+
+                    '<option value="">Please Select</option>'+
+                '</select>'+
+                '</td>'+
+                '<td><input type="number" class="form-control text-end vari_purch_price" id="vari_purch_price" name="vari_purch_price[]" placeholder="0.00" ></td>'+
+                '<td><input type="number" class="form-control text-end vari_sell_price" id="vari_sell_price" name="vari_sell_price[]" placeholder="0.00" ></td>'+
+                '<td><input type="file" class="form-control text-end vari_image" id="vari_image" name="vari_image[]" placeholder="0.00" ></td>'+
+                '<td style="text-align: center;"><button type="button" class="btn btn-danger remove"><i class="fa fa-close"></i></button></td>'+
+                '</tr>';
+            $('#variant_table').append(tr);
+        };
+        $('#variant_table').on('click','.remove',function() {
+            var l = $('#variant_table tr').length;
+            if(l==1) {
+                alert('You can not remove last one');
+            }else {
+                $(this).parent().parent().remove();
+            }
+        });
+
+
+        $('.addRow2').on('click',function(){
+            addRow2();
+        });
+        function addRow2() {
+            var tr =  '<tr>'+
+                '<td>'+
+                    '<select class="form-control product_id" id="product_id" name="product_id[]" style="width: 100%;" required>'+
+                        '<option  selected disabled>Select Product</option>'+
+                        '@foreach($products as $product)'+
+                        '<option value="{{$product->id}}">{{$product->name}}</option>'+
+                    '@endforeach'+
+                    '</select>'+
+                '</td>'+
+                '<td><input type="number" class="form-control text-end combo_quan" id="combo_quan" name="combo_quan[]" placeholder="0.00" ></td>'+
+                '<td><input type="number" class="form-control text-end comb_pur_pri" id="comb_pur_pri" name="comb_pur_pri[]" placeholder="0.00" readonly></td>'+
+                '<td><input type="number" class="form-control text-end total_amount" id="total_amount" name="total_amount[]" placeholder="0.00" readonly></td>'+
+                '<td style="text-align: center;"><button type="button" class="btn btn-danger remove"><i class="fa fa-close"></i></button></td>'+
+                '</tr>';
+            $('#combo_table').append(tr);
+        };
+        $('#combo_table').on('click','.remove',function() {
+            var l = $('#combo_table tr').length;
+            if(l==1) {
+                alert('You can not remove last one');
+            }else {
+                $(this).parent().parent().remove();
+            }
+        });
+</script>
+
 
 <script>
     $(document).ready(function () {
@@ -285,7 +396,7 @@
 </script>
 
 
-<script>
+    <script>
         function bank_paymet(val){
             if(val==0){
                 document.getElementById('bankID').style.display = 'block';
@@ -301,11 +412,11 @@
         }
 
 
-        $('tbody').delegate('.quantity, .price, .total_amount','keyup', function(){
+        $('tbody').delegate('.combo_quan, .comb_pur_pri, .total_amount','keyup', function(){
             var tr = $(this).parent().parent();
-            var quantity = tr.find('.quantity').val();
-            var price = tr.find('.price').val();
-            var total_amount = (quantity * price);
+            var combo_quan = tr.find('.combo_quan').val();
+            var comb_pur_pri = tr.find('.comb_pur_pri').val();
+            var total_amount = (combo_quan * comb_pur_pri);
             tr.find('.total_amount').val(total_amount);
 
             subtotal();
@@ -349,18 +460,53 @@
 
 
         // Package Price
-        $('tbody').delegate('.pack_id','change', function(){
+        $('#variant_table').delegate('.variant_id','change', function(){
             var tr = $(this).parent().parent();
-            var id = tr.find('#pack_id :selected').val();
+            var id = tr.find('#variant_id :selected').val();
+            // console.log(id);
+            // var dataID = {'id':id};
+
+            $.ajax({
+                type:"POST",
+                url:"{{url('product/getvarientvalue')}}",
+                dataType: 'json',
+                // data: dataID,
+                data: {
+                    id:id,
+                    _token: '{{csrf_token()}}'
+                },
+                success:function (data) {
+                    // console.log(data);
+
+                    tr.find('.varient_value_id').html('');
+                    tr.find('.varient_value_id').html('<option value="">Please Select</option>');
+                    $.each(data, function (key, value) {
+                        tr.find(".varient_value_id").append('<option value="' + value
+                            .id + '">' + value.value_name + '</option>');
+                    });
+                    // tr.find('.price').val(data.pack_amount);
+
+                }
+
+            });
+        });
+
+
+        // Package Price
+        $('#combo_table').delegate('.product_id','change', function(){
+            var tr = $(this).parent().parent();
+            var id = tr.find('#product_id :selected').val();
             var dataID = {'id':id};
+            // console.log(id);
 
             $.ajax({
                 type:"GET",
-                url:"{{url('/invoice/unitPrice')}}",
+                url:"{{url('/purchase/productPrice')}}",
                 dataType: 'json',
                 data: dataID,
                 success:function (data) {
-                    tr.find('.price').val(data.pack_amount);
+                    // alert(data.purchase_price);
+                     tr.find('.comb_pur_pri').val(data.purchase_price);
 
                 }
 
@@ -370,69 +516,5 @@
 
     </script>
 
-<script>
-function showresult(str) {
-  if (str == 2) {
-      $("#fallowupdate").css('display', 'block');
-    }else{
-        $("#fallowupdate").css('display', 'none');  
-  } 
-}
-
-$('.addRow').on('click',function(){
-            addRow();
-        });
-        function addRow() {
-            var tr =  '<tr>'+
-                '<td>'+
-                '<select class="form-control select2 product_id" id="product_id" name="product_id[]" style="width: 100%;">'+
-                '<option>Select Product</option>'+
-                '@foreach($variants as $variant)'+
-                '<option value="{{$variant->id}}">{{$variant->name}}</option>'+
-                '@endforeach'+
-                '</select>'+
-                '</td>'+
-                '<td><input type="number" class="form-control text-end quantity" id="quantity" name="quantity[]" placeholder="0.00"></td>'+
-                '<td><input type="number" class="form-control text-end price" id="price" name="price[]" placeholder="0.00" readonly></td>'+
-                '<td><input type="number" class="form-control text-end total_amount" id="total_amount" name="total_amount[]" placeholder="0.00" readonly></td>'+
-                '<td style="text-align: center;"><button type="button" class="btn btn-danger remove"><i class="fa fa-close"></i></button></td>'+
-                '</tr>';
-            $('tbody').append(tr);
-        };
-        $('tbody').on('click','.remove',function() {
-            var l = $('tbody tr').length;
-            if(l==1) {
-                alert('You can not remove last one');
-            }else {
-                $(this).parent().parent().remove();
-            }
-        });
-</script>
-
-
-<script type="text/javascript">
-            $("document").ready(function () {
-                $('select[name="category"]').on('change', function () {
-                    var catId = $(this).val();
-                    if (catId) {
-                        $.ajax({
-                            url: '/admin/subcatories/' + catId,
-                            type: "GET",
-                            dataType: "json",
-                            success: function (data) {
-                                $('select[name="subcategory"]').empty();
-                                $.each(data, function (key, value) {
-                                    $('select[name="subcategory"]').append('<option value=" ' + key + '">' + value + '</option>');
-                                })
-                            }
-
-                        })
-                    } else {
-                        $('select[name="subcategory"]').empty();
-                    }
-                });
-
-
-            });
-        </script>
+        
 @endpush

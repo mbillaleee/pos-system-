@@ -135,6 +135,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/product/update/{product}', [ProductController::class, 'update'])->name('product.update');
     Route::delete('/product/destroy/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
     Route::post('/product/getsubcategory', [ProductController::class, 'getsubcategory'])->name('product.getsubcategory');
+    Route::post('/product/getvarientvalue', [ProductController::class, 'getvarientvalue'])->name('product.getvarientvalue');
 
 
 

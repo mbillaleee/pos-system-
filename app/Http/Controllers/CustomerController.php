@@ -18,17 +18,10 @@ class CustomerController extends Controller
     public function index(Request $request)
     {
         $users = Auth::user();
-        if($users->user_role == 1){
-            $user_id = $users->id;
-        }elseif($users->user_role == 2){
-            $user_id = $users->parent_id;
-        }elseif($users->user_role == 4){
-            $user_id = $users->parent_id;
-        }
-    
+
         if($users->user_role == 1 || $users->user_role == 2 || $users->user_role == 4){
             if(request()->ajax()) {
-                $custo = Customer::where('user_id',$user_id)->get();
+                $custo = Customer::where('shop_id',$users->shop_id)->get();
                 return datatables()->of($custo)
                 ->addColumn('action', function($custo){
                    $btn = '<a href="'.route("customers.edit",$custo->id).'"data-original-title="Edit" class="text-primary mr-1 detailProduct"><i class="fa-solid fa-pen-to-square"></i></a>';
@@ -86,18 +79,20 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
-        $user_id = auth()->user();
+        $users = Auth::user();
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
-            'email' => 'required|max:255',
+            'company_name' => 'required|max:255',
+            'email' => ['required', 'email', 'max:255', 'unique:customers,email'],
+            'email' => 'required|email|unique:users',
             'phone' => 'required|max:255',
-            'date_of_birth' => 'nullable|date|max:255',
+            'date_of_birth' => 'required|date|max:255',
             'opening_balance' => 'required|max:255',
             'address' => 'required|max:255',
             'city' => 'required|max:255',
-            'state' => 'required|max:255',
+            'state' => 'nullable|max:255',
             'country' => 'required|max:255',
-            'zip_code' => 'nullable|max:255',
+            'zip_code' => 'required|max:255',
             'status' => 'required|max:255',
         ]);
 
@@ -107,8 +102,10 @@ class CustomerController extends Controller
 
         $customer = New Customer;
         
+        $customer->shop_id=$users->shop_id;
         $customer->name=$request->name;
-        $customer->user_id=Auth::id();
+        $customer->company_name=$request->company_name;
+        $customer->shop_id=$users->shop_id;
         $customer->email=$request->email;
         $customer->phone=$request->phone;
         $customer->date_of_birth=$request->date_of_birth;
@@ -161,6 +158,7 @@ class CustomerController extends Controller
     public function update(Request $request, Customer $customer)
     {
         $customer->name=$request->name;
+        $customer->company_name=$request->company_name;
         $customer->email=$request->email;
         $customer->phone=$request->phone;
         $customer->date_of_birth=$request->date_of_birth;
@@ -173,7 +171,7 @@ class CustomerController extends Controller
         $customer->status=$request->status;
         $customer->save();
 
-        return redirect()->route('customers.lists')->with('success','supplier created successfully!');
+        return redirect()->route('customers.lists')->with('success','Supplier update successfully!');
     }
 
     /**

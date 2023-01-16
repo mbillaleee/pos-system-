@@ -69,7 +69,7 @@
 
                         <label for="short_desc" class="form-label">Short Description <span class="text-danger">*</span></label>
 
-                        <textarea class="form-control" name="short_desc" id="short_desc" cols="10" rows="3">Enter Short description</textarea>
+                        <textarea class="form-control" name="short_desc" id="short_desc" cols="10" rows="3" placeholder="Enter Short description"></textarea>
 
                     </div>
 

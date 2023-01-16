@@ -4,7 +4,6 @@
 
 <div class="layout-px-spacing">
     <div class="middle-content container-xxl p-0">
-        <!-- BREADCRUMB -->
         <div class="page-meta row">
             <nav class="breadcrumb-style-one float-start" aria-label="breadcrumb">
                 <ol class="breadcrumb">
@@ -33,7 +32,7 @@
                             <div class="form-group mb-3">
                                 <label for="parent_id" class="form-label">Category</label>
                                 <select name="parent_id" id="parent_id" class="form-control">
-                                    <option value="">Select Parent Category</option>
+                                    <option value="0">Select Parent Category</option>
                                     @foreach($categories as $cat)
                                     <option value="{{$cat->id}}">{{$cat->name}}</option>
                                     @endforeach

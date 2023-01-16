@@ -16,20 +16,13 @@
 
     <link href="{{asset('layouts/vertical-dark-menu/css/light/loader.css')}}" rel="stylesheet" type="text/css" />
 
-    <link href="{{asset('src/assets/css/dark/custom.css')}}" rel="stylesheet" type="text/css" />
-
     <link href="{{asset('layouts/vertical-dark-menu/css/dark/loader.css')}}" rel="stylesheet" type="text/css" />
 
     <script src="{{asset('layouts/vertical-dark-menu/loader.js')}}"></script>
 
-    
-
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
 
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
-
-    <link href="{{asset('src/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
-
 
     <link href="{{asset('src/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
 
@@ -38,7 +31,8 @@
     <link href="{{asset('layouts/vertical-dark-menu/css/light/plugins.css')}}" rel="stylesheet" type="text/css" />
 
     <link href="{{asset('src/assets/css/light/authentication/auth-boxed.css')}}" rel="stylesheet" type="text/css" />
-
+    <link href="{{asset('src/plugins/src/flatpickr/flatpickr.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('src/plugins/css/dark/flatpickr/custom-flatpickr.css')}}" rel="stylesheet" type="text/css">
     
 
     <link href="{{asset('layouts/vertical-dark-menu/css/dark/plugins.css')}}" rel="stylesheet" type="text/css" />
@@ -47,30 +41,170 @@
 
     <!-- END GLOBAL MANDATORY STYLES -->
 
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-
-   
-    <style>
-        
-        /* .form-section{
-            display: none;
-        }
-
-        .form-section.current{
-            display: inline;
-        }
-
-        .parsley-errors-list{
-            color: #fc0000;
-        } */
-    </style>
     
 
 </head>
 
-<body class="form md-5">
+<body class="form">
 
+<style>
+    /*form styles*/
+#msform {
+    /* text-align: center; */
+    position: relative;
+    margin-top: 30px;
+}
 
+#msform fieldset {
+    background: #060818;
+    border: 0 none;
+    border-radius: 8px;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    padding: 20px 30px;
+    box-sizing: border-box;
+    width: 80%;
+    margin: 0 10%;
+
+    /*stacking fieldsets above each other*/
+    position: relative;
+}
+
+/*Hide all except first fieldset*/
+#msform fieldset:not(:first-of-type) {
+    display: none;
+}
+
+/*inputs*/
+#msform input, #msform textarea {
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 13px;
+}
+
+#msform input:focus, #msform textarea:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border: 1px solid #2098ce;
+    outline-width: 0;
+    transition: All 0.5s ease-in;
+    -webkit-transition: All 0.5s ease-in;
+    -moz-transition: All 0.5s ease-in;
+    -o-transition: All 0.5s ease-in;
+}
+
+/*buttons*/
+#msform .action-button {
+    width: 100px;
+    background: #2098ce;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px;
+}
+
+#msform .action-button:hover, #msform .action-button:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #2098ce;
+}
+
+#msform .action-button-previous {
+    width: 100px;
+    background: #aCbEd0;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px;
+}
+
+#msform .action-button-previous:hover, #msform .action-button-previous:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #aCbEd0;
+}
+
+/*headings*/
+.fs-title {
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #2C3E50;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.fs-subtitle {
+    font-weight: normal;
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/*progressbar*/
+#progressbar {
+    margin-bottom: 30px;
+    overflow: hidden;
+    /*CSS counters to number the steps*/
+    counter-reset: step;
+}
+
+#progressbar li {
+    list-style-type: none;
+    color: #666;
+    text-transform: uppercase;
+    font-size: 9px;
+    width: 33.33%;
+    float: left;
+    position: relative;
+    letter-spacing: 1px;
+    text-align:center;
+}
+
+#progressbar li:before {
+    content: counter(step);
+    counter-increment: step;
+    width: 24px;
+    height: 24px;
+    line-height: 26px;
+    display: block;
+    font-size: 12px;
+    color: #333;
+    background: white;
+    border-radius: 25px;
+    margin: 0 auto 10px auto;
+}
+
+/*progressbar connectors*/
+#progressbar li:after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: white;
+    position: absolute;
+    left: -50%;
+    top: 9px;
+    z-index: -1; /*put it behind the numbers*/
+}
+
+#progressbar li:first-child:after {
+    /*connector not needed before the first step*/
+    content: none;
+}
+
+/*marking active/completed steps blue*/
+/*The number of the step and the connector before it = blue*/
+#progressbar li.active:before, #progressbar li.active:after {
+    background: #2098ce;
+    color: white;
+}
+
+</style>
 
     <!-- BEGIN LOADER -->
 
@@ -93,304 +227,407 @@
     
 
             <div class="row">
-                <div class="col-lg-5">
-                    <img src="{{asset('uploads/restora-pos.png')}}" alt="image" width="100%">
-                </div>
-                <div class="col-lg-7">
 
-                        <!-- <div>
-                            <label for="" class="nav-link shadow-sm step1 border ml-2">Step 1</label>
-                            <label for="" class="nav-link shadow-sm step2 border ml-2">Step 2</label>
-                            <label for="" class="nav-link shadow-sm step3 border ml-2">Step 3</label>
-                        </div> -->
-                        <div>
-                            <form class="row md-5 shop-form" id="regForm" action="{{route('customer.store')}}" method="POST" enctype="multipart/form-data">
+    
+
+                <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-8 col-12 d-flex flex-column align-self-center mx-auto">
+
+                    <div class="card mt-3 mb-3" style="min-height:640px;">
+
+                        <div class="card-body">
+
+                           <!-- MultiStep Form -->
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <form id="msform" action="{{route('register')}}" method="post" enctype="multipart/form-data">
+                                        @csrf
+                                        <!-- progressbar -->
+                                        <ul id="progressbar">
+                                            <li class="active">Personal Details</li>
+                                            <li>Social Profiles</li>
+                                            <li>Account Setup</li>
+                                        </ul>
+                                        <!-- fieldsets -->
+                                        <fieldset>
+                                            <div class="form-section row">
+
+                                                <div class="col-12">
+
+                                                    <div class="mb-3">
+
+                                                        <label class="form-label">Business Name</label>
+
+                                                        <input type="text" class="form-control" name="business_name" id="business_name" value="{{ old('business_name') }}">
+                                                        @error('business_name')
+                                                            <span class="text-danger" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-md-6">
+
+                                                    <div class="mb-3">
+
+                                                        <label class="form-label">Start Dates</label>
+
+                                                        <!-- <input type="date" class="form-control" id="start_date" name="start_date" value="{{ old('start_date') }}" > -->
+                                                        <input id="basicFlatpickr" class="form-control flatpickr flatpickr-input active" type="text" placeholder="Select Date.." name="start_date">
+                                                        @error('start_date')
+                                                            <span class="text-danger" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-md-6">
+
+                                                    <div class="mb-3">
+
+                                                        <label class="form-label">Upload Logo</label>
+
+                                                        <input type="file" class="form-control" id="upload_logo" name="upload_logo" value="{{ old('upload_logo') }}" >
+                                                        @error('upload_logo')
+                                                            <span class="text-danger" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-6">
+
+                                                    <div class="mb-3">
+
+                                                        <label class="form-label">Courrency</label>
+
+                                                        @php
+                                                        $currencies = App\Models\Currency::all();
+                                                        @endphp
+
+                                                        <select name="currency" id="currency" class="form-control">
+                                                            <option value=""> Select Courrency</option>
+                                                            @foreach($currencies as $courrency)
+                                                            <option value="{{$courrency->id}}">{{$courrency->country}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                        @error('currency')
+                                                            <span class="text-danger" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+
+                                                    </div>
+
+                                                </div>
+
+
+
+                                                <div class="col-6">
+
+                                                    <div class="mb-3">
+
+                                                        <label class="form-label">Website</label>
+
+                                                        <input type="text" class="form-control" id="website"  name="website" value="{{ old('website') }}" >
+                                                        @error('website')
+                                                            <span class="text-danger" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-6">
+
+                                                    <div class="mb-3">
+
+                                                        <label class="form-label">Business Contact No</label>
+
+                                                        <input type="text" class="form-control" id="business_contact"  name="business_contact" value="{{ old('business_contact') }}">
+                                                        @error('business_contact')
+                                                            <span class="text-danger" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-6">
+
+                                                    <div class="mb-3">
+
+                                                        <label class="form-label">Alternate Contact No</label>
+
+                                                        <input type="text" class="form-control" id="alternate_contact" name="alternate_contact" value="{{ old('alternate_contact') }}">
+                                                        @error('alternate_contact')
+                                                            <span class="text-danger" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        <input type="button" name="next" class="next action-button" value="Next"/>
+                                        </fieldset>
+                                        <fieldset>
+                                            <div class="form-section row">
+                                                <div class="col-6">
+
+                                                    <div class="mb-3">
+
+                                                        <label class="form-label">Country</label>
+
+                                                        <input type="text" class="form-control" id="country" name="country" value="{{ old('country') }}" autocomplete="country">
+                                                        @error('country')
+                                                            <span class="text-danger" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-6">
+
+                                                    <div class="mb-3">
+
+                                                        <label class="form-label">State</label>
+
+                                                        <input type="text" class="form-control" id="state" name="state" value="{{ old('state') }}" autocomplete="state">
+                                                        @error('state')
+                                                            <span class="text-danger" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+                                                    </div>
+
+                                                    </div>
+
+                                                    <div class="col-6">
+
+                                                    <div class="mb-3">
+
+                                                        <label class="form-label">City</label>
+
+                                                        <input type="text" class="form-control" id="city" name="city" value="{{ old('city') }}" autocomplete="city">
+                                                        @error('city')
+                                                            <span class="text-danger" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-6">
+
+                                                    <div class="mb-3">
+
+                                                        <label class="form-label">Zip code</label>
+
+                                                        <input type="text" class="form-control" id="zip_code" name="zip_code" value="{{ old('zip_code') }}" >
+                                                        @error('zip_code')
+                                                            <span class="text-danger" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-6">
+
+                                                    <div class="mb-3">
+
+                                                        <label class="form-label">Land Mark</label>
+
+                                                        <input type="text" class="form-control" id="land_mark" name="land_mark" value="{{ old('land_mark') }}">
+                                                        @error('land_mark')
+                                                            <span class="text-danger" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-6">
+
+                                                    <div class="mb-3">
+
+                                                        <label class="form-label">Time Zone</label>
+                                                        <select id="selecttime"  name="time_zone" class="form-control"></select>
+                                                        @error('time_zone')
+                                                            <span class="text-danger" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                                            <input type="button" name="next" class="next action-button" value="Next"/>
+                                        </fieldset>
+                                        <fieldset>
+                                            <div class="form-section row">
+                                                <div class="col-md-6">
+
+                                                    <div class="mb-3">
+
+                                                        <label class="form-label">First Name</label>
+
+                                                        <input type="text" class="form-control" name="fname" value="{{ old('fname') }}" autocomplete="fname" autofocus>
+                                                        @error('fname')
+                                                            <span class="text-danger" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-md-6">
+
+                                                    <div class="mb-3">
+
+                                                        <label class="form-label">Last Name</label>
+
+                                                        <input type="text" class="form-control" name="lname" value="{{ old('lname') }}" autocomplete="lname" autofocus>
+                                                        @error('lname')
+                                                            <span class="text-danger" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+                                                                                    
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-md-6">
+
+                                                    <div class="mb-3">
+
+                                                        <label class="form-label">Uaername</label>
+
+                                                        <input type="text" class="form-control add-billing-address-input @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" autocomplete="username" autofocus>
+
+                                                        @error('username')
+                                                            <span class="text-danger" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror                      
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-6">
+
+                                                    <div class="mb-3">
+
+                                                        <label class="form-label">Email</label>
+
+                                                        <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email">
+
+                                                        @error('email')
+                                                            <span class="text-danger" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-6">
+
+                                                    <div class="mb-3">
+
+                                                        <label class="form-label">Phone</label>
+
+                                                        <input type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" autocomplete="phone">
+                                                        @error('phone')
+                                                            <span class="text-danger" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-6">
+
+                                                    <div class="mb-3">
+
+                                                        <label class="form-label">Password</label>
+
+                                                        <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password">
+
+                                                        @error('password')
+                                                            <span class="text-danger" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-6">
+
+                                                    <div class="mb-3">
+
+                                                        <label class="form-label">Confirm Password</label>
+
+                                                        <input type="password" class="form-control"  name="password_confirmation" autocomplete="new-password">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                                            <input type="submit" name="submit" class="submit action-button" value="Submit"/>
+                                        </fieldset>
+                                    </form>
+                                </div>
+                            </div>
+
+
+                            </div>
+
                             
-                                @csrf
 
-                                <div class="tab row">
-
-                                    <div class="col-6">
-
-                                        <div class="mb-3">
-
-                                            <label class="form-label">Business Name</label>
-
-                                            <input type="text" class="form-control" name="business_name" id="business_name" value="{{ old('business_name') }}" required>
-
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="col-md-6">
-
-                                        <div class="mb-3">
-
-                                            <label class="form-label">Start Dates</label>
-
-                                            <!-- <input type="date" class="form-control" id="start_date" name="start_date" value="{{ old('start_date') }}"  required> -->
-                                            <input id="basicFlatpickr" class="form-control flatpickr flatpickr-input active" type="text" placeholder="Select Date.." name="purchase_date">
-
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="col-md-6">
-
-                                        <div class="mb-3">
-
-                                            <label class="form-label">Upload Logo</label>
-
-                                            <input type="file" class="form-control" id="upload_logo" name="upload_logo" value="{{ old('upload_logo') }}"  required>
-
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="col-6">
-
-                                        <div class="mb-3">
-
-                                            <label class="form-label">Courrency</label>
-
-                                            <!-- <input type="text" class="form-control" id="currency" name="currency" value="{{ old('currency') }}" required> -->
-                                            <select name="" id="" class="form-control">
-                                                <option value=""> Select Courrency</option>
-                                                <option value="">Bangladesh (BDT)</option>
-                                                <option value="">USA (Doler)</option>
-                                                <option value="">India (Fupi)</option>
-                                                <option value="">China (Yean)</option>
-                                            </select>
-
-
-                                        </div>
-
-                                    </div>
-
-
-
-                                    <div class="col-6">
-
-                                        <div class="mb-3">
-
-                                            <label class="form-label">Website</label>
-
-                                            <input type="text" class="form-control" id="website"  name="website" value="{{ old('website') }}" required >
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="col-6">
-
-                                        <div class="mb-3">
-
-                                            <label class="form-label">Business Contact No</label>
-
-                                            <input type="text" class="form-control" id="business_contact"  name="business_contact" value="{{ old('business_contact') }}" required>
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="col-6">
-
-                                        <div class="mb-3">
-
-                                            <label class="form-label">Alternate Contact No</label>
-
-                                            <input type="text" class="form-control" id="alternate_contact" name="alternate_contact" value="{{ old('alternate_contact') }}" required>
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="col-6">
-
-                                        <div class="mb-3">
-
-                                            <label class="form-label">Country</label>
-
-                                            <input type="text" class="form-control" id="counntry" name="counntry" value="{{ old('counntry') }}" required autocomplete="counntry">
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="col-6">
-
-                                        <div class="mb-3">
-
-                                            <label class="form-label">State</label>
-
-                                            <input type="text" class="form-control" id="state" name="state" value="{{ old('state') }}" required autocomplete="state">
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="col-6">
-
-                                        <div class="mb-3">
-
-                                            <label class="form-label">City</label>
-
-                                            <input type="text" class="form-control" id="city" name="city" value="{{ old('city') }}" required autocomplete="city">
-
-                                        </div>
-
-                                        </div>
-
-                                    <div class="col-6">
-
-                                        <div class="mb-3">
-
-                                            <label class="form-label">Zip code</label>
-
-                                            <input type="text" class="form-control" id="zip_code" name="zip_code" value="{{ old('zip_code') }}" required >
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="col-6">
-
-                                        <div class="mb-3">
-
-                                            <label class="form-label">Land Mark</label>
-
-                                            <input type="text" class="form-control" id="land_mark" name="land_mark" value="{{ old('land_mark') }}" required>
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="col-6">
-
-                                        <div class="mb-3">
-
-                                            <label class="form-label">Time Zone</label>
-
-                                            <select name="" id="" class="form-control">
-                                                <option value=""> Select Time zone</option>
-                                                <option value="">+6</option>
-                                                <option value="">+5</option>
-                                                <option value="">+4</option>
-                                                <option value="">+3</option>
-                                            </select>
-
-                                            <!-- <input type="text" class="form-control" id="time_zone" name="time_zone" value="{{ old('time_zone') }}" required > -->
-
-                                        </div>
-
-                                    </div>
-                                    
-                                </div>
-                                <div class="tab row">
-                                    <div class="col-md-6">
-
-                                        <div class="mb-3">
-
-                                            <label class="form-label">First Name</label>
-
-                                            <input type="text" class="form-control" name="fname" value="{{ old('fname') }}" required autocomplete="fname" autofocus>
-
-
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="col-md-6">
-
-                                        <div class="mb-3">
-
-                                            <label class="form-label">Last Name</label>
-
-                                            <input type="text" class="form-control" name="lname" value="{{ old('lname') }}" required autocomplete="lname" autofocus>
-
-                                                                        
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="col-md-6">
-
-                                        <div class="mb-3">
-
-                                            <label class="form-label">Uaername</label>
-
-                                            <input type="text" class="form-control add-billing-address-input @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
-
-                                                                            
-
-                                        </div>
-                                    </div>
-
-                                    <div class="col-6">
-
-                                        <div class="mb-3">
-
-                                            <label class="form-label">Email</label>
-
-                                            <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                        
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="col-6">
-
-                                        <div class="mb-3">
-
-                                            <label class="form-label">Phone</label>
-
-                                            <input type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="phone">
-
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="col-6">
-
-                                        <div class="mb-3">
-
-                                            <label class="form-label">Password</label>
-
-                                            <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                        
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="col-6">
-
-                                        <div class="mb-3">
-
-                                            <label class="form-label">Confirm Password</label>
-
-                                            <input type="password" class="form-control"  name="password_confirmation" required autocomplete="new-password">
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
                         </div>
+
                     </div>
+
                 </div>
+
+                
 
             </div>
 
+            
+
         </div>
+
+
 
     </div>
 
@@ -399,153 +636,121 @@
     <!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
 
     <!-- <script src="{{asset('src/bootstrap/js/bootstrap.bundle.min.js')}}"></script> -->
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+<script src="{{asset('src/plugins/src/flatpickr/flatpickr.js')}}"></script>
+<script src="{{asset('layouts/time-zone/dist/timezones.full.js')}}"></script>
     <!-- END GLOBAL MANDATORY SCRIPTS -->
 
-
-
-
-
-
-
-
-
-    <script>
-        var today = new Date();
-
-        var dd = today.getDate();
-        var mm = today.getMonth()+1; //January is 0!
-        var yyyy = today.getFullYear();
-
-        if(dd<10) {
-            dd = '0'+dd
-        }
-
-        if(mm<10) {
-            mm = '0'+mm
-        }
-
-        // today = yyyy + '/' + mm + '/' + dd;
-        today = dd + '-' + mm + '-' + yyyy;
-
-        //    console.log(today);
-        document.getElementById('basicFlatpickr').value = today;
-    </script>
-
-
-<!-- <script>
-    $(function(){
-        var $section = $('.form-section');
-
-        function navigateTo(index){
-            $section.removeClass('current').eq(index).addClass('current');
-
-            $('.form-navigation .previous').toggle(index>0)
-            var atTheEnd = index >= $section.length -1;
-            $('.form-navigation .next').toggle(!atTheEnd)
-            $('.form-navigation [type=submit]').toggle(!atTheEnd)
-        }
-
-        function curIndex(){
-            return sections.index($section.filter('.current'));
-        }
-
-        $('.form-navigation .previous').click(function(){
-            navigateTo(curIndex() - 1);
-        });
-
-        $('.form-navigation .next').click(function(){
-            $('.shop-form').parseley().whenValidate({
-                group: 'block-'+curIndex()
-            }).done(function(){
-                navigateTo(curIndex()+1);
-            });
-        });
-
-
-    })
-</script> -->
-
-<!-- 
 <script>
-    $(document).ready(function(){
+    $('#selecttime').timezones();
 
+    var f1 = flatpickr(document.getElementById('basicFlatpickr'));
+
+    var today = new Date();
+
+var dd = today.getDate();
+var mm = today.getMonth()+1; //January is 0!
+var yyyy = today.getFullYear();
+
+if(dd<10) {
+    dd = '0'+dd
+}
+
+if(mm<10) {
+    mm = '0'+mm
+}
+
+// today = yyyy + '/' + mm + '/' + dd;
+today = yyyy + '-' + mm + '-' + dd;
+
+//    console.log(today);
+document.getElementById('basicFlatpickr').value = today;
+</script>
+<script>
+    
+//jQuery time
 var current_fs, next_fs, previous_fs; //fieldsets
-var opacity;
-var current = 1;
-var steps = $("fieldset").length;
-
-setProgressBar(current);
+var left, opacity, scale; //fieldset properties which we will animate
+var animating; //flag to prevent quick multi-click glitches
 
 $(".next").click(function(){
-
-current_fs = $(this).parent();
-next_fs = $(this).parent().next();
-
-//Add Class Active
-$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
-
-//show the next fieldset
-next_fs.show();
-//hide the current fieldset with style
-current_fs.animate({opacity: 0}, {
-step: function(now) {
-// for making fielset appear animation
-opacity = 1 - now;
-
-current_fs.css({
-'display': 'none',
-'position': 'relative'
-});
-next_fs.css({'opacity': opacity});
-},
-duration: 500
-});
-setProgressBar(++current);
+	if(animating) return false;
+	animating = true;
+	
+	current_fs = $(this).parent();
+	next_fs = $(this).parent().next();
+	
+	//activate next step on progressbar using the index of next_fs
+	$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+	
+	//show the next fieldset
+	next_fs.show(); 
+	//hide the current fieldset with style
+	current_fs.animate({opacity: 0}, {
+		step: function(now, mx) {
+			//as the opacity of current_fs reduces to 0 - stored in "now"
+			//1. scale current_fs down to 80%
+			scale = 1 - (1 - now) * 0.2;
+			//2. bring next_fs from the right(50%)
+			left = (now * 50)+"%";
+			//3. increase opacity of next_fs to 1 as it moves in
+			opacity = 1 - now;
+			current_fs.css({
+        'transform': 'scale('+scale+')',
+        'position': 'absolute'
+      });
+			next_fs.css({'left': left, 'opacity': opacity});
+		}, 
+		duration: 800, 
+		complete: function(){
+			current_fs.hide();
+			animating = false;
+		}, 
+		//this comes from the custom easing plugin
+		easing: 'easeInOutBack'
+	});
 });
 
 $(".previous").click(function(){
-
-current_fs = $(this).parent();
-previous_fs = $(this).parent().prev();
-
-//Remove class active
-$("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
-
-//show the previous fieldset
-previous_fs.show();
-
-//hide the current fieldset with style
-current_fs.animate({opacity: 0}, {
-step: function(now) {
-// for making fielset appear animation
-opacity = 1 - now;
-
-current_fs.css({
-'display': 'none',
-'position': 'relative'
+	if(animating) return false;
+	animating = true;
+	
+	current_fs = $(this).parent();
+	previous_fs = $(this).parent().prev();
+	
+	//de-activate current step on progressbar
+	$("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+	
+	//show the previous fieldset
+	previous_fs.show(); 
+	//hide the current fieldset with style
+	current_fs.animate({opacity: 0}, {
+		step: function(now, mx) {
+			//as the opacity of current_fs reduces to 0 - stored in "now"
+			//1. scale previous_fs from 80% to 100%
+			scale = 0.8 + (1 - now) * 0.2;
+			//2. take current_fs to the right(50%) - from 0%
+			left = ((1-now) * 50)+"%";
+			//3. increase opacity of previous_fs to 1 as it moves in
+			opacity = 1 - now;
+			current_fs.css({'left': left});
+			previous_fs.css({'transform': 'scale('+scale+')', 'opacity': opacity});
+		}, 
+		duration: 800, 
+		complete: function(){
+			current_fs.hide();
+			animating = false;
+		}, 
+		//this comes from the custom easing plugin
+		easing: 'easeInOutBack'
+	});
 });
-previous_fs.css({'opacity': opacity});
-},
-duration: 500
-});
-setProgressBar(--current);
-});
 
-function setProgressBar(curStep){
-var percent = parseFloat(100 / steps) * curStep;
-percent = percent.toFixed();
-$(".progress-bar")
-.css("width",percent+"%")
-}
-
-$(".submit").click(function(){
-return false;
-})
-
-});
-</script> -->
-
+// $(".submit").click(function(){
+// 	return false;
+// })
+</script>
 
 
 </body>

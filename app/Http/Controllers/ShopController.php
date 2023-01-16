@@ -25,12 +25,7 @@ class ShopController extends Controller
      */
     public function create()
     {
-        $users = Auth::user();
-        if($users->user_role == 2 && $users->user_role == 4){
-            return redirect()->back();
-        }else{
-            return view('shop.create');
-        }
+      
     }
 
     /**

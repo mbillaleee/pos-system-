@@ -18,17 +18,11 @@ class SupplierController extends Controller
     public function index()
     {
         $users = Auth::user();
-        if($users->user_role == 1){
-            $user_id = $users->id;
-        }elseif($users->user_role == 2){
-            $user_id = $users->parent_id; 
-        }elseif($users->user_role == 4){
-            $user_id = $users->parent_id; 
-        }
+  
     
         if($users->user_role == 1 || $users->user_role == 2 || $users->user_role == 4){
             if(request()->ajax()) {
-                $supp = Supplier::where('user_id',$user_id)->get();
+                $supp = Supplier::where('shop_id',$users->shop_id)->get();
                 return datatables()->of($supp)
                 ->addColumn('action', function($supp){
                    $btn = '<a href="'.route("suppliers.edit",$supp->id).'"data-original-title="Edit" class="detailProduct"><i class="text-danger fas fa-edit"></i></a>';
@@ -87,19 +81,20 @@ class SupplierController extends Controller
     {
 
         // dd($request->all());
-        $user_id = auth()->user();
+        $users = Auth::user();
+        // $users = auth()->user();
 
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'company_name' => 'required|max:255',
-            'email' => 'required|email|unique:users',
+            'email' => ['required', 'email', 'max:255', 'unique:suppliers,email'],
             'phone' => 'required|max:255',
             'date_of_birth' => 'required|date|max:255',
             'tax_number' => 'required|max:255',
             'opening_balance' => 'required|max:255',
             'address' => 'required|max:255',
             'city' => 'required|max:255',
-            'state' => 'required|max:255',
+            'state' => 'nullable|max:255',
             'country' => 'required|max:255',
             'zip_code' => 'required|max:255',
             'status' => 'required|max:255',
@@ -112,7 +107,7 @@ class SupplierController extends Controller
         $suppliers = New Supplier;
         
         $suppliers->name=$request->name;
-        $suppliers->user_id=Auth::id();
+        $suppliers->shop_id=$users->shop_id;
         $suppliers->company_name=$request->company_name;
         $suppliers->email=$request->email;
         $suppliers->phone=$request->phone;

@@ -58,6 +58,9 @@
                         <label for="name" class="form-label">Variation <span class="text-danger">*</span></label>
 
                         <input type="text" class="form-control" id="vari_name" name="vari_name" placeholder="Enter Variant">
+                        @error('vari_name')
+                            <div class="error text-danger">{{ $message }}</div>
+                        @enderror
 
                     </div>
 

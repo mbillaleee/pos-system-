@@ -26,17 +26,11 @@ class ExpenseController extends Controller
     public function index()
     {
         $users = Auth::user();
-        if($users->user_role == 1){
-            $user_id = $users->id;
-        }elseif($users->user_role == 2){
-            $user_id = $users->parent_id;
-        }elseif($users->user_role == 4){
-            $user_id = $users->parent_id;
-        }
+      
     // dd($product->categories['name']);
         if($users->user_role == 1 || $users->user_role == 2 || $users->user_role == 4){
             if(request()->ajax()) {
-                $expenses = Expense::all();
+                $expenses = Expense::where('shop_id',$users->shop_id)->get();
                 return datatables()->of($expenses)
                 ->rawColumns(['action'])
                 ->addIndexColumn()
@@ -44,26 +38,11 @@ class ExpenseController extends Controller
             }
         }else if($users->user_role == 3) {
             if(request()->ajax()) {
-                $product = Product::with('categories')->with('brands');
-                return datatables()->of($product)
-                ->addColumn('category_id', function($product){
-                    return $product->categories['name'];
-                 })
-                 ->addColumn('sub_category_id', function($product){
-                    return $product->sub_categories['name'] ?? '';
-                 })
-                 ->addColumn('brand_id', function($product){
-                    return $product->brands['name'];
-                 })
-                ->addColumn('action', function($product){
-                   $btn = '<a href="'.route("product.edit",$product->id).'"data-original-title="Edit" class="text-primary mr-1 btn-sm detailProduct"><i class="fa-solid fa-pen-to-square"></i></a>';
-                   $btn .= '<form class="d-inline" method="POST" action="'.route("product.destroy", $product->id).'"><input type="hidden" name="_method" value="delete" /><input type="hidden" name="_token" value="'. csrf_token() .'" /><button class="text-danger border-0 bg-transparent show_confirm" type="submit"><i class="fa-solid fa-trash-can"></i></button></form>';
-                    
-                    return $btn;
-                })
+                $expenses = Expense::all();
+                return datatables()->of($expenses)
                 ->rawColumns(['action'])
                 ->addIndexColumn()
-                ->make(true);  
+                ->make(true);
             }
         }else{
             return redirect()->back();
@@ -94,15 +73,9 @@ class ExpenseController extends Controller
         // }
 
         $users = Auth::user();
-        if($users->user_role == 1){
-            $user_id = $users->id;
-        }elseif($users->user_role == 2){
-            $user_id = $users->parent_id;
-        }elseif($users->user_role == 4){
-            $user_id = $users->parent_id;
-        }
+        
         if($users->user_role != 3){  //  if($users->user_role == 1 || $users->user_role == 3){
-            $suppliers = Supplier::where('user_id',$user_id)->get();
+            $suppliers = Supplier::where('shop_id',$users->shop_id)->get();
             $cartofacc = ChartOfAccount::where('parent_id',4)->get();
             // $purchases = Purchases::where('user_id',$user_id)->get();
 
@@ -125,13 +98,7 @@ class ExpenseController extends Controller
         // dd($request->all());
         
         $users = Auth::user();
-        if($users->user_role == 1){
-            $user_id = $users->id;
-        }elseif($users->user_role == 2){
-            $user_id = $users->parent_id;
-        }elseif($users->user_role == 4){
-            $user_id = $users->parent_id;
-        }
+       
         $validator = Validator::make($request->all(), [
             'reference_num' => 'required',
             'supplier_id' => 'required',
@@ -157,7 +124,7 @@ class ExpenseController extends Controller
             $expense->att_document=$dccomentname;
         }
 
-        $expense->user_id=$user_id;
+        $expense->shop_id=$users->shop_id;
         $expense->reference_num=$request->reference_num;
         $expense->supplier_id=$request->supplier_id;
         $expense->date=$request->date;
@@ -175,7 +142,7 @@ class ExpenseController extends Controller
             $acctrans->chartofacc_id=$request->expense_type;
             $acctrans->debit=$request->total_amount; 
             $acctrans->supplier_id=$request->supplier_id;
-            $acctrans->user_id=$user_id;
+            $acctrans->shop_id=$users->shop_id;
             $acctrans->save();
 
         if($request->paid_amount>0 && $request->paid_amount < $request->total_amount){
@@ -185,7 +152,7 @@ class ExpenseController extends Controller
             $acctrans2->chartofacc_id=$request->payment_method;
             $acctrans2->credit=$request->paid_amount;
             $acctrans2->supplier_id=$request->supplier_id;
-            $acctrans2->user_id=$user_id;
+            $acctrans2->shop_id=$users->shop_id;
             $acctrans2->save();
 
             $acctrans3 = new AccountTransection;
@@ -194,7 +161,7 @@ class ExpenseController extends Controller
             $acctrans3->chartofacc_id=7;
             $acctrans3->credit=$due_amount;
             $acctrans3->supplier_id=$request->supplier_id;
-            $acctrans3->user_id=$user_id;
+            $acctrans3->shop_id=$users->shop_id;
             $acctrans3->save();
 
         }elseif($due_amount>0 && $request->paid_amount<1){
@@ -204,7 +171,7 @@ class ExpenseController extends Controller
             $acctrans4->chartofacc_id=7;
             $acctrans4->credit=$due_amount;
             $acctrans4->supplier_id=$request->supplier_id;
-            $acctrans4->user_id=$user_id;
+            $acctrans4->shop_id=$users->shop_id;
             $acctrans4->save();
         }elseif($due_amount<1 && $request->paid_amount>0){
             $acctrans5 = new AccountTransection;
@@ -213,7 +180,7 @@ class ExpenseController extends Controller
             $acctrans5->chartofacc_id=$request->payment_method;
             $acctrans5->credit=$request->paid_amount;
             $acctrans5->supplier_id=$request->supplier_id;
-            $acctrans5->user_id=$user_id;
+            $acctrans5->shop_id=$users->shop_id;
             $acctrans5->save();
         }
         }

@@ -98,36 +98,36 @@
 
                                     </tbody>
                                     <tfoot>
-                                    <tr>
-                                        <th colspan="3" class="text-end">Sub Total:</th>
-                                        <th class="text-end">
-                                            <input type="text" class="form-control text-end sub_total" id="sub_total" name="sub_total" placeholder="0.00" readonly>
-                                        </th>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="3" class="text-end">Discount (%):</th>
-                                        <th class="text-end">
-                                            <input type="text" class="form-control text-end discount_percent" id="discount_percent" name="discount_percent" placeholder="0.00">
-                                        </th>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="3" class="text-end">Grand Total:</th>
-                                        <th class="text-end">
-                                            <input type="text" class="form-control text-end grand_total" value="{{old('grand_total')}}" id="grand_total" name="grand_total" placeholder="0.00" readonly>
-                                        </th>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="3" class="text-end">Paid Amount:</th>
-                                        <th class="text-end">
-                                            <input type="number" class="form-control text-end paid_amount" value="{{old('paid_amount')}}" id="paid_amount" name="paid_amount" placeholder="0.00" required>
-                                        </th>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="3" class="text-end">Due:</th>
-                                        <th class="text-end">
-                                            <input type="text" class="form-control text-end due_amount" id="due_amount" name="due_amount" placeholder="0.00" readonly>
-                                        </th>
-                                    </tr>
+                                        <tr>
+                                            <th colspan="3" class="text-end">Sub Total:</th>
+                                            <th class="text-end">
+                                                <input type="text" class="form-control text-end sub_total" id="sub_total" name="sub_total" placeholder="0.00" readonly>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="3" class="text-end">Discount (%):</th>
+                                            <th class="text-end">
+                                                <input type="text" class="form-control text-end discount_percent" id="discount_percent" name="discount_percent" placeholder="0.00">
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="3" class="text-end">Grand Total:</th>
+                                            <th class="text-end">
+                                                <input type="text" class="form-control text-end grand_total" value="{{old('grand_total')}}" id="grand_total" name="grand_total" placeholder="0.00" readonly>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="3" class="text-end">Paid Amount:</th>
+                                            <th class="text-end">
+                                                <input type="number" class="form-control text-end paid_amount" value="{{old('paid_amount')}}" id="paid_amount" name="paid_amount" placeholder="0.00" required>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="3" class="text-end">Due:</th>
+                                            <th class="text-end">
+                                                <input type="text" class="form-control text-end due_amount" id="due_amount" name="due_amount" placeholder="0.00" readonly>
+                                            </th>
+                                        </tr>
                                     </tfoot>
                                 </table>
                                 

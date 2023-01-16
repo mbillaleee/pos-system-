@@ -1,0 +1,35 @@
+<!-- @php
+$produ_vari_vals = App\Models\Value::all();
+@endphp -->
+
+
+
+
+
+<script>
+    $(document).ready(function () {
+
+  $('#').on('change', function () {
+      var varient_id = this.value;
+      
+      $.ajax({
+          url: "{{url('product/getvarientvalue')}}",
+          type: "POST",
+          data: {
+                varient_id: varient_id,
+              _token: '{{csrf_token()}}'
+          },
+          dataType: 'json',
+          success: function (data) {
+                $("#varient_value_id").html('');
+              $('#varient_value_id').html('<option value="">Please Select</option>');
+              $.each(data, function (key, value) {
+                  $("#varient_value_id").append('<option value="' + value
+                      .id + '">' + value.value_name + '</option>');
+              });
+          }
+      });
+  });
+});
+
+</script>

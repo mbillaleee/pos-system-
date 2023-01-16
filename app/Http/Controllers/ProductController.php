@@ -25,17 +25,11 @@ class ProductController extends Controller
     public function index()
     {
         $users = Auth::user();
-        if($users->user_role == 1){
-            $user_id = $users->id;
-        }elseif($users->user_role == 2){
-            $user_id = $users->parent_id;
-        }elseif($users->user_role == 4){
-            $user_id = $users->parent_id;
-        }
+       
     // dd($product->categories['name']);
         if($users->user_role == 1 || $users->user_role == 2 || $users->user_role == 4){
             if(request()->ajax()) {
-                $product = Product::where('user_id',$user_id)->with('categories')->with('brands');
+                $product = Product::where('shop_id',$users->shop_id)->with('categories')->with('brands');
                 return datatables()->of($product)
                 ->addColumn('category_id', function($product){
                     return $product->categories['name'];
@@ -100,12 +94,11 @@ class ProductController extends Controller
         if($users->user_role != 3){
             $categories = Category::where('parent_id',0)->get();
             $brands = Brand::all();
+            $products = Product::all();
             $units = Unit::all();
             $variants = Variant::all();
             $values = Value::all();
-            $produ_vari_val = ProductVariantValue::get();
-            // $values = Value::where('variants_id',$variants_id)->get();
-            return view('product.create', compact('categories', 'brands', 'units', 'variants', 'values', 'produ_vari_val'));
+            return view('product.create', compact('categories', 'brands', 'units', 'variants', 'values', 'products'));
             // return redirect()->back();
         }else{
             return redirect()->back();
@@ -169,7 +162,7 @@ class ProductController extends Controller
 
         $product->name=$request->name;
         $product->sub_category_id=$request->sub_category_id;   //new parent_id
-        $product->user_id=Auth::id();
+        $product->shop_id=$users->shop_id;
         $product->sku=$request->sku;
         $product->category_id=$request->category_id;
         $product->brand_id=$request->brand_id;
@@ -310,6 +303,12 @@ class ProductController extends Controller
     public function getsubcategory(Request $request)
     {
         $data = Category::where('parent_id',$request->category_id)->get();
+        return response()->json($data);
+    }
+
+    public function getvarientvalue(Request $request)
+    {
+        $data = Value::where('variants_id',$request->id)->get();
         return response()->json($data);
     }
 }

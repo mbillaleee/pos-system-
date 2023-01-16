@@ -72,98 +72,115 @@
 
             <div class="widget-content widget-content-area br-8 p-5">
 
-            <form class="row g-3" method="POST" action="{{route('users.update', $user->id)}}">
+                <form class="row g-3" method="POST" action="{{route('users.update', $user->id)}}">
 
-                @method('patch')
+                        @method('patch')
 
-                @csrf
+                        @csrf
 
-                                        <div class="col-md-6">
+                            <div class="col-md-6">
 
-                                            <label for="name" class="form-label">Full Name <span class="text-danger">*</span></label>
+                                <label for="name" class="form-label">First Name <span class="text-danger">*</span></label>
 
-                                            <input type="text" class="form-control" value="{{$user->name}}" id="name" name="name">
+                                <input type="text" class="form-control" value="{{$user->fname}}" id="fname" name="fname">
 
-                                        </div>
+                            </div>
 
-                                        <div class="col-md-6">
+                            <div class="col-md-6">
 
-                                            <label for="username" class="form-label">Username <span class="text-danger">*</span></label>
+                                <label for="name" class="form-label">Last Name <span class="text-danger">*</span></label>
 
-                                            <input type="text" class="form-control" value="{{$user->username}}" id="username" name="username">
+                                <input type="text" class="form-control" value="{{$user->lname}}" id="lname" name="lname">
 
-                                        </div>
+                            </div>
 
-                                        <div class="col-md-6">
+                            <div class="col-md-6">
 
-                                            <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
+                                <label for="username" class="form-label">Username <span class="text-danger">*</span></label>
 
-                                            <input type="email" class="form-control" value="{{$user->email}}" id="email" name="email">
+                                <input type="text" class="form-control" value="{{$user->username}}" id="username" name="username">
 
-                                        </div>
-                                        @if(Auth::user()->user_role == 1)
-                                        <div class="col-md-6">
+                            </div>
 
-                                            <label for="image" class="form-label">User Role</label>
+                            <div class="col-md-6">
 
-                                            <select class="form-select" id="user_role" name="user_role" required>
-                                                <option value="">Please Select</option>
-                                                <option value="2" {{$user->user_role == 2 ? 'selected' : ''}}>Manager</option>
-                                                <option value="4" {{$user->user_role == 4 ? 'selected' : ''}}>Sales Agent</option>
-                                            </select>
+                                <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
 
-                                        </div>
-                                        @endif
+                                <input type="email" class="form-control" value="{{$user->email}}" id="email" name="email">
 
-                                        <div class="col-md-6">
+                            </div>
 
-                                            <label for="image" class="form-label">Photo</label>
+                            <div class="col-md-6">
 
-                                            <div class="row">
+                                <label for="name" class="form-label">Phone <span class="text-danger">*</span></label>
 
-                                                <div class="col-sm-8">
+                                <input type="text" class="form-control" value="{{$user->phone}}" id="phone" name="phone">
 
-                                                <input type="file" class="form-control" id="image" name="image" style="border: none;">
+                            </div>
 
-                                                </div>
+                            @if(Auth::user()->user_role == 1)
+                            <div class="col-md-6">
 
-                                                <div class="col-sm-4">
+                                <label for="image" class="form-label">User Role</label>
 
-                                                @if($user->image != null)<img src="{{asset('uploads/users/'.$user->image)}}" width="80" alt="{{$user->name}}">@endif
+                                <select class="form-select" id="user_role" name="user_role" required>
+                                    <option value="">Please Select</option>
+                                    <option value="2" {{$user->user_role == 2 ? 'selected' : ''}}>Manager</option>
+                                    <option value="4" {{$user->user_role == 4 ? 'selected' : ''}}>Sales Agent</option>
+                                </select>
 
-                                                </div>
+                            </div>
+                            @endif
 
-                                            </div>
+                            <div class="col-md-6">
 
-                                           
+                                <label for="image" class="form-label">Photo</label>
 
-                                        </div>
+                                <div class="row">
 
-                                        <div class="col-md-6">
+                                    <div class="col-sm-8">
 
-                                            <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
+                                    <input type="file" class="form-control" id="image" name="image" style="border: none;">
 
-                                            <input type="password" class="form-control" id="password" name="password">
+                                    </div>
 
-                                        </div>
+                                    <div class="col-sm-4">
 
-                                        <div class="col-md-6">
+                                    @if($user->image != null)<img src="{{asset('uploads/users/'.$user->image)}}" width="80" alt="{{$user->name}}">@endif
 
-                                            <label for="password" class="form-label">Confirm Password <span class="text-danger">*</span></label>
+                                    </div>
 
-                                            <input type="password" class="form-control" id="confirm_password" name="confirm-password">
+                                </div>
 
-                                        </div>
+                                
+
+                            </div>
+
+                            <div class="col-md-6">
+
+                                <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
+
+                                <input type="password" class="form-control" id="password" name="password">
+
+                            </div>
+
+                            <div class="col-md-6">
+
+                                <label for="password" class="form-label">Confirm Password <span class="text-danger">*</span></label>
+
+                                <input type="password" class="form-control" id="confirm_password" name="confirm-password">
+
+                            </div>
 
 
 
-                                        <div class="col-12">
+                            <div class="col-12">
 
-                                            <button type="submit" class="btn btn-primary">Update</button>
+                                <button type="submit" class="btn btn-primary">Update</button>
 
-                                        </div>
+                            </div>
 
-                                </form>
+                    </form>
 
             </div>
 

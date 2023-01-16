@@ -25,13 +25,7 @@ class ReportController extends Controller
     public function purchasereport(Request $request)
     {
         $users = Auth::user();
-        if($users->user_role == 1){
-            $user_id = $users->id;
-        }elseif($users->user_role == 2){
-            $user_id = $users->parent_id;
-        }elseif($users->user_role == 4){
-            $user_id = $users->parent_id;
-        }
+      
         // if(!empty($request->all())) {
             // dd($request->date_range);
         // }
@@ -93,17 +87,11 @@ class ReportController extends Controller
     public function salereport()
     {
         $users = Auth::user();
-        if($users->user_role == 1){
-            $user_id = $users->id;
-        }elseif($users->user_role == 2){
-            $user_id = $users->parent_id;
-        }elseif($users->user_role == 4){
-            $user_id = $users->parent_id;
-        }
+    
     
         if($users->user_role == 1 || $users->user_role == 2 || $users->user_role == 4){
-            $sales = Sale::where('user_id',$user_id)->get();
-            $customers = Customer::where('user_id',$user_id)->get();
+            $sales = Sale::where('shop_id',$users->shop_id)->get();
+            $customers = Customer::where('shop_id',$users->shop_id)->get();
             if(request()->ajax()) {
                 // $sales = Sale::all();  //change korte hobe......
                 return datatables()->of($sales)
@@ -134,13 +122,13 @@ class ReportController extends Controller
     public function saleinvoice($id)
     { 
         $sales = Sale::where('id',$id)->with('customers')->first();
-        $sales_extra = SaleExtra::where('sale_id',$sales->id)->get();
+        $sales_extra = SaleExtra::where('shop_id',$users->shop_id)->get();
         return view('report/saleinvoice', compact('sales','sales_extra'));
     }
 
 
     public function purchase_invoice($id)
-    { 
+    {
         $purchases = Purchases::where('id',$id)->with('suppliers')->first();
         $purchase_extra = PurchaseExtra::where('purchase_id',$purchases->id)->get();
         return view('report/purchase-invoice', compact('purchases','purchase_extra'));
