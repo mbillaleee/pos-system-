@@ -1,0 +1,627 @@
+{{ route('supplier.index') }}
+
+{{ route('takealot.product') }}
+
+
+{{ route('takealot.edit') }}
+
+{{ route('takealot.update')}}
+
+
+@include('takealot.product_modal')
+@include('takealot.import_modal')
+@include('takealot.api_modal')
+
+
+
+@if($takealot_api)
+
+                <a class="btn btn-primary float-start" id="syncBtn" href="{{ route('takealot.sync') }}">Product Sync</a>
+
+                @endif
+
+
+
+@section('content')
+
+<div class="layout-px-spacing">
+
+
+
+<div class="middle-content container-xxl p-0">
+
+    
+
+    <!-- BREADCRUMB -->
+
+    <div class="page-meta row">
+
+        <nav class="breadcrumb-style-one float-start" aria-label="breadcrumb">
+
+            <ol class="breadcrumb">
+
+                <li class="breadcrumb-item"><a href="#">Takealot</a></li>
+
+                <li class="breadcrumb-item active" aria-current="page">Sales</li>
+
+            </ol>
+
+        </nav>
+
+        <div class="mt-3">
+
+        <!-- <a class="btn btn-primary float-end" href="{{ route('users.create') }}"> Create New User</a> -->
+
+        <!-- test -->
+
+        <div class="float-end">
+
+        <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#takealotSaleImportModal">Import New Data</button>
+
+        </div>
+
+        
+
+        </div>
+
+        
+
+    </div>
+
+
+
+    <div class="row layout-top-spacing">
+
+    
+
+        <div class="col-xl-12 col-lg-12 col-sm-12 layout-spacing">
+
+            <div class="widget-content widget-content-area br-8 table-responsive">
+
+                <table id="takealot-sales" class="table table-striped dt-table-hover" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th style="width:150px!important;">Order Date</th>
+                            <th>Name</th>
+                            <th>Company Name</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>Tax Number</th>
+                            <th>Pay Term</th>
+                            <th>Opening Balance</th>
+                            <th>Address</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+
+
+</div>
+
+
+
+</div>
+
+@include('takealot.sales_import_modal')
+
+@endsection
+
+
+
+@push('js')
+
+<script>
+
+$(document).ready(function () {
+
+    $("#syncBtn").click(function () {
+
+            $("#syncBtn").text(($("#syncBtn").text() == 'Sales Sync') ? 'Please Wait...' : 'Sales Sync');
+
+    })
+
+});
+
+$(document).ready( function () {
+
+$.ajaxSetup({
+
+headers: {
+
+'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+
+}
+
+});
+
+$('#takealot-sales').DataTable({
+
+// responsive: true,
+
+processing: true,
+
+serverSide: true,
+
+"ajax": "table",
+
+"autoWidth": false,
+
+lengthMenu: [
+
+        [25, 50, 100, 200, -1],
+
+        [25, 50, 100, 200, "All"]
+
+    ],
+
+    
+
+ajax: "{{ route('takealot.sales') }}",
+
+columns: [
+
+{ data: 'order_date', name: 'order_date' },
+
+{ data: 'product_name', name: 'product_name' },
+
+{ data: 'tsin', name: 'tsin' },
+
+{ data: 'selling_price', name: 'selling_price' },
+
+{ data: 'quantity', name: 'quantity' },
+
+{ data: 'sale_status', name: 'sale_status' },
+
+{ data: 'cust_name', name: 'cust_name' },
+
+{ data: 'dc', name: 'dc' },
+
+],
+
+columnDefs: [
+
+                {
+
+                    render: function (data, type, full, meta) {
+
+                        return "<div class='text-wrap width-170'>" + data + "</div>";
+
+                    },
+
+                    targets: 1
+
+                },
+
+                {
+
+                    render: function (data, type, full, meta) {
+
+                        return "<div class='text-wrap width-100'>" + data + "</div>";
+
+                    },
+
+                    targets: 0
+
+                },
+
+                {
+
+                    render: function (data, type, full, meta) {
+
+                        return "<div class='text-wrap width-50'>" + data + "</div>";
+
+                    },
+
+                    targets: 3
+
+                },
+
+                {
+
+                    render: function (data, type, full, meta) {
+
+                        return "<div class='text-wrap width-70'>" + data + "</div>";
+
+                    },
+
+                    targets: 5
+
+                },
+                {
+
+                    render: function (data, type, full, meta) {
+
+                        return "<div class='text-wrap width-70'>" + data + "</div>";
+
+                    },
+
+                    targets: 6
+
+                    }
+
+             ],
+
+order: [[0, 'desc']],
+
+dom: 'Bfrtip',
+
+buttons: [
+
+    'pageLength',
+
+{
+
+                extend:'csvHtml5',
+
+                exportOptions: {
+
+                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+
+                },
+
+            },
+
+            {
+
+           extend: 'pdf',
+
+            exportOptions: {
+
+                columns: [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+
+            }
+
+           
+
+          
+
+       },
+
+            // 'csvHtml5',
+
+            // 'pageLength'
+
+
+
+        ],
+
+});
+
+});
+
+
+
+
+
+</script>
+
+@endpush
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@extends('admin')
+
+
+
+@section('content')
+
+<div class="layout-px-spacing">
+
+
+
+    <div class="middle-content container-xxl p-0">
+
+
+
+        <!-- BREADCRUMB -->
+
+        <div class="page-meta row">
+
+            <nav class="breadcrumb-style-one float-start" aria-label="breadcrumb">
+
+                <ol class="breadcrumb">
+
+                    <li class="breadcrumb-item active" aria-current="page">Suppliers</li>
+
+                </ol>
+
+            </nav>
+
+            <div class="mt-3">
+
+                <!-- <a class="btn btn-primary float-end" href="{{ route('users.create') }}"> Create New User</a> -->
+                @if($supplier_api)
+
+                <a class="btn btn-primary float-start" id="syncBtn" href="{{ route('takealot.sales.sync') }}">Sales
+                    Sync</a>
+
+                @endif
+
+
+                <div class="float-end">
+
+                    <button type="button" class="btn btn-info" data-bs-toggle="modal"
+                        data-bs-target="#takealotSaleImportModal">Import New Data</button>
+
+                </div>
+
+
+
+            </div>
+
+
+
+        </div>
+
+
+
+        <div class="row layout-top-spacing">
+
+
+
+            <div class="col-xl-12 col-lg-12 col-sm-12 layout-spacing">
+
+                <div class="widget-content widget-content-area br-8 table-responsive">
+
+                    <table id="takealot-sales" class="table table-striped dt-table-hover" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th style="width:150px!important;">Order Date</th>
+                                <th>Action</th>
+                                <th>Name</th>
+                                <th>Company Name</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th>Tax Number</th>
+                                <th>Pay Term</th>
+                                <th>Opening Balance</th>
+                                <th>Address</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+</div>
+
+@include('takealot.sales_import_modal')
+
+@endsection
+
+
+
+@push('js')
+
+<script>
+$(document).ready(function() {
+
+    $("#syncBtn").click(function() {
+
+        $("#syncBtn").text(($("#syncBtn").text() == 'Sales Sync') ? 'Please Wait...' : 'Sales Sync');
+
+    })
+
+});
+
+$(document).ready(function() {
+
+    $.ajaxSetup({
+
+        headers: {
+
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+
+        }
+
+    });
+
+    $('#takealot-sales').DataTable({
+
+        // responsive: true,
+
+        processing: true,
+
+        serverSide: true,
+
+        "ajax": "table",
+
+        "autoWidth": false,
+
+        lengthMenu: [
+
+            [25, 50, 100, 200, -1],
+
+            [25, 50, 100, 200, "All"]
+
+        ],
+
+
+
+        ajax: "",
+
+        columns: [
+
+            {
+                data: 'name',
+                name: 'name'
+            },
+
+            {
+                data: 'company_name',
+                name: 'company_name'
+            },
+
+            {
+                data: 'phone',
+                name: 'phone'
+            },
+
+            {
+                data: 'email',
+                name: 'email'
+            },
+
+            {
+                data: 'tax_number',
+                name: 'tax_number'
+            },
+
+            {
+                data: 'pay_term',
+                name: 'pay_term'
+            },
+
+            {
+                data: 'address',
+                name: 'address'
+            },
+
+        ],
+
+        columnDefs: [
+
+            {
+
+                render: function(data, type, full, meta) {
+
+                    return "<div class='text-wrap width-170'>" + data + "</div>";
+
+                },
+
+                targets: 1
+
+            },
+
+            {
+
+                render: function(data, type, full, meta) {
+
+                    return "<div class='text-wrap width-100'>" + data + "</div>";
+
+                },
+
+                targets: 0
+
+            },
+
+            {
+
+                render: function(data, type, full, meta) {
+
+                    return "<div class='text-wrap width-50'>" + data + "</div>";
+
+                },
+
+                targets: 3
+
+            },
+
+            {
+
+                render: function(data, type, full, meta) {
+
+                    return "<div class='text-wrap width-70'>" + data + "</div>";
+
+                },
+
+                targets: 5
+
+            },
+            {
+
+                render: function(data, type, full, meta) {
+
+                    return "<div class='text-wrap width-70'>" + data + "</div>";
+
+                },
+
+                targets: 6
+
+            }
+
+        ],
+
+        order: [
+            [0, 'desc']
+        ],
+
+        dom: 'Bfrtip',
+
+        buttons: [
+
+            'pageLength',
+
+            {
+
+                extend: 'csvHtml5',
+
+                exportOptions: {
+
+                    columns: [0, 1, 2, 3, 4, 5, 6, 7]
+
+                },
+
+            },
+
+            {
+
+                extend: 'pdf',
+
+                exportOptions: {
+
+                    columns: [0, 1, 2, 3, 4, 5, 6, 7]
+
+                }
+
+
+
+
+
+            },
+
+            // 'csvHtml5',
+
+            // 'pageLength'
+
+
+
+        ],
+
+    });
+
+});
+</script>
+
+@endpush

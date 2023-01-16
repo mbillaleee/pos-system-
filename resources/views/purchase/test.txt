@@ -1,0 +1,117 @@
+@extends('admin')
+
+
+
+@section('content')
+
+<div class="layout-px-spacing">
+
+
+
+<div class="middle-content container-xxl p-0">
+
+    
+
+    <!-- BREADCRUMB -->
+
+    <div class="page-meta row">
+
+        <nav class="breadcrumb-style-one float-start" aria-label="breadcrumb">
+
+            <ol class="breadcrumb">
+
+                <li class="breadcrumb-item"><a href="#">Purchase</a></li>
+
+                <li class="breadcrumb-item active" aria-current="page">Create</li>
+
+            </ol>
+
+        </nav>
+
+        <div class="">
+
+        <a class="btn btn-primary float-end" href="{{ url('purchase') }}"> Back</a>
+
+        </div>
+
+        
+
+    </div>
+
+
+
+    <div class="row layout-top-spacing">
+
+    
+
+        <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
+
+            <div class="widget-content widget-content-area br-8 p-5">
+
+            <form class="row g-3" action="{{route('product.store')}}" method="POST" enctype="multipart/form-data">
+
+                @csrf
+                <!-- @if($errors)
+                    @foreach($errors->all() as $error)
+                        {{ $error }}
+                    @endforeach
+                @endif
+                {{ $errors }} -->
+
+                <div class="col-md-3">
+
+                    <label for="name" class="form-label">Supplier <span class="text-danger">*</span></label>
+                    <select class="form-select" id="category_id" name="category_id" required>
+                        <option selected disabled value="">Please Select</option>
+                        
+                        @foreach($suppliers as $supplier)
+                        <option value="{{ $supplier->id}}">{{ $supplier->name}}</option>
+                        @endforeach
+                        
+                        
+                    </select>
+                    
+
+                </div>
+
+                <div class="col-md-3">
+
+                    <label for="user_id" class="form-label">Reference Number <span class="text-danger">*</span></label>
+
+                    <input type="text" class="form-control" id="sku" name="sku">
+
+                </div>
+
+                <div class="col-md-3">
+                <label for="address" class="form-label">Purchase Date <span class="text-danger">*</span></label>
+                <input type="date" class="form-control" id="date_of_birth" name="date_of_birth">
+                </div>
+
+                <div class="col-md-3">
+                <label for="address" class="form-label">Payment Method <span class="text-danger">*</span></label>
+                <select class="form-select" id="product_type" name="product_type" required>
+                        <option selected disabled value="">Please Select</option>
+                        <option value="1">Bank</option>
+                        <option value="2">Cash</option>
+                    </select>
+                </div>
+                
+                </form>
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+
+
+</div>
+
+
+
+</div>
+
+@endsection

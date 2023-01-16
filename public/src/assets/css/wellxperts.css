@@ -1,0 +1,52 @@
+.widget-content-area {
+    padding: 20px!important;
+}
+.text-wrap{
+    white-space:normal;
+}
+.width-170{
+    width:170px;
+}
+.width-100{
+    width:100px;
+}
+.width-50{
+    width:50px;
+}
+.width-80{
+    width:80px;
+}
+.width-70{
+    width:70px;
+}
+.width-300{
+    width:300px;
+}
+.width-200{
+    width:200px;
+}
+.width-160{
+    width:160px;
+}
+.bootstrap-tagsinput {
+    width: 100%;
+}
+    .bootstrap-tagsinput .tag {
+      margin-right: 2px;
+      color: white !important;
+      background-color: #0d6efd;
+      padding: 0.2rem;
+    }
+    .reportrange {
+        background: #fff; 
+        cursor: pointer;
+        padding: 0.75rem 1.25rem;
+        border-radius: 6px;
+        border: 1px solid #bfc9d4;
+        color: #3b3f5c;
+        font-size: 15px;
+    }
+    .reportrange input {
+    width: 92%;
+    border: 0;
+    }
