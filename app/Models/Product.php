@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Category;
 use App\Models\Brand;
-use App\Models\Sale;
 
 class Product extends Model
 {
@@ -14,7 +13,7 @@ class Product extends Model
 
     protected $guarded = [];
 
-    // protected $fillable = ['name', 'sku', 'category', 'brand', 'image', 'weight', 'unit', 'description', 'sell_price', 'purchase_price', 'alert_query', 'product_type', 'status'];
+    protected $fillable = ['name', 'sku', 'category', 'brand', 'image', 'weight', 'unit', 'description', 'sell_price', 'purchase_price', 'alert_query', 'product_type', 'status'];
 
     public function categories()
     {
@@ -35,10 +34,5 @@ class Product extends Model
     {
         return $this->hasMany(PurchaseExtra::class);
     }
-
-    // public function sales()
-    // {
-    //     return $this->belongsToMany(Sale::class);
-    // }
     
 }

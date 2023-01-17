@@ -54,16 +54,9 @@
 
                 <div class="col-md-6">
 
-                    <label for="name" class="form-label">First Name <span class="text-danger">*</span></label>
+                    <label for="name" class="form-label">Full Name <span class="text-danger">*</span></label>
 
-                    <input type="text" class="form-control" id="fname" name="fname">
-
-                </div>
-                <div class="col-md-6">
-
-                    <label for="name" class="form-label">Last Name <span class="text-danger">*</span></label>
-
-                    <input type="text" class="form-control" id="lname" name="lname">
+                    <input type="text" class="form-control" id="name" name="name">
 
                 </div>
 
@@ -77,20 +70,12 @@
 
                 <div class="col-md-6">
 
-                    <label for="phone" class="form-label">Phone <span class="text-danger">*</span></label>
-
-                    <input type="text" class="form-control" id="phone" name="phone">
-
-                </div>
-
-                <div class="col-md-6">
-
                     <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
 
                     <input type="email" class="form-control" id="email" name="email">
 
                 </div>
-                <!-- @if(Auth::user()->user_role == 1)
+                @if(Auth::user()->user_role == 1)
                 <div class="col-md-6">
 
                     <label for="image" class="form-label">User Role</label>
@@ -102,7 +87,7 @@
                     </select>
 
                 </div>
-                @endif -->
+                @endif
                 <div class="col-md-6">
 
                     <label for="image" class="form-label">Photo</label>

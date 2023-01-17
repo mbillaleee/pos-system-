@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Customer;
-use App\Models\Product;
 
 class Sale extends Model
 {
@@ -13,12 +12,10 @@ class Sale extends Model
 
     protected $guarded = [];
 
+    protected $fillable = [];
+
     public function customers()
     {
-        return $this->belongsTo(Customer::class, 'customer_id', 'id');
+        return $this->belongsTo(Customer::class, 'customer_id');
     }
-    // public function products()
-    // {
-    //     return $this->belongsToMany(Product::class, 'sale_extras');
-    // }
 }

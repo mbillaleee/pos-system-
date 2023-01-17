@@ -4,19 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\BrandController;
-use App\Http\Controllers\unitController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PurchasesController;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\ChartOfAccountController;
-use App\Http\Controllers\AccountTransectionController;
-use App\Http\Controllers\ExpenseController;
-use App\Http\Controllers\IncomeController;
-use App\Http\Controllers\ReportController;
-use App\Http\Controllers\VariantController;
-use App\Http\Controllers\ShopController;
 
 /*
 |--------------------------------------------------------------------------
@@ -109,14 +102,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::delete('/brand/destroy/{brand}', [BrandController::class, 'destroy'])->name('brand.destroy');
 
 
-    Route::get('/unit', [unitController::class, 'index'])->name('unit.lists');
-    Route::get('/unit/create', [unitController::class, 'create'])->name('unit.create');
-    Route::post('/unit/store', [unitController::class, 'store'])->name('unit.store');
-    Route::get('/unit/edit/{unit}', [unitController::class, 'edit'])->name('unit.edit');
-    Route::post('/unit/update/{unit}', [unitController::class, 'update'])->name('unit.update');
-    Route::delete('/unit/destroy/{unit}', [unitController::class, 'destroy'])->name('unit.destroy');
-
-
 
     Route::get('/category', [CategoryController::class, 'index'])->name('category.index');
     Route::get('/category/create', [CategoryController::class, 'create'])->name('category.create');
@@ -135,11 +120,10 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/product/update/{product}', [ProductController::class, 'update'])->name('product.update');
     Route::delete('/product/destroy/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
     Route::post('/product/getsubcategory', [ProductController::class, 'getsubcategory'])->name('product.getsubcategory');
-    Route::post('/product/getvarientvalue', [ProductController::class, 'getvarientvalue'])->name('product.getvarientvalue');
 
 
 
-    Route::get('/purchase', [PurchasesController::class, 'index'])->name('purchase.index'); //purchase report here
+    Route::get('/purchase', [PurchasesController::class, 'index'])->name('purchase.index');
     Route::get('/purchase/create', [PurchasesController::class, 'create'])->name('purchase.create');
     Route::post('/purchase/store', [PurchasesController::class, 'store'])->name('purchase.store');
     Route::get('/purchase/productPrice', [PurchasesController::class, 'productPrice'])->name('purchase.price');
@@ -159,47 +143,5 @@ Route::group(['middleware' => ['auth']], function() {
     
 
 
-    Route::get('/expense', [ExpenseController::class, 'index'])->name('expense.index');
-    Route::get('/expense/create', [ExpenseController::class, 'create'])->name('expense.create');
-    Route::post('/expense/store', [ExpenseController::class, 'store'])->name('expense.store');
-    Route::get('/expense/edit/{expense}', [ExpenseController::class, 'edit'])->name('expense.edit');
-    Route::post('/expense/update/{expense}', [ExpenseController::class, 'update'])->name('expense.update');
-    Route::delete('/expense/destroy/{id}', [ExpenseController::class, 'destroy'])->name('expense.destroy');
-    Route::post('/expense/getsubcategory', [ExpenseController::class, 'getsubcategory'])->name('expense.getsubcategory');
 
-
-    Route::get('/income', [IncomeController::class, 'index'])->name('income.index');
-    Route::get('/income/create', [IncomeController::class, 'create'])->name('income.create');
-    Route::post('/income/store', [IncomeController::class, 'store'])->name('income.store');
-
-
-
-    Route::get('/report/purchasereport', [ReportController::class, 'purchasereport'])->name('purchasereport.index'); //purchase report here
-    Route::get('/report/salereport', [ReportController::class, 'salereport'])->name('salereport.index'); //sale report here
-    Route::get('/report/saleinvoice/{id}', [ReportController::class, 'saleinvoice'])->name('saleinvoice'); //sale report here
-    Route::get('/report/purchase-invoice/{id}', [ReportController::class, 'purchase_invoice'])->name('purchase_invoice'); //sale report here
-    // Route::get('/report/salereport', [ReportController::class, 'ajax'])->name('salereport.index'); //sale report here
-
-
-    // Route::get('/report/purchasereport', [ReportController::class, 'getCustomFilter'])->name('purchasereport.index');
-    // Route::get('/report/purchasereport', [ReportController::class, 'getCustomFilterData'])->name('purchasereport.index');
-
-
-    Route::get('/variant', [VariantController::class, 'index'])->name('variant.index');
-    Route::get('/variant/create', [VariantController::class, 'create'])->name('variant.create');
-    Route::post('/variant/store', [VariantController::class, 'store'])->name('variant.store');
-    Route::get('/variant/edit/{id}', [VariantController::class, 'edit'])->name('variant.edit');
-    Route::post('/variant/update/{variant}', [VariantController::class, 'update'])->name('variant.update');
-    Route::delete('/variant/destroy/{id}', [VariantController::class, 'destroy'])->name('variant.destroy');
-
-
-    Route::get('/variant/variantAdd', [VariantController::class, 'variantAdd'])->name('variantAdd');
-
-
-    Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');
-    Route::get('/shop/create', [ShopController::class, 'create'])->name('shop.create');
-    Route::post('/shop/store', [ShopController::class, 'store'])->name('shop.store');
-    Route::get('/shop/edit/{id}', [ShopController::class, 'edit'])->name('shop.edit');
-    Route::post('/shop/update/{shop}', [ShopController::class, 'update'])->name('shop.update');
-    Route::delete('/shop/destroy/{id}', [ShopController::class, 'destroy'])->name('shop.destroy');
 });

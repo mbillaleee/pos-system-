@@ -46,92 +46,9 @@
                     <line x1="5" y1="12" x2="19" y2="12"></line>
                 </svg><span>Main Menu</span></div>
         </li>
-        <li class="menu">
-            <a href="{{url('mypos/product')}}" aria-expanded="false" class="dropdown-toggle">
-                <div class="">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="feather feather-shopping-cart">
-                        <circle cx="9" cy="21" r="1"></circle>
-                        <circle cx="20" cy="21" r="1"></circle>
-                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                    </svg>
-                    <span>My Pos</span>
-                </div>
-            </a>
-        </li>
-        <li class="menu">
-            <a href="#takealot" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                <div class="">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-type">
-                    <polyline points="4 7 4 4 20 4 20 7"></polyline>
-                    <line x1="9" y1="20" x2="15" y2="20"></line>
-                    <line x1="12" y1="4" x2="12" y2="20"></line>
-                </svg>
-                    <span>Takealot</span>
-                </div>
-                <div>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="feather feather-chevron-right">
-                        <polyline points="9 18 15 12 9 6"></polyline>
-                    </svg>
-                </div>
-            </a>
-            <ul class="collapse submenu list-unstyled" id="takealot" data-bs-parent="#accordionExample">
-                <li>
-                    <a href="{{url('takealot/product')}}"> Products</a>
-                </li>
-                <li>
-                    <a href="{{url('takealot/sales')}}"> Sales </a>
-                </li>
-                <li>
-                    <a href="{{url('takealot/report')}}"> Report </a>
-                </li>
-                <li>
-                    <a href="{{url('takealot/profit/calculation')}}"> Profit Calculation </a>
-                </li>
-                <li>
-                    <a href="{{url('posminprice')}}"> Pos Minimum Price </a>
-                </li>
-                <li>
-                    <a href="{{url('takealot/update/quantity')}}"> Update Quantity</a>
-                </li>
-            </ul>
-        </li>
-        <li class="menu">
-            <a href="#shopify" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                <div class="">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="feather feather-shopping-bag">
-                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
-                        <line x1="3" y1="6" x2="21" y2="6"></line>
-                        <path d="M16 10a4 4 0 0 1-8 0"></path>
-                    </svg>
-                    <span>Shopify</span>
-                </div>
-                <div>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="feather feather-chevron-right">
-                        <polyline points="9 18 15 12 9 6"></polyline>
-                    </svg>
-                </div>
-            </a>
-            <ul class="collapse submenu list-unstyled" id="shopify" data-bs-parent="#accordionExample">
-                <li>
-                    <a href="{{url('shopify/product')}}"> Products</a>
-                </li>
-                <li>
-                    <a href="{{url('shopify/sales')}}"> Sales </a>
-                </li>
-                <li>
-                    <a href="{{url('shopify/update/quantity')}}"> Update Quantity</a>
-
-                </li>
-            </ul>
-        </li>
+        
+        
+       
         <li class="menu">
             <a href="#supplier" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                 <div class="">
@@ -182,7 +99,7 @@
                 <a href="{{url('customers')}}">Customer List</a>
                 </li>
                 <li>
-                    <a href="{{url('customer/create')}}">Add Customer</a>
+                    <a href="{{url('customers/create')}}">Add Customer</a>
                 </li>
             </ul>
         </li>
@@ -213,12 +130,6 @@
                 </li>
                 <li>
                     <a href="{{url('brand')}}">Brand</a>
-                </li>
-                <li>
-                    <a href="{{url('unit')}}">Unit</a>
-                </li>
-                <li>
-                    <a href="{{url('variant')}}">Variant</a>
                 </li>
             </ul>
 
@@ -306,46 +217,11 @@
 
                 </li>
 
+            @if($user_role != 3)
                 <li>
-
-                <a href="{{url('expense')}}">Expense</a>
-
+                <a href="{{url('sale/create')}}">Add Sale</a>
                 </li>
-
-                <li>
-
-                <a href="{{url('income')}}">Income</a>
-
-                </li>
-            </ul>
-        </li>
-        <li class="menu">
-            <a href="#report " data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                <div class="">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-plus"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
-                <span>Report </span>
-                </div>
-                <div>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="feather feather-chevron-right">
-                        <polyline points="9 18 15 12 9 6"></polyline>
-                    </svg>
-                </div>
-            </a>
-            <ul class="collapse submenu list-unstyled" id="report" data-bs-parent="#accordionExample">
-                <li>
-
-                <a href="{{url('report/purchasereport')}}">Purchase Report</a>
-
-                </li>
-
-                <li>
-
-                <a href="{{url('report/salereport')}}">Sale Report</a>
-
-                </li>
-
+            @endif
             </ul>
         </li>
 

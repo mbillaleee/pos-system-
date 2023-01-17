@@ -1,24 +1,54 @@
 @extends('admin')
 
+
+
 @section('content')
+
 <div class="layout-px-spacing">
-    <div class="middle-content container-xxl p-0">
-        <!-- BREADCRUMB -->
-        <div class="page-meta row">
-            <nav class="breadcrumb-style-one float-start" aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Sales</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Create</li>
-                </ol>
-            </nav>
-            <div class="">
-            <a class="btn btn-primary float-end" href="{{ url('purchase') }}"> Back</a>
-            </div>
+
+
+
+<div class="middle-content container-xxl p-0">
+
+    
+
+    <!-- BREADCRUMB -->
+
+    <div class="page-meta row">
+
+        <nav class="breadcrumb-style-one float-start" aria-label="breadcrumb">
+
+            <ol class="breadcrumb">
+
+                <li class="breadcrumb-item"><a href="#">Purchase</a></li>
+
+                <li class="breadcrumb-item active" aria-current="page">Create</li>
+
+            </ol>
+
+        </nav>
+
+        <div class="">
+
+        <a class="btn btn-primary float-end" href="{{ url('purchase') }}"> Back</a>
+
         </div>
-        <div class="row layout-top-spacing">
-            <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
-                <div class="widget-content widget-content-area br-8 p-5">
-                    <form role="form" class="forms-sample" action="{{route('sale.store')}}" method="POST">
+
+        
+
+    </div>
+
+
+
+    <div class="row layout-top-spacing">
+
+    
+
+        <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
+
+            <div class="widget-content widget-content-area br-8 p-5">
+
+                <form role="form" class="forms-sample" action="{{route('sale.store')}}" method="POST">
                         @csrf
                         <div class="row">
                             <div class="col-lg-6 col-12">
@@ -58,11 +88,13 @@
                                     <div class="col-sm-8">
                                         <select class="js-example-basic-single form-control" onchange="bank_paymet(this.value)" id="payment_method" name="payment_method" style="width:100%" required>
                                             <option  selected disabled>Select Type</option>
-                                            <option value="9">Cash</option>
-                                            <option value="10">Bank</option>
+                                            <option value="1">Cash</option>
+                                            <option value="0">Cheque</option>
                                         </select>
                                     </div>
                                 </div>
+
+
                             </div>
 
                             <table class="table table-bordered mt-4" id="tbl_posts">
@@ -122,7 +154,7 @@
                                 <tr>
                                     <th colspan="3" class="text-end">Paid Amount:</th>
                                     <th class="text-end">
-                                        <input type="number" class="form-control text-end paid_amount" value="{{old('paid_amount')}}" id="paid_amount" name="paid_amount" placeholder="0.00" required>
+                                        <input type="number" class="form-control text-end paid_amount" value="{{old('paid_amount')}}" id="paid_amount" name="paid_amount" placeholder="0.00">
                                     </th>
                                 </tr>
                                 <tr>
@@ -143,20 +175,33 @@
                             <div class="col-sm-4 text-center">
                                 <button type="submit" class="btn btn-success mt-4">{{ __('Submit') }}</button>
                             </div>
+
                         </div>
                     </form>
-                    
-                </div>
+
             </div>
+
         </div>
+
+
+
     </div>
+
+
+
+</div>
+
+
+
 </div>
 
 @endsection
 
+
 @push('js')
 <!-- <script src="{{ asset('assets/node_modules/jquery/dist/jquery.min.js') }}"></script> -->
     <script type="text/javascript">
+
         $('.addRow').on('click',function(){
             addRow();
         });

@@ -1,154 +1,202 @@
 @extends('admin')
 
-@section('content')
-<div class="layout-px-spacing">
-    <div class="middle-content container-xxl p-0">
-        <!-- BREADCRUMB -->
-        <div class="page-meta row">
-            <nav class="breadcrumb-style-one float-start" aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Purchase</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Create</li>
-                </ol>
-            </nav>
-            <div class="">
-            <a class="btn btn-primary float-end" href="{{ url('purchase') }}"> Back</a>
-            </div>
-        </div>
-        <div class="row layout-top-spacing">
-            <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
-                <div class="widget-content widget-content-area br-8 p-5">
-                    <form role="form" class="forms-sample" action="{{route('purchase.store')}}" method="POST">
-                            @csrf
-                            <div class="row">
-                                <div class="col-lg-6 col-12">
-                                    <div class="form-group row">
-                                        <label for="client_id" class="col-sm-4 col-form-label">{{ __('Supplier Name') }} <span class="req-star">*</span></label>
-                                        <div class="col-sm-8">
-                                            <select class="form-control supplier_id" id="supplier_id" name="supplier_id" style="width:100%" required>
-                                                <option selected disabled>Select Supplier</option>
-                                                @foreach($suppliers as $supplier)
-                                                <option value="{{ $supplier->id}}">{{ $supplier->name}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div><br>
-                                    
-                                    <div class="form-group row">
-                                        <label for="invoice_no" class="col-sm-4 col-form-label">{{ __('Reference Number') }} <span class="req-star">*</span></label>
-                                        <div class="col-sm-8">
-                                            <input type="text" name="reference_num" value="" class="form-control p-input" id="reference_num" placeholder="Enter reference Number" >
-                                        </div>
-                                    </div><br>            
-                                </div>
-                                <div class="col-lg-6 col-12">
-                                    <div class="form-group row">
-                                        <label for="invoice_date" class="col-sm-4 col-form-label">{{ __('Purchase Date') }} <span class="req-star">*</span></label>
-                                        <div class="col-sm-8">
-                                        <input id="basicFlatpickr" class="form-control flatpickr flatpickr-input active" type="text" placeholder="Select Date.." name="purchase_date">
-                                            <!-- <input type="date" name="purchase_date" class="form-control p-input datepickernew" id="purchase_date" placeholder="Enter Invoice Date"> -->
-                                        </div>
-                                    </div><br>
 
-                                    <div class="form-group row">
-                                        <label for="payment_type" class="col-sm-4 col-form-label">{{ __('Payment Method') }} <span class="req-star">*</span></label>
-                                        <div class="col-sm-8">
-                                            <select class="js-example-basic-single form-control" onchange="bank_paymet(this.value)" id="payment_method" name="payment_method" style="width:100%" required>
-                                                <option  selected disabled>Select Type</option>
-                                                <option value="9">Cash</option>
-                                                <option value="10">Bank</option>
-                                            </select>
-                                        </div>
+
+@section('content')
+
+<div class="layout-px-spacing">
+
+
+
+<div class="middle-content container-xxl p-0">
+
+    
+
+    <!-- BREADCRUMB -->
+
+    <div class="page-meta row">
+
+        <nav class="breadcrumb-style-one float-start" aria-label="breadcrumb">
+
+            <ol class="breadcrumb">
+
+                <li class="breadcrumb-item"><a href="#">Purchase</a></li>
+
+                <li class="breadcrumb-item active" aria-current="page">Create</li>
+
+            </ol>
+
+        </nav>
+
+        <div class="">
+
+        <a class="btn btn-primary float-end" href="{{ url('purchase') }}"> Back</a>
+
+        </div>
+
+        
+
+    </div>
+
+
+
+    <div class="row layout-top-spacing">
+
+    
+
+        <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
+
+            <div class="widget-content widget-content-area br-8 p-5">
+
+                <form role="form" class="forms-sample" action="{{route('purchase.store')}}" method="POST">
+                        @csrf
+                        <div class="row">
+                            <div class="col-lg-6 col-12">
+                                <div class="form-group row">
+                                    <label for="client_id" class="col-sm-4 col-form-label">{{ __('Supplier Name') }} <span class="req-star">*</span></label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control supplier_id" id="supplier_id" name="supplier_id" style="width:100%" required>
+                                            <option selected disabled>Select Supplier</option>
+                                            @foreach($suppliers as $supplier)
+                                            <option value="{{ $supplier->id}}">{{ $supplier->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div><br>
+                                
+                                <div class="form-group row">
+                                    <label for="invoice_no" class="col-sm-4 col-form-label">{{ __('Reference Number') }} <span class="req-star">*</span></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="reference_num" value="" class="form-control p-input" id="reference_num" placeholder="Enter reference Number" >
+                                    </div>
+                                </div><br>
+
+                                
+
+                            </div>
+                            <div class="col-lg-6 col-12">
+                                <div class="form-group row">
+                                    <label for="invoice_date" class="col-sm-4 col-form-label">{{ __('Purchase Date') }} <span class="req-star">*</span></label>
+                                    <div class="col-sm-8">
+                                    <input id="basicFlatpickr" class="form-control flatpickr flatpickr-input active" type="text" placeholder="Select Date.." name="purchase_date">
+                                        <!-- <input type="date" name="purchase_date" class="form-control p-input datepickernew" id="purchase_date" placeholder="Enter Invoice Date"> -->
+                                    </div>
+                                </div><br>
+
+                                <div class="form-group row">
+                                    <label for="payment_type" class="col-sm-4 col-form-label">{{ __('Payment Method') }} <span class="req-star">*</span></label>
+                                    <div class="col-sm-8">
+                                        <select class="js-example-basic-single form-control" onchange="bank_paymet(this.value)" id="payment_method" name="payment_method" style="width:100%" required>
+                                            <option  selected disabled>Select Type</option>
+                                            <option value="1">Cash</option>
+                                            <option value="0">Cheque</option>
+                                        </select>
                                     </div>
                                 </div>
 
-                                <table class="table table-bordered mt-4" id="tbl_posts">
-                                    <thead>
-                                    <tr>
-                                        <th width="25%">Product Name *</th>
-                                        <th>Qty *</th>
-                                        <th>Price *</th>
-                                        <th>Total</th>
-                                        <th style="text-align: center;"><button type="button" class="addRow btn btn-success"><i class="fa fa-plus"></i> </button></th>
-                                    </tr>
-                                    </thead>
-                                    <tbody id="sale_table">
-                                    <tr>
-                                        <td>
-                                            <select class="form-control product_id" id="product_id" name="product_id[]" style="width: 100%;" required>
-                                                <option  selected disabled>Select Product</option>
-                                                @foreach($products as $product)
-                                                <option value="{{ $product->id}}">{{ $product->name}}</option>
-                                                @endforeach
-                                                
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <input type="number" class="form-control text-end quantity" id="quantity" name="quantity[]" placeholder="0.00">
-                                        </td>
-                                        <td>
-                                            <input type="number" class="form-control text-end price" id="price" name="price[]" placeholder="0.00" readonly>
-                                        </td>
 
-                                        <td>
-                                            <input type="number" class="form-control text-end total_amount" id="total_amount" name="total_amount[]" placeholder="0.00" readonly>
-                                        </td>
-                                        <td style="text-align: center;"><button type="button" class="remove btn btn-danger"><i class="fa fa-close"></i></button></td>
-                                    </tr>
-
-                                    </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <th colspan="3" class="text-end">Sub Total:</th>
-                                            <th class="text-end">
-                                                <input type="text" class="form-control text-end sub_total" id="sub_total" name="sub_total" placeholder="0.00" readonly>
-                                            </th>
-                                        </tr>
-                                        <tr>
-                                            <th colspan="3" class="text-end">Discount (%):</th>
-                                            <th class="text-end">
-                                                <input type="text" class="form-control text-end discount_percent" id="discount_percent" name="discount_percent" placeholder="0.00">
-                                            </th>
-                                        </tr>
-                                        <tr>
-                                            <th colspan="3" class="text-end">Grand Total:</th>
-                                            <th class="text-end">
-                                                <input type="text" class="form-control text-end grand_total" value="{{old('grand_total')}}" id="grand_total" name="grand_total" placeholder="0.00" readonly>
-                                            </th>
-                                        </tr>
-                                        <tr>
-                                            <th colspan="3" class="text-end">Paid Amount:</th>
-                                            <th class="text-end">
-                                                <input type="number" class="form-control text-end paid_amount" value="{{old('paid_amount')}}" id="paid_amount" name="paid_amount" placeholder="0.00" required>
-                                            </th>
-                                        </tr>
-                                        <tr>
-                                            <th colspan="3" class="text-end">Due:</th>
-                                            <th class="text-end">
-                                                <input type="text" class="form-control text-end due_amount" id="due_amount" name="due_amount" placeholder="0.00" readonly>
-                                            </th>
-                                        </tr>
-                                    </tfoot>
-                                </table>
-                                
-                                <div class="col-sm-8">
-                                        <div class="form-group">
-                                            <label for="note">{{ __('Note') }}</label>
-                                            <textarea name="note" id="note" class="form-control" rows="3"></textarea>
-                                        </div>
-                                </div>
-                                <div class="col-sm-4 text-center">
-                                    <button type="submit" class="btn btn-success mt-4">{{ __('Submit') }}</button>
-                                </div>
                             </div>
-                        </form>
-                </div>
+
+                            <table class="table table-bordered mt-4" id="tbl_posts">
+                                <thead>
+                                <tr>
+                                    <th width="25%">Product Name *</th>
+                                    <th>Qty *</th>
+                                    <th>Price *</th>
+                                    <th>Total</th>
+                                    <th style="text-align: center;"><button type="button" class="addRow btn btn-success"><i class="fa fa-plus"></i> </button></th>
+                                </tr>
+                                </thead>
+                                <tbody id="sale_table">
+                                <tr>
+                                    <td>
+                                        <select class="form-control product_id" id="product_id" name="product_id[]" style="width: 100%;" required>
+                                            <option  selected disabled>Select Product</option>
+                                            @foreach($products as $product)
+                                            <option value="{{ $product->id}}">{{ $product->name}}</option>
+                                            @endforeach
+                                            
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <input type="number" class="form-control text-end quantity" id="quantity" name="quantity[]" placeholder="0.00">
+                                    </td>
+                                    <td>
+                                        <input type="number" class="form-control text-end price" id="price" name="price[]" placeholder="0.00" readonly>
+                                    </td>
+
+                                    <td>
+                                        <input type="number" class="form-control text-end total_amount" id="total_amount" name="total_amount[]" placeholder="0.00" readonly>
+                                    </td>
+                                    <td style="text-align: center;"><button type="button" class="remove btn btn-danger"><i class="fa fa-close"></i></button></td>
+                                </tr>
+
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <th colspan="3" class="text-end">Sub Total:</th>
+                                    <th class="text-end">
+                                        <input type="text" class="form-control text-end sub_total" id="sub_total" name="sub_total" placeholder="0.00" readonly>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th colspan="3" class="text-end">Discount (%):</th>
+                                    <th class="text-end">
+                                        <input type="text" class="form-control text-end discount_percent" id="discount_percent" name="discount_percent" placeholder="0.00">
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th colspan="3" class="text-end">Grand Total:</th>
+                                    <th class="text-end">
+                                        <input type="text" class="form-control text-end grand_total" value="{{old('grand_total')}}" id="grand_total" name="grand_total" placeholder="0.00" readonly>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th colspan="3" class="text-end">Paid Amount:</th>
+                                    <th class="text-end">
+                                        <input type="number" class="form-control text-end paid_amount" value="{{old('paid_amount')}}" id="paid_amount" name="paid_amount" placeholder="0.00">
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th colspan="3" class="text-end">Due:</th>
+                                    <th class="text-end">
+                                        <input type="text" class="form-control text-end due_amount" id="due_amount" name="due_amount" placeholder="0.00" readonly>
+                                    </th>
+                                </tr>
+                                </tfoot>
+                            </table>
+                            
+                            <div class="col-sm-8">
+                                    <div class="form-group">
+                                        <label for="note">{{ __('Note') }}</label>
+                                        <textarea name="note" id="note" class="form-control" rows="3"></textarea>
+                                    </div>
+                            </div>
+                            <div class="col-sm-4 text-center">
+                                <button type="submit" class="btn btn-success mt-4">{{ __('Submit') }}</button>
+                            </div>
+
+                        </div>
+                    </form>
+
             </div>
+
         </div>
+
+
+
     </div>
+
+
+
+</div>
+
+
+
 </div>
 
 @endsection
+
 
 @push('js')
 <!-- <script src="{{ asset('assets/node_modules/jquery/dist/jquery.min.js') }}"></script> -->
@@ -305,7 +353,9 @@
                         }
                     }
                 });
+
         });
+
 
     </script>
 <script>

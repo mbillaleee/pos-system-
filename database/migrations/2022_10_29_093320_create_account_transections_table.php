@@ -17,15 +17,15 @@ return new class extends Migration
             $table->id();
             $table->string('vouch_no');
             $table->date('vouch_date');
-            $table->unsignedBigInteger('chartofacc_id');
             $table->double('debit');
             $table->double('credit');
             $table->unsignedBigInteger('supplier_id')->nullable();
             $table->unsignedBigInteger('customer_id')->nullable();
+            $table->unsignedBigInteger('chartofacc_id');
             $table->timestamps();
-            $table->foreign('chartofacc_id')->references('id')->on('chart_of_accounts')->onDelete('cascade');
             $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('cascade');
             $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
+            $table->foreign('chartofacc_id')->references('id')->on('chart_of_accounts')->onDelete('cascade');
         });
     }
 

@@ -54,7 +54,7 @@
 
             <div class="widget-content widget-content-area br-8">
 
-                <table id="zero-config" class="table table-striped dt-table-hover brand_datatable" style="width:100%">
+                <table id="zero-config" class="table table-striped dt-table-hover" style="width:100%">
 
                     <thead>
 
@@ -63,7 +63,6 @@
                             <th>#</th>
 
                             <th>Name</th>
-                            <th>Short Description</th>
 
                             @if($user_role == 3)
 
@@ -88,7 +87,6 @@
                             @if($user_role == 3)
 
                             <td>{{ $brand->name }}</td>
-                            <td>{{ $brand->short_desc }}</td>
 
                             @endif
                             <td class="text-center">
@@ -143,44 +141,4 @@
 </div>
 
 @endsection
-
-
-@push('js')
-
-<script>
-    $(document).ready(function () {
-        $('.brand_datatable').DataTable({
-            lengthMenu: [
-            [25, 50, 100, 200, -1],
-            [25, 50, 100, 200, "All"]
-            ],
-            dom: 'Bfrtip',
-        buttons: [
-            'pageLength',
-
-            {
-
-                extend: 'csvHtml5',
-
-                exportOptions: {
-
-                    columns: [0, 1, 2, 3, 4, 5, 6]
-
-                },
-
-            },
-
-            {
-                extend: 'pdf',
-                exportOptions: {
-                    columns: [0, 1, 2, 3, 4, 5, 6]
-                }
-            },
-            // 'csvHtml5',
-            // 'pageLength'
-        ],
-        });
-    });
-</script>
-@endpush
 
