@@ -39,6 +39,19 @@
     <link rel="stylesheet" href="{{asset('src/assets/css/wellxperts.css')}}" type="text/css">
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
 
+
+
+
+    <!--  BEGIN CUSTOM STYLE FILE  -->
+    <link rel="stylesheet" type="text/css" href="{{asset('src/plugins/src/vanillaSelectBox/vanillaSelectBox.css')}}">
+    
+    <link href="{{asset('src/assets/css/light/scrollspyNav.css')}}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="{{asset('src/plugins/css/light/vanillaSelectBox/custom-vanillaSelectBox.css')}}">
+
+    <link href="{{asset('src/assets/css/dark/scrollspyNav.css')}}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="{{asset('src/plugins/css/dark/vanillaSelectBox/custom-vanillaSelectBox.css')}}">
+    <!--  END CUSTOM STYLE FILE  -->
+
 </head>
 <body class="layout-boxed">
     <!-- BEGIN LOADER -->
@@ -107,6 +120,17 @@
     <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
     <!-- <script src="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.min.js"></script> -->
     <!-- <script src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script> -->
+
+
+
+    <!-- BEGIN PAGE LEVEL SCRIPTS -->
+    <script src="{{asset('src/assets/js/scrollspyNav.js')}}"></script>
+    <script src="{{asset('src/plugins/src/vanillaSelectBox/vanillaSelectBox.js')}}"></script>
+    <script src="{{asset('src/plugins/src/vanillaSelectBox/custom-vanillaSelectBox.js')}}"></script>
+    <!-- END PAGE LEVEL SCRIPTS -->
+
+    <script src="https://cdn.ckeditor.com/ckeditor5/35.3.1/classic/ckeditor.js"></script>
+
     @stack('js')
     <script>
 

@@ -28,29 +28,7 @@
 
                     <h5 class="">Takealot Sales</h5>
 
-                    <!-- <div class="task-action">
-
-                        <div class="dropdown">
-
-                            <a class="dropdown-toggle" href="#" role="button" id="renvenue" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
-
-                            </a>
-
-                            <div class="dropdown-menu left" aria-labelledby="renvenue" style="will-change: transform;">
-
-                                <a class="dropdown-item" href="javascript:void(0);">Weekly</a>
-
-                                <a class="dropdown-item" href="javascript:void(0);">Monthly</a>
-
-                                <a class="dropdown-item" href="javascript:void(0);">Yearly</a>
-
-                            </div>
-
-                        </div>
-
-                    </div> -->
+                  
 
                 </div>
 
@@ -1190,23 +1168,23 @@
 
                             <tbody>
 
-                                @foreach($recent_order as $rorder) 
+                              
 
                                 <tr>
 
-                                    <td><div class="td-content customer-name">{{$rorder->cust_name}}</td>
+                                    <td><div class="td-content customer-name"></td>
 
-                                    <td><div class="td-content product-brand text-primary">{{$rorder->product_name}}</div></td>
+                                    <td><div class="td-content product-brand text-primary"></div></td>
 
-                                    <td><div class="td-content product-invoice">{{$rorder->tsin}}</div></td>
+                                    <td><div class="td-content product-invoice"></div></td>
 
-                                    <td><div class="td-content pricing"><span class="">{{$rorder->selling_price}}</span></div></td>
+                                    <td><div class="td-content pricing"><span class=""></span></div></td>
 
-                                    <td><div class="td-content"><span class="badge badge-success">{{$rorder->sale_status}}</span></div></td>
+                                    <td><div class="td-content"><span class="badge badge-success"></span></div></td>
 
                                 </tr>
 
-                                @endforeach
+                              
 
                             </tbody>
 
@@ -1258,19 +1236,19 @@
 
                             <tbody>
 
-                                @foreach($top_selling_product as $tp)
+                               
 
                                 <tr>
 
-                                    <td>{{$tp->product_name}}</td>
+                                    <td></td>
 
-                                    <td class="text-center">{{$tp->sale_item}}</td>
+                                    <td class="text-center"></td>
 
-                                    <td class="text-center">{{number_format($tp->sale_price,0)}}</td>
+                                    <td class="text-center"></td>
 
                                 </tr>
 
-                                @endforeach
+                            
 
                             </tbody>
 

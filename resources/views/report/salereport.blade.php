@@ -17,34 +17,50 @@
         <div class="row layout-top-spacing">
             <div class="col-xl-12 col-lg-12 col-sm-12 layout-spacing">
                 <div class="widget-content widget-content-area br-8 table-responsive">
-                <form class="row g-3 mb-5" action="" method="POST">
-                        <h4>Filter:</h4>
-
-                        <div class="col-md-3">
-                        <label for="weight" class="form-label">Customer <span class="text-danger">*</span></label>
-                                <select class="form-control supplier_id" id="supplier_id" name="supplier_id" style="width:100%">
+                    <form action="{{route('salereport.index')}}" method="get">
+                        <div class="row mb-5">
+                            <div class="col-sm-12 mb-3">
+                                <h4 class="text-center">Sale Report</h4>
+                            </div>
+                            
+                            <div class="col-sm-3">
+                                <label for="customer_id" class="form-label">Customer</label>
+                                <select name="customer_id" id="selectProgrammingLanguage" class="form-control sel_div">
                                     <option value="">Select Customer</option>
                                     @foreach($customers as $customer)
                                     <option value="{{ $customer->id}}">{{ $customer->name}}</option>
                                     @endforeach
                                 </select>
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="reference_num" class="form-label">Reference Number</label>
+                                <input type="text" class="form-control" id="reference_num" name="reference_num" placeholder="Enter Reference Number">
+                            </div>
+                            <!-- <div class="col-sm-3">
+                                <label for="from_date" class="form-label">Date From</label>
+                                <input id="from_date" name="from_date" class="form-control flatpickr flatpickr-input active" type="text" placeholder="Select Date..">
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="to_date" class="form-label">Date To</label>
+                                <input id="to_date" name="to_date" class="form-control flatpickr flatpickr-input active" type="text" placeholder="Select Date..">
+                            </div> -->
+                            <div class="col-sm-5">
+                            <label for="date_range" class="form-label">Select Date</label>
+                            <div id="reportrange"  class="pull-left reportrange">
+                                <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>&nbsp;
+                                <input type="text" name="date_range" value="{{$drange ?? ''}}"> <b class="caret"></b>
+                            </div>
+                            </div>
+                            <!-- <div class="col-sm-4">
+                                <label for="to_date" class="form-label">Select Date</label>
+                                <input id="rangeCalendarFlatpickr" name="date_range" value="{{$drange ?? ''}}" class="form-control flatpickr flatpickr-input active" type="text" placeholder="Select Date.." required>
+                            </div> -->
+                            <div class="col-sm-2 mt-3 pt-3">
+                                <button class="btn btn-primary" type="submit">Submit</button>
+                            </div>
+                            
+                            
                         </div>
-
-                        <div class="col-md-3">
-                            <label for="user_id" class="form-label">Date <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="sku" name="sku">
-                        </div>
-
-                        <div class="col-md-3">
-                            <label for="city" class="form-label">SKU <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="description" name="description">
-                        </div>
-
-                        <div class="col-md-3">
-                            <label for="zip_code" class="form-label">Alert Query <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="alert_query" name="alert_query">
-                        </div>
-
                     </form>
                     <table id="sale_datatable" class="table table-striped dt-table-hover" style="width:100%">
                         <thead>
@@ -79,7 +95,7 @@
                                 <td>{{ $sale->paid_amount}}</td>
                                 <td>{{ $sale->grand_total}}</td>
                                 <td>
-                                    <a class="text-warning" href="{{ route('saleinvoice',$sale->id) }}">view</i></a>
+                                    <a title="View" class="text-primary" href="{{ route('saleinvoice',$sale->id) }}"><i class="fa-solid fa-eye"></i></a>
                                 </td>
                             </tr>
                             @endforeach
@@ -137,5 +153,34 @@
         });
     });
 </script>
+
+<script>
+    $(function() {
+
+var start = moment().subtract(29, 'days');
+var end = moment();
+
+function cb(start, end) {
+    $('#reportrange input').val(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+}
+
+$('#reportrange').daterangepicker({
+    startDate: start,
+    endDate: end,
+    ranges: {
+       'Today': [moment(), moment()],
+       'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+       'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+       'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+       'This Month': [moment().startOf('month'), moment().endOf('month')],
+       'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+    }
+}, cb);
+
+cb(start, end);
+
+});
+</script>
+
 
 @endpush

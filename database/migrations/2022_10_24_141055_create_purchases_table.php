@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('purchases', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('shop_id');
             $table->unsignedBigInteger('supplier_id');
             $table->string('reference_num')->nullable();
             $table->date('purchase_date');
@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string('due_amount')->nullable();
             $table->longText('note')->nullable();
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('shop_id')->references('id')->on('shops')->onDelete('cascade');
             $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('cascade');
         });
     }

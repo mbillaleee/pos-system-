@@ -197,7 +197,7 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => 'F:\\xampp\\htdocs\\woowpos\\storage\\framework/cache/data',
+        'path' => 'F:\\xampp\\htdocs\\woowpos_old\\storage\\framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -280,7 +280,7 @@
       array (
         'driver' => 'sqlite',
         'url' => NULL,
-        'database' => 'pos_sync_db',
+        'database' => 'pos_sync_new',
         'prefix' => '',
         'foreign_key_constraints' => true,
       ),
@@ -290,7 +290,7 @@
         'url' => NULL,
         'host' => '127.0.0.1',
         'port' => '3306',
-        'database' => 'pos_sync_db',
+        'database' => 'pos_sync_new',
         'username' => 'root',
         'password' => '',
         'unix_socket' => '',
@@ -310,7 +310,7 @@
         'url' => NULL,
         'host' => '127.0.0.1',
         'port' => '3306',
-        'database' => 'pos_sync_db',
+        'database' => 'pos_sync_new',
         'username' => 'root',
         'password' => '',
         'charset' => 'utf8',
@@ -325,7 +325,7 @@
         'url' => NULL,
         'host' => '127.0.0.1',
         'port' => '3306',
-        'database' => 'pos_sync_db',
+        'database' => 'pos_sync_new',
         'username' => 'root',
         'password' => '',
         'charset' => 'utf8',
@@ -420,13 +420,13 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => 'F:\\xampp\\htdocs\\woowpos\\storage\\app',
+        'root' => 'F:\\xampp\\htdocs\\woowpos_old\\storage\\app',
         'throw' => false,
       ),
       'public' => 
       array (
         'driver' => 'local',
-        'root' => 'F:\\xampp\\htdocs\\woowpos\\storage\\app/public',
+        'root' => 'F:\\xampp\\htdocs\\woowpos_old\\storage\\app/public',
         'url' => 'http://localhost/storage',
         'visibility' => 'public',
         'throw' => false,
@@ -446,7 +446,7 @@
     ),
     'links' => 
     array (
-      'F:\\xampp\\htdocs\\woowpos\\public\\storage' => 'F:\\xampp\\htdocs\\woowpos\\storage\\app/public',
+      'F:\\xampp\\htdocs\\woowpos_old\\public\\storage' => 'F:\\xampp\\htdocs\\woowpos_old\\storage\\app/public',
     ),
   ),
   'hashing' => 
@@ -485,13 +485,13 @@
       'single' => 
       array (
         'driver' => 'single',
-        'path' => 'F:\\xampp\\htdocs\\woowpos\\storage\\logs/laravel.log',
+        'path' => 'F:\\xampp\\htdocs\\woowpos_old\\storage\\logs/laravel.log',
         'level' => 'debug',
       ),
       'daily' => 
       array (
         'driver' => 'daily',
-        'path' => 'F:\\xampp\\htdocs\\woowpos\\storage\\logs/laravel.log',
+        'path' => 'F:\\xampp\\htdocs\\woowpos_old\\storage\\logs/laravel.log',
         'level' => 'debug',
         'days' => 14,
       ),
@@ -543,7 +543,7 @@
       ),
       'emergency' => 
       array (
-        'path' => 'F:\\xampp\\htdocs\\woowpos\\storage\\logs/laravel.log',
+        'path' => 'F:\\xampp\\htdocs\\woowpos_old\\storage\\logs/laravel.log',
       ),
     ),
   ),
@@ -609,7 +609,7 @@
       'theme' => 'default',
       'paths' => 
       array (
-        0 => 'F:\\xampp\\htdocs\\woowpos\\resources\\views/vendor/mail',
+        0 => 'F:\\xampp\\htdocs\\woowpos_old\\resources\\views/vendor/mail',
       ),
     ),
   ),
@@ -715,7 +715,7 @@
     'lifetime' => '120',
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => 'F:\\xampp\\htdocs\\woowpos\\storage\\framework/sessions',
+    'files' => 'F:\\xampp\\htdocs\\woowpos_old\\storage\\framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -754,9 +754,9 @@
   array (
     'paths' => 
     array (
-      0 => 'F:\\xampp\\htdocs\\woowpos\\resources\\views',
+      0 => 'F:\\xampp\\htdocs\\woowpos_old\\resources\\views',
     ),
-    'compiled' => 'F:\\xampp\\htdocs\\woowpos\\storage\\framework\\views',
+    'compiled' => 'F:\\xampp\\htdocs\\woowpos_old\\storage\\framework\\views',
   ),
   'excel' => 
   array (
@@ -863,7 +863,7 @@
     ),
     'temporary_files' => 
     array (
-      'local_path' => 'F:\\xampp\\htdocs\\woowpos\\storage\\framework/cache/laravel-excel',
+      'local_path' => 'F:\\xampp\\htdocs\\woowpos_old\\storage\\framework/cache/laravel-excel',
       'remote_disk' => NULL,
       'remote_prefix' => NULL,
       'force_resync_remote' => NULL,
@@ -942,7 +942,7 @@
     array (
     ),
     'enable_runnable_solutions' => NULL,
-    'remote_sites_path' => 'F:\\xampp\\htdocs\\woowpos',
+    'remote_sites_path' => 'F:\\xampp\\htdocs\\woowpos_old',
     'local_sites_path' => '',
     'housekeeping_endpoint_prefix' => '_ignition',
     'settings_file_path' => '',

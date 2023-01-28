@@ -15,14 +15,12 @@ return new class extends Migration
     {
         Schema::create('chart_of_accounts', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
             $table->unsignedBigInteger('parent_id')->default(0);
+            $table->string('name');
             $table->float('opening_balance');
             $table->string('head_type');
-            $table->unsignedBigInteger('user_id');
             $table->integer('status')->default(1)->comment('Active=1, Inactive=0');
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

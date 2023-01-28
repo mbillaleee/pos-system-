@@ -28,7 +28,7 @@
                                 <th>Reference no</th>
                                 <th>Date</th>
                                 <th>Document</th>
-                                <th>Expenses type</th>
+                                <th>Income type</th>
                                 <th>Payment method</th>
                                 <th>total</th>
                                 @if($user_role == 3)
@@ -88,8 +88,8 @@ $(document).ready(function() {
             },
            
             {
-                data: 'expense_type',
-                name: 'expense_type'
+                data: 'income_type',
+                name: 'income_type'
             },
             {
                 data: 'payment_method',
@@ -111,18 +111,11 @@ $(document).ready(function() {
 
             {
                 render: function(data, type, full, meta) {
-                    if(data==1){
-                    return "<span class='badge bg-info'>A</span>";
-                    }else if(data==2){
-                    return "<span class='badge bg-info'>L</span>";
-                    }
-                    else if(data==3){
-                    return "<span class='badge bg-info'>I</span>";
-                    }else{
-                        return "<span class='badge bg-info'>E</span>";
+                    if(data){
+                    return "<a class='badge bg-primary' href='uploads/document/income/"+data+"' download>Download</a>";
                     }
                     },
-                targets: 3
+                targets: 2
             } ,
 
             {

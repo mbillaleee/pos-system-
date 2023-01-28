@@ -65,7 +65,7 @@
                             <th>Variant</th>
                             <th>Attribute</th>
 
-                            @if($user_role == 3)
+                            @if($user_role == 1)
 
                             <th width="70px">Action</th>
 

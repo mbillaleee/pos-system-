@@ -15,15 +15,15 @@ return new class extends Migration
     {
         Schema::create('shopify_sale_refunds', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('shop_id');
             $table->string('sales_id');
             $table->string('refund_id');
             $table->string('product_name');
             $table->string('product_price');
             $table->string('quantity');
             $table->string('product_total');
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
+            $table->foreign('shop_id')->references('id')->on('shops')->onDelete('cascade');
         });
     }
 

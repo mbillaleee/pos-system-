@@ -138,7 +138,7 @@
                 dataType: 'json',
                 data: dataID,
                 success:function (data) {
-                    alert(data.value_name);
+                    // alert(data.value_name);
                      tr.find('.value_name').val(data.value_name);
 
                 }

@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('my_pos', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('shop_id');
             $table->string('product_id');
             $table->string('code');
             $table->string('tsin')->nullable();
@@ -26,9 +27,8 @@ return new class extends Migration
             $table->string('type');
             $table->string('rack_no')->nullable();
             $table->string('price_group_name')->nullable();
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
+            $table->foreign('shop_id')->references('id')->on('shops')->onDelete('cascade');
         });
     }
 

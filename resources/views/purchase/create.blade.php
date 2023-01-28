@@ -1,257 +1,194 @@
 @extends('admin')
 
-
-
 @section('content')
+<pre>
 
+</pre>
 <div class="layout-px-spacing">
-
-
-
-<div class="middle-content container-xxl p-0">
-
-    
-
-    <!-- BREADCRUMB -->
-
-    <div class="page-meta row">
-
-        <nav class="breadcrumb-style-one float-start" aria-label="breadcrumb">
-
-            <ol class="breadcrumb">
-
-                <li class="breadcrumb-item"><a href="#">Purchase</a></li>
-
-                <li class="breadcrumb-item active" aria-current="page">Create</li>
-
-            </ol>
-
-        </nav>
-
-        <div class="">
-
-        <a class="btn btn-primary float-end" href="{{ url('purchase') }}"> Back</a>
-
+    <div class="middle-content container-xxl p-0">
+        <!-- BREADCRUMB -->
+        <div class="page-meta row">
+            <nav class="breadcrumb-style-one float-start" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Purchase</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Create</li>
+                </ol>
+            </nav>
+            <div class="">
+            <a class="btn btn-primary float-end" href="{{ url('purchase') }}"> Back</a>
+            </div>
         </div>
+        <div class="row layout-top-spacing">
+            <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
+                <div class="widget-content widget-content-area br-8 p-5">
+                    <form role="form" class="forms-sample" action="{{route('purchase.store')}}" method="POST">
+                            @csrf
+                            <div class="row">
+                                <div class="col-lg-6 col-12">
+                                    <div class="form-group row">
+                                        <label for="client_id" class="col-sm-4 col-form-label">{{ __('Supplier Name') }} <span class="req-star">*</span></label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control supplier_id" id="supplier_id" name="supplier_id" style="width:100%" required>
+                                                <option selected disabled>Select Supplier</option>
+                                                @foreach($suppliers as $supplier)
+                                                <option value="{{ $supplier->id}}">{{ $supplier->name}}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('supplier_id')
+                                                <div class="error text-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div><br>
+                                    
+                                    <div class="form-group row">
+                                        <label for="invoice_no" class="col-sm-4 col-form-label">{{ __('Reference Number') }} <span class="req-star">*</span></label>
+                                        <div class="col-sm-8">
+                                            <input type="text" name="reference_num" value="" class="form-control p-input" id="reference_num" placeholder="Enter reference Number" >
+                                            @error('reference_num')
+                                            <div class="error text-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        
+                                    </div><br>            
+                                </div>
+                                <div class="col-lg-6 col-12">
+                                    <div class="form-group row">
+                                        <label for="invoice_date" class="col-sm-4 col-form-label">{{ __('Purchase Date') }} <span class="req-star">*</span></label>
+                                        <div class="col-sm-8">
+                                        <input id="basicFlatpickr" class="form-control flatpickr flatpickr-input active" type="text" placeholder="Select Date.." name="purchase_date">
+                                            <!-- <input type="date" name="purchase_date" class="form-control p-input datepickernew" id="purchase_date" placeholder="Enter Invoice Date"> -->
+                                        </div>
+                                    </div><br>
 
-        
-
-    </div>
-
-
-
-    <div class="row layout-top-spacing">
-
-    
-
-        <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
-
-            <div class="widget-content widget-content-area br-8 p-5">
-
-                <form role="form" class="forms-sample" action="{{route('purchase.store')}}" method="POST">
-                        @csrf
-                        <div class="row">
-                            <div class="col-lg-6 col-12">
-                                <div class="form-group row">
-                                    <label for="client_id" class="col-sm-4 col-form-label">{{ __('Supplier Name') }} <span class="req-star">*</span></label>
-                                    <div class="col-sm-8">
-                                        <select class="form-control supplier_id" id="supplier_id" name="supplier_id" style="width:100%" required>
-                                            <option selected disabled>Select Supplier</option>
-                                            @foreach($suppliers as $supplier)
-                                            <option value="{{ $supplier->id}}">{{ $supplier->name}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div><br>
-                                
-                                <div class="form-group row">
-                                    <label for="invoice_no" class="col-sm-4 col-form-label">{{ __('Reference Number') }} <span class="req-star">*</span></label>
-                                    <div class="col-sm-8">
-                                        <input type="text" name="reference_num" value="" class="form-control p-input" id="reference_num" placeholder="Enter reference Number" >
-                                    </div>
-                                </div><br>
-
-                                
-
-                            </div>
-                            <div class="col-lg-6 col-12">
-                                <div class="form-group row">
-                                    <label for="invoice_date" class="col-sm-4 col-form-label">{{ __('Purchase Date') }} <span class="req-star">*</span></label>
-                                    <div class="col-sm-8">
-                                    <input id="basicFlatpickr" class="form-control flatpickr flatpickr-input active" type="text" placeholder="Select Date.." name="purchase_date">
-                                        <!-- <input type="date" name="purchase_date" class="form-control p-input datepickernew" id="purchase_date" placeholder="Enter Invoice Date"> -->
-                                    </div>
-                                </div><br>
-
-                                <div class="form-group row">
-                                    <label for="payment_type" class="col-sm-4 col-form-label">{{ __('Payment Method') }} <span class="req-star">*</span></label>
-                                    <div class="col-sm-8">
-                                        <select class="js-example-basic-single form-control" onchange="bank_paymet(this.value)" id="payment_method" name="payment_method" style="width:100%" required>
-                                            <option  selected disabled>Select Type</option>
-                                            <option value="1">Cash</option>
-                                            <option value="0">Cheque</option>
-                                        </select>
+                                    <div class="form-group row">
+                                        <label for="payment_type" class="col-sm-4 col-form-label">{{ __('Payment Method') }} <span class="req-star">*</span></label>
+                                        <div class="col-sm-8">
+                                            <select class="js-example-basic-single form-control" onchange="bank_paymet(this.value)" id="payment_method" name="payment_method" style="width:100%" required>
+                                                <option  selected disabled>Select Type</option>
+                                                <option value="9">Cash</option>
+                                                <option value="10">Bank</option>
+                                            </select>
+                                            @error('payment_method')
+                                            <div class="error text-danger">{{ $message }}</div>
+                                        @enderror
+                                        </div>
                                     </div>
                                 </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-8 offset-sm-2 mb-3 position-relative">
+                                        <!-- <select class="form-control product_id addRow" id="selectProgrammingLanguage" name="product_id[]"  required>
+                                                <option>Select Product</option>
+                                                @foreach($products as $product)
+                                                <option value="{{ $product->id}}">{{ $product->name}}</option>
+                                                @endforeach
+                                        </select> -->
+                                        <div class="input-group">
+                                            <span class="input-group-text" id="basic-addon1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zoom-in"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg></span>
+                                            <input type="text" id="product_search" class="form-control" placeholder="Enter Product Name / SKU / Barcode" aria-label="Enter Product Name / SKU / Barcode" aria-describedby="basic-addon1">
+                                        </div>
+                                        <ul id="product_search_value">
 
-
-                            </div>
-
-                            <table class="table table-bordered mt-4" id="tbl_posts">
-                                <thead>
-                                <tr>
-                                    <th width="25%">Product Name *</th>
-                                    <th>Qty *</th>
-                                    <th>Price *</th>
-                                    <th>Total</th>
-                                    <th style="text-align: center;"><button type="button" class="addRow btn btn-success"><i class="fa fa-plus"></i> </button></th>
-                                </tr>
-                                </thead>
-                                <tbody id="sale_table">
-                                <tr>
-                                    <td>
-                                        <select class="form-control product_id" id="product_id" name="product_id[]" style="width: 100%;" required>
-                                            <option  selected disabled>Select Product</option>
-                                            @foreach($products as $product)
-                                            <option value="{{ $product->id}}">{{ $product->name}}</option>
-                                            @endforeach
-                                            
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <input type="number" class="form-control text-end quantity" id="quantity" name="quantity[]" placeholder="0.00">
-                                    </td>
-                                    <td>
-                                        <input type="number" class="form-control text-end price" id="price" name="price[]" placeholder="0.00" readonly>
-                                    </td>
-
-                                    <td>
-                                        <input type="number" class="form-control text-end total_amount" id="total_amount" name="total_amount[]" placeholder="0.00" readonly>
-                                    </td>
-                                    <td style="text-align: center;"><button type="button" class="remove btn btn-danger"><i class="fa fa-close"></i></button></td>
-                                </tr>
-
-                                </tbody>
-                                <tfoot>
-                                <tr>
-                                    <th colspan="3" class="text-end">Sub Total:</th>
-                                    <th class="text-end">
-                                        <input type="text" class="form-control text-end sub_total" id="sub_total" name="sub_total" placeholder="0.00" readonly>
-                                    </th>
-                                </tr>
-                                <tr>
-                                    <th colspan="3" class="text-end">Discount (%):</th>
-                                    <th class="text-end">
-                                        <input type="text" class="form-control text-end discount_percent" id="discount_percent" name="discount_percent" placeholder="0.00">
-                                    </th>
-                                </tr>
-                                <tr>
-                                    <th colspan="3" class="text-end">Grand Total:</th>
-                                    <th class="text-end">
-                                        <input type="text" class="form-control text-end grand_total" value="{{old('grand_total')}}" id="grand_total" name="grand_total" placeholder="0.00" readonly>
-                                    </th>
-                                </tr>
-                                <tr>
-                                    <th colspan="3" class="text-end">Paid Amount:</th>
-                                    <th class="text-end">
-                                        <input type="number" class="form-control text-end paid_amount" value="{{old('paid_amount')}}" id="paid_amount" name="paid_amount" placeholder="0.00">
-                                    </th>
-                                </tr>
-                                <tr>
-                                    <th colspan="3" class="text-end">Due:</th>
-                                    <th class="text-end">
-                                        <input type="text" class="form-control text-end due_amount" id="due_amount" name="due_amount" placeholder="0.00" readonly>
-                                    </th>
-                                </tr>
-                                </tfoot>
-                            </table>
-                            
-                            <div class="col-sm-8">
-                                    <div class="form-group">
-                                        <label for="note">{{ __('Note') }}</label>
-                                        <textarea name="note" id="note" class="form-control" rows="3"></textarea>
+                                        </ul>
                                     </div>
-                            </div>
-                            <div class="col-sm-4 text-center">
-                                <button type="submit" class="btn btn-success mt-4">{{ __('Submit') }}</button>
-                            </div>
+                                </div>
+                                <table class="table table-bordered mt-4" id="tbl_posts">
+                                
+                                    <thead>
+                                    <tr>
+                                        <th width="25%">Product Name *</th>
+                                        <th width="25%">Qty *</th>
+                                        <th width="25%">Price *</th>
+                                        <th width="25%">Total</th>
+                                        <!-- <th style="text-align: center;"><button type="button" class="addRow btn btn-success"><i class="fa fa-plus"></i> </button></th> -->
+                                    </tr>
+                                    </thead>
+                                    <tbody id="sale_table">
+                                    <!-- <tr>
+                                        <td>
+                                            <select class="form-control product_id" id="product_id" name="product_id[]" style="width: 100%;" required>
+                                                <option>Select Product</option>
+                                                @foreach($products as $product)
+                                                <option value="{{ $product->id}}">{{ $product->name}}</option>
+                                                @endforeach
+                                                
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="number" class="form-control text-end quantity" id="quantity" name="quantity[]" placeholder="0.00">
+                                        </td>
+                                        <td>
+                                            <input type="number" class="form-control text-end price" id="price" name="price[]" placeholder="0.00" readonly>
+                                        </td>
 
-                        </div>
-                    </form>
+                                        <td>
+                                            <input type="number" class="form-control text-end total_amount" id="total_amount" name="total_amount[]" placeholder="0.00" readonly>
+                                        </td>
+                                        <td style="text-align: center;"><button type="button" class="remove btn btn-danger"><i class="fa fa-close"></i></button></td>
+                                    </tr> -->
 
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th colspan="3" class="text-end">Sub Total:</th>
+                                            <th class="text-end">
+                                                <input type="text" class="form-control text-end sub_total" id="sub_total" name="sub_total" placeholder="0.00" readonly>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="3" class="text-end">Discount (%):</th>
+                                            <th class="text-end">
+                                                <input type="text" class="form-control text-end discount_percent" id="discount_percent" name="discount_percent" placeholder="0.00">
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="3" class="text-end">Grand Total:</th>
+                                            <th class="text-end">
+                                                <input type="text" class="form-control text-end grand_total" value="{{old('grand_total')}}" id="grand_total" name="grand_total" placeholder="0.00" readonly>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="3" class="text-end">Paid Amount:</th>
+                                            <th class="text-end">
+                                                <input type="number" class="form-control text-end paid_amount" value="{{old('paid_amount')}}" id="paid_amount" name="paid_amount" placeholder="0.00" required>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="3" class="text-end">Due:</th>
+                                            <th class="text-end">
+                                                <input type="text" class="form-control text-end due_amount" id="due_amount" name="due_amount" placeholder="0.00" readonly>
+                                            </th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                                
+                                <div class="col-sm-8">
+                                        <div class="form-group">
+                                            <label for="note">{{ __('Note') }}</label>
+                                            <textarea name="note" id="note" class="form-control" rows="3"></textarea>
+                                        </div>
+                                </div>
+                                <div class="col-sm-4 text-center">
+                                    <button type="submit" class="btn btn-success mt-4">{{ __('Submit') }}</button>
+                                </div>
+                            </div>
+                        </form>
+                </div>
             </div>
-
         </div>
-
-
-
     </div>
-
-
-
-</div>
-
-
-
 </div>
 
 @endsection
 
-
 @push('js')
-<!-- <script src="{{ asset('assets/node_modules/jquery/dist/jquery.min.js') }}"></script> -->
-    <script type="text/javascript">
 
-        $('.addRow').on('click',function(){
-            addRow();
-        });
-        function addRow() {
-            var tr =  '<tr>'+
-                '<td>'+
-                '<select class="form-control select2 product_id" id="product_id" name="product_id[]" style="width: 100%;">'+
-                '<option>Select Product</option>'+
-                '@foreach($products as $product)'+
-                '<option value="{{$product->id}}">{{$product->name}}</option>'+
-                '@endforeach'+
-                '</select>'+
-                '</td>'+
-                '<td><input type="number" class="form-control text-end quantity" id="quantity" name="quantity[]" placeholder="0.00"></td>'+
-                '<td><input type="number" class="form-control text-end price" id="price" name="price[]" placeholder="0.00" readonly></td>'+
-                '<td><input type="number" class="form-control text-end total_amount" id="total_amount" name="total_amount[]" placeholder="0.00" readonly></td>'+
-                '<td style="text-align: center;"><button type="button" class="btn btn-danger remove"><i class="fa fa-close"></i></button></td>'+
-                '</tr>';
-            $('tbody').append(tr);
-        };
-        $('tbody').on('click','.remove',function() {
-            var l = $('tbody tr').length;
-            if(l==1) {
-                alert('You can not remove last one');
-            }else {
-                $(this).parent().parent().remove();
-            }
-        });
-    </script>
     <script>
-        function bank_paymet(val){
-            if(val==0){
-                document.getElementById('bankID').style.display = 'block';
-                document.getElementById('chequeID').style.display = 'block';
-                document.getElementById('bank_id').setAttribute("required", true);
-            }else{
-                document.getElementById('bankID').style.display = 'none';
-                document.getElementById('chequeID').style.display = 'none';
-                document.getElementById('bank_id').removeAttribute("required");
-            }
-
-         //   document.getElementById('bankID').style.display = style;
-        }
-
-
-        $('tbody').delegate('.quantity, .price, .total_amount','change', function(){
+     
+        $('tbody').delegate('.product_id, .quantity, .purchase_price, .total_amount','change', function(){
             var tr = $(this).parent().parent();
             var quantity = tr.find('.quantity').val();
-            var price = tr.find('.price').val();
-            var total_amount = (quantity * price);
+            var purchase_price = tr.find('.purchase_price').val();
+            var total_amount = (quantity * purchase_price);
             tr.find('.total_amount').val(total_amount);
 
             subtotal();
@@ -293,43 +230,111 @@
 
         });
 
+        $('#product_search').keyup(function () {
+            var product_search = $(this).val();
 
-        // Package Price
-        $('tbody').delegate('.product_id','change', function(){
-            var tr = $(this).parent().parent();
-            var id = tr.find('#product_id :selected').val();
-            var dataID = {'id':id};
+            // console.log(product_search);
 
             $.ajax({
-                type:"GET",
-                url:"{{url('/purchase/productPrice')}}",
-                dataType: 'json',
-                data: dataID,
-                success:function (data) {
-                    // alert(data.name);
-                     tr.find('.price').val(data.purchase_price);
+                    type:"GET",
+                    url:"{{url('purchase/product/search')}}",
+                    dataType: 'json',
+                    data: {'product_search':product_search},
+                    success:function(data){
+                        // console.log(data);
+                        if(data){
+                            $("#product_search_value").empty();
+                            $.each(data,function(key,value){
+                                $("#product_search_value").append('<li data-product_id="'+value.id+'">'+value.name+'</li>');
+                            });
 
-                }
+                        }else{
+                            $("#product_search_value").empty();
+                        }
+                    }
+                });
 
+        });
+        $(document).ready(function(){
+            
+
+
+            $('#product_search_value').on('click','li', function(event){
+                var id = $(this).data("product_id");
+                // console.log(id);
+                $.ajax({
+                    type:"GET",
+                    url:"{{url('purchase/product/data')}}",
+                    dataType: 'json',
+                    data: {'id':id},
+                    success:function(data){
+                        //   console.log(data.variable_products);
+                        if(data){
+                            $("#product_search_value").empty();
+                            // console.log(data.product_val);
+                                if(data.product_val.product_type == 2){
+                                    
+                                    $.each(data.variable_products, function(key,value){
+                                        // console.log(value);
+                                        if(value.purchase_price == null){
+                                            var tr = '<tr>'+
+                                        '<td>'+data.product_val.name +' '+value.product_variants.vari_name+' '+value.product_variant_values.value_name+'<input type="hidden" name="product_id[]" value="'+data.product_val.id+'"><input type="hidden" name="purchase_variants_id[]" value="'+value.product_variants_id+'"><input type="hidden" name="purchase_variants_value_id[]" value="'+value.variants_value_id+'"><input type="hidden" name="product_type[]" value="'+data.product_val.product_type+'"></td>'+
+                                        '<td><input type="number" class="form-control text-end quantity" id="quantity" name="quantity[]" placeholder="0.00" value="1"></td>'+
+                                        '<td><input type="number" class="form-control text-end purchase_price" id="purchase_price" value="'+data.product_val.purchase_price+'" name="purchase_price[]" placeholder="0.00"></td>'+
+                                        '<td><input type="number" class="form-control text-end total_amount" id="total_amount" value="'+data.product_val.purchase_price+'" name="total_amount[]" placeholder="0.00" readonly></td>'+
+                                        '<td style="text-align: center;"><button type="button" class="btn btn-danger remove"><i class="fa fa-close"></i></button></td>'+
+                                        '</tr>';
+                                        $('#sale_table').append(tr);
+                                        }else{
+                                        var tr = '<tr>'+
+                                        '<td>'+data.product_val.name +' , '+value.product_variants.vari_name+' : '+value.product_variant_values.value_name+'<input type="hidden" name="product_id[]" value="'+data.product_val.id+'"><input type="hidden" name="purchase_variants_id[]" value="'+value.product_variants_id+'"><input type="hidden" name="purchase_variants_value_id[]" value="'+value.variants_value_id+'"><input type="hidden" name="product_type[]" value="'+data.product_val.product_type+'"></td>'+
+                                        '<td><input type="number" class="form-control text-end quantity" id="quantity" name="quantity[]" placeholder="0.00" value="1"></td>'+
+                                        '<td><input type="number" class="form-control text-end purchase_price" id="purchase_price" value="'+value.purchase_price+'" name="purchase_price[]" placeholder="0.00"></td>'+
+                                        '<td><input type="number" class="form-control text-end total_amount" id="total_amount" value="'+value.purchase_price+'" name="total_amount[]" placeholder="0.00" readonly></td>'+
+                                        '<td style="text-align: center;"><button type="button" class="btn btn-danger remove"><i class="fa fa-close"></i></button></td>'+
+                                        '</tr>';
+                                        $('#sale_table').append(tr);
+                                        }
+                                    });
+                                }else{
+                                
+                                var tr = '<tr>'+
+                                        '<td>'+data.product_val.name+'<input type="hidden" name="product_id[]" value="'+data.product_val.id+'"><input type="hidden" name="product_type[]" value="'+data.product_val.product_type+'"></td>'+
+                                        '<td><input type="number" class="form-control text-end quantity" id="quantity" name="quantity[]" placeholder="0.00" value="1"></td>'+
+                                        '<td><input type="number" class="form-control text-end purchase_price" id="purchase_price" value="'+data.product_val.purchase_price+'" name="purchase_price[]" placeholder="0.00"></td>'+
+                                        '<td><input type="number" class="form-control text-end total_amount" id="total_amount" value="'+data.product_val.purchase_price+'" name="total_amount[]" placeholder="0.00" readonly></td>'+
+                                        '<td style="text-align: center;"><button type="button" class="btn btn-danger remove"><i class="fa fa-close"></i></button></td>'+
+                                        '</tr>';
+                                $('#sale_table').append(tr);
+                                }
+                                $('tbody').on('click','.remove',function() {
+                                var l = $('tbody tr').length;
+                                if(l=0) {
+                                    alert('You can not remove last one');
+                                }else {
+                                    $(this).parent().parent().remove();
+                                }
+                                });
+
+                                var tr1 = $('tbody .product_id').parent().parent();
+                                var quantity = tr1.find('.quantity').val();
+                                var purchase_price = tr1.find('.purchase_price').val();
+                                var total_amount = (quantity * purchase_price);
+                                tr1.find('.total_amount').val(total_amount);
+
+                                subtotal();
+                        }else{
+                            $("#product_search_value").empty();
+                        }
+                    }
+                });
             });
         });
 
 
+
     </script>
     <script type="text/javascript">
-     /*   $('#client_id').change(function(){
-            var id = $('#client_id').val();
-            var dataID = {'id':id};
-                $.ajax({
-                    type:"GET",
-                    url:" ",
-                    dataType: 'json',
-                    data: dataID,
-                    success:function(data){
-                        $('#supplier_id').val(data.supplier_id);
-                    }
-                });
-        });*/
 
         $('#supplier_id').change(function(){
             var id = $(this).val();
@@ -340,6 +345,7 @@
                     dataType: 'json',
                     data: dataID,
                     success:function(data){
+                        console.log(data);
                         if(data){
                             document.getElementById('client_id').removeAttribute("disabled");
                             $("#client_id").empty();
@@ -353,9 +359,7 @@
                         }
                     }
                 });
-
         });
-
 
     </script>
 <script>
@@ -379,4 +383,28 @@
     //    console.log(today);
     document.getElementById('basicFlatpickr').value = today;
 </script>
+
+
+
+<script>
+  jQuery(document).ready(function(){
+            (function($){
+                $(".keyword-search").keypress(function(){
+                    alert('ok');
+                    var keyword = $(this).val(); 
+                     $(".search-appear").empty();
+                    $.ajax({
+                        type: "get",
+                        url: "{{route('product.index') }}",
+                        data: { action: 'get_tour', keyword: keyword },
+                        beforeSend: function() {$("#loading").fadeIn('slow');},
+                        success: function(data) {
+                            $("#loading").fadeOut('slow');
+                            $(".search-appear").append(data);
+                             }
+                    });
+                });
+            })(jQuery);
+        });
+</script>   
 @endpush

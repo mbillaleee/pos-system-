@@ -12,11 +12,11 @@ class Customer extends Model
 
     protected $guarded = [];
 
-    protected $fillable = ['name', 'user_id', 'email', 'phone', 'date_of_birth', 'tax_number', 'opening_balance', 'address', 'city', 'state', 'country', 'zip_code', 'status'];
-
+   
 
     public function sales()
     {
         return $this->hasMany(Product::class);
     }
+
 }

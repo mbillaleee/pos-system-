@@ -13,7 +13,7 @@ class Income extends Model
     
     public function cartofacc()
     {
-        return $this->belongsTo(ChartOfAccount::class, 'cartofacc_id');
+        return $this->belongsTo(ChartOfAccount::class, 'income_type');
     }
 
     public function child()

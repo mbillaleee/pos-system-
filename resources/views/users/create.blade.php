@@ -54,9 +54,22 @@
 
                 <div class="col-md-6">
 
-                    <label for="name" class="form-label">Full Name <span class="text-danger">*</span></label>
+                    <label for="name" class="form-label">First Name <span class="text-danger">*</span></label>
 
-                    <input type="text" class="form-control" id="name" name="name">
+                    <input type="text" class="form-control" id="fname" name="fname">
+                    @error('fname')
+                        <div class="error text-danger">{{ $message }}</div>
+                     @enderror
+
+                </div>
+                <div class="col-md-6">
+
+                    <label for="name" class="form-label">Last Name <span class="text-danger">*</span></label>
+
+                    <input type="text" class="form-control" id="lname" name="lname">
+                    @error('lname')
+                        <div class="error text-danger">{{ $message }}</div>
+                    @enderror
 
                 </div>
 
@@ -65,6 +78,20 @@
                     <label for="username" class="form-label">Username <span class="text-danger">*</span></label>
 
                     <input type="text" class="form-control" id="username" name="username">
+                    @error('username')
+                        <div class="error text-danger">{{ $message }}</div>
+                    @enderror
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <label for="phone" class="form-label">Phone <span class="text-danger">*</span></label>
+
+                    <input type="text" class="form-control" id="phone" name="phone">
+                    @error('phone')
+                        <div class="error text-danger">{{ $message }}</div>
+                    @enderror
 
                 </div>
 
@@ -73,18 +100,24 @@
                     <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
 
                     <input type="email" class="form-control" id="email" name="email">
+                    @error('email')
+                        <div class="error text-danger">{{ $message }}</div>
+                    @enderror
 
                 </div>
                 @if(Auth::user()->user_role == 1)
                 <div class="col-md-6">
 
-                    <label for="image" class="form-label">User Role</label>
+                    <label for="image" class="form-label">User Role <span class="text-danger">*</span></label>
 
-                    <select class="form-select" id="user_role" name="user_role" required>
+                    <select class="form-select" id="user_role" name="user_role">
                         <option value="">Please Select</option>
                         <option value="2">Manager</option>
                         <option value="4">Sales Agent</option>
                     </select>
+                    @error('user_role')
+                        <div class="error text-danger">{{ $message }}</div>
+                    @enderror
 
                 </div>
                 @endif
@@ -101,6 +134,9 @@
                     <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
 
                     <input type="password" class="form-control" id="password" name="password">
+                    @error('password')
+                        <div class="error text-danger">{{ $message }}</div>
+                    @enderror
 
                 </div>
 
@@ -109,6 +145,7 @@
                     <label for="password" class="form-label">Confirm Password <span class="text-danger">*</span></label>
 
                     <input type="password" class="form-control" id="confirm_password" name="confirm-password">
+                    
 
                 </div>
 

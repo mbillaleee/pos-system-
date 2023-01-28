@@ -102,7 +102,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::wqQpxzpgObTa5V3H',
+            '_route' => 'generated::ICdOFVFlUQ26kB0C',
           ),
           1 => NULL,
           2 => 
@@ -122,7 +122,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::xoRKMsusMIERGB3r',
+            '_route' => 'generated::xmOPkCrrI8fpSAVQ',
           ),
           1 => NULL,
           2 => 
@@ -159,7 +159,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::uFPm6obRGZhIWSNH',
+            '_route' => 'generated::01kFYjV5a8UFAN1p',
           ),
           1 => NULL,
           2 => 
@@ -214,7 +214,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::g6JG1xXoqEUChrsr',
+            '_route' => 'generated::PG2p95l2RbsBiFMg',
           ),
           1 => NULL,
           2 => 
@@ -305,7 +305,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::Ow3Zf0jC3qs8in96',
+            '_route' => 'generated::h3hPCY1Cuqbs61VM',
           ),
           1 => NULL,
           2 => 
@@ -407,708 +407,6 @@ app('router')->setCompiledRoutes(
           array (
             'GET' => 0,
             'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/takealot/product' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'takealot.product',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/takealot/report' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'takealot.report',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/takealot/sync' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'takealot.sync',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/update-takealot' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'takealot.update',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'POST' => 0,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/edit-takealot' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'takealot.edit',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'POST' => 0,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/delete-takealot' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'takealot.destroy',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'POST' => 0,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/update-api-takealot' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'takealot.api.update',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'POST' => 0,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/takealot/import' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'takealot.import',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'POST' => 0,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/takealot/sales' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'takealot.sales',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/takealot/sync/sales' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'takealot.sales.sync',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/takealot/sales/import' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'takealotsales.import',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'POST' => 0,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/takealot/update/quantity' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'takealot.quantity',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/takealot/update/qty' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'takealot.qty',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/takealot/profit/calculation' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'takealot.profit.calculation',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/mypos/product' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'mypos.product',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/mypos/sync' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'mypos.sync',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/update-api-mypos' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'mypos.api.update',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'POST' => 0,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/update-mypos' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'mypos.update',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'POST' => 0,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/edit-mypos' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'mypos.edit',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'POST' => 0,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/mypos/import' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'mypos.import',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'POST' => 0,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/posminprice' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'posminprice',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/posminprice/sync' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'posminprice.sync',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/update-posminprice' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'posminprice.update',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'POST' => 0,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/edit-posminprice' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'posminprice.edit',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'POST' => 0,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/shopify/product' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'shopify.product',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/shopify/sync' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'shopify.sync',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/update-shopify' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'shopify.update',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'POST' => 0,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/edit-shopify' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'shopify.edit',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'POST' => 0,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/delete-shopify' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'shopify.destroy',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'POST' => 0,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/update-api-shopify' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'shopify.api.update',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'POST' => 0,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/shopify/import' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'shopify.import',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'POST' => 0,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/shopify/update/quantity' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'shopify.quantity',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/shopify/update/qty' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'shopify.qty',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/shopify/sales' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'shopify.sales',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/shopify/sync/sales' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'shopify.sales.sync',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/shopify/sales/import' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'shopify.sales.import',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'POST' => 0,
           ),
           3 => NULL,
           4 => false,
@@ -1411,6 +709,44 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
+      '/category/edit' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'category.edit',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/category/update' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'category.update',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
       '/product' => 
       array (
         0 => 
@@ -1477,6 +813,44 @@ app('router')->setCompiledRoutes(
           0 => 
           array (
             '_route' => 'product.getsubcategory',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/product/getvarientvalue' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'product.getvarientvalue',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/product/productComboPrice' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'productCombo.price',
           ),
           1 => NULL,
           2 => 
@@ -1568,6 +942,46 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
+      '/purchase/product/search' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'purchase.product.search',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/purchase/product/data' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'purchase.product.data',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
       '/sale' => 
       array (
         0 => 
@@ -1634,6 +1048,46 @@ app('router')->setCompiledRoutes(
           0 => 
           array (
             '_route' => 'sale.price',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/sale/product/search' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'sale.product.search',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/sale/product/data' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'sale.product.data',
           ),
           1 => NULL,
           2 => 
@@ -1881,6 +1335,46 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
+      '/report/top/purchase' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'toppurchase.report',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/report/top/sale' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'topsale.report',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
       '/report/salereport' => 
       array (
         0 => 
@@ -1980,13 +1474,13 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      '/shop' => 
+      '/price/group' => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'shop.index',
+            '_route' => 'price.group',
           ),
           1 => NULL,
           2 => 
@@ -2000,13 +1494,13 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      '/shop/create' => 
+      '/price/group/create' => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'shop.create',
+            '_route' => 'price.group.create',
           ),
           1 => NULL,
           2 => 
@@ -2020,13 +1514,32 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      '/shop/store' => 
+      '/price/group/store' => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'shop.store',
+            '_route' => 'price.group.store',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/group_product_prices' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'group_product_prices.update',
           ),
           1 => NULL,
           2 => 
@@ -2042,7 +1555,7 @@ app('router')->setCompiledRoutes(
     ),
     2 => 
     array (
-      0 => '{^(?|/p(?|assword/reset/([^/]++)(*:34)|roduct/(?|edit/([^/]++)(*:64)|update/([^/]++)(*:86)|destroy/([^/]++)(*:109)))|/u(?|pdate/([^/]++)/profile(*:146)|sers/([^/]++)(?|(*:170)|/edit(*:183)|(*:191))|nit/(?|edit/([^/]++)(*:220)|update/([^/]++)(*:243)|destroy/([^/]++)(*:267)))|/s(?|uppliers/(?|edit/([^/]++)(*:307)|update/([^/]++)(*:330)|destroy/([^/]++)(*:354))|hop/(?|edit/([^/]++)(*:383)|update/([^/]++)(*:406)|destroy/([^/]++)(*:430)))|/c(?|ustomers/(?|edit/([^/]++)(*:470)|update/([^/]++)(*:493)|destroy/([^/]++)(*:517))|ategory/(?|edit/([^/]++)(*:550)|update/([^/]++)(*:573)|destroy/([^/]++)(*:597)))|/brand/(?|edit/([^/]++)(*:630)|update/([^/]++)(*:653)|destroy/([^/]++)(*:677))|/expense/(?|edit/([^/]++)(*:711)|update/([^/]++)(*:734)|destroy/([^/]++)(*:758))|/report/(?|saleinvoice/([^/]++)(*:798)|purchase\\-invoice/([^/]++)(*:832))|/variant/(?|edit/([^/]++)(*:866)|update/([^/]++)(*:889)|destroy/([^/]++)(*:913)))/?$}sDu',
+      0 => '{^(?|/p(?|assword/reset/([^/]++)(*:34)|r(?|oduct/(?|edit/([^/]++)(*:67)|update/([^/]++)(*:89)|destroy/([^/]++)(*:112))|ice/group/([^/]++)/(?|edit(*:147)|update(*:161)|destroy(*:176))))|/u(?|pdate/([^/]++)/profile(*:214)|sers/(?|shop\\-setting/(?|([^/]++)(*:255)|update/([^/]++)(*:278))|([^/]++)(?|(*:298)|/edit(*:311)|(*:319)))|nit/(?|edit/([^/]++)(*:349)|update/([^/]++)(*:372)|destroy/([^/]++)(*:396)))|/suppliers/(?|edit/([^/]++)(*:433)|update/([^/]++)(*:456)|destroy/([^/]++)(*:480))|/c(?|ustomers/(?|edit/([^/]++)(*:519)|update/([^/]++)(*:542)|destroy/([^/]++)(*:566))|ategory/destroy/([^/]++)(*:599))|/brand/(?|edit/([^/]++)(*:631)|update/([^/]++)(*:654)|destroy/([^/]++)(*:678))|/expense/(?|edit/([^/]++)(*:712)|update/([^/]++)(*:735)|destroy/([^/]++)(*:759))|/report/(?|saleinvoice/([^/]++)(*:799)|purchase\\-invoice/([^/]++)(*:833))|/variant/(?|edit/([^/]++)(*:867)|update/([^/]++)(*:890)|destroy/([^/]++)(*:914))|/group_product_prices/(?|([^/]++)(*:956)|delete(*:970)))/?$}sDu',
     ),
     3 => 
     array (
@@ -2069,7 +1582,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      64 => 
+      67 => 
       array (
         0 => 
         array (
@@ -2092,7 +1605,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      86 => 
+      89 => 
       array (
         0 => 
         array (
@@ -2114,7 +1627,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      109 => 
+      112 => 
       array (
         0 => 
         array (
@@ -2136,7 +1649,74 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      146 => 
+      147 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'price.group.edit',
+          ),
+          1 => 
+          array (
+            0 => 'id',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      161 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'price.group.update',
+          ),
+          1 => 
+          array (
+            0 => 'id',
+          ),
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      176 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'price.group.destroy',
+          ),
+          1 => 
+          array (
+            0 => 'id',
+          ),
+          2 => 
+          array (
+            'DELETE' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      214 => 
       array (
         0 => 
         array (
@@ -2158,7 +1738,52 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      170 => 
+      255 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'shop.edit',
+          ),
+          1 => 
+          array (
+            0 => 'shop',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      278 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'shop.update',
+          ),
+          1 => 
+          array (
+            0 => 'shop',
+          ),
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      298 => 
       array (
         0 => 
         array (
@@ -2181,7 +1806,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      183 => 
+      311 => 
       array (
         0 => 
         array (
@@ -2204,7 +1829,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      191 => 
+      319 => 
       array (
         0 => 
         array (
@@ -2246,7 +1871,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      220 => 
+      349 => 
       array (
         0 => 
         array (
@@ -2269,7 +1894,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      243 => 
+      372 => 
       array (
         0 => 
         array (
@@ -2291,7 +1916,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      267 => 
+      396 => 
       array (
         0 => 
         array (
@@ -2313,7 +1938,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      307 => 
+      433 => 
       array (
         0 => 
         array (
@@ -2336,7 +1961,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      330 => 
+      456 => 
       array (
         0 => 
         array (
@@ -2358,7 +1983,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      354 => 
+      480 => 
       array (
         0 => 
         array (
@@ -2380,74 +2005,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      383 => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'shop.edit',
-          ),
-          1 => 
-          array (
-            0 => 'id',
-          ),
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => true,
-          6 => NULL,
-        ),
-      ),
-      406 => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'shop.update',
-          ),
-          1 => 
-          array (
-            0 => 'shop',
-          ),
-          2 => 
-          array (
-            'POST' => 0,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => true,
-          6 => NULL,
-        ),
-      ),
-      430 => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'shop.destroy',
-          ),
-          1 => 
-          array (
-            0 => 'id',
-          ),
-          2 => 
-          array (
-            'DELETE' => 0,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => true,
-          6 => NULL,
-        ),
-      ),
-      470 => 
+      519 => 
       array (
         0 => 
         array (
@@ -2470,7 +2028,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      493 => 
+      542 => 
       array (
         0 => 
         array (
@@ -2492,7 +2050,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      517 => 
+      566 => 
       array (
         0 => 
         array (
@@ -2514,52 +2072,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      550 => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'category.edit',
-          ),
-          1 => 
-          array (
-            0 => 'category',
-          ),
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => true,
-          6 => NULL,
-        ),
-      ),
-      573 => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'category.update',
-          ),
-          1 => 
-          array (
-            0 => 'category',
-          ),
-          2 => 
-          array (
-            'POST' => 0,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => true,
-          6 => NULL,
-        ),
-      ),
-      597 => 
+      599 => 
       array (
         0 => 
         array (
@@ -2581,7 +2094,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      630 => 
+      631 => 
       array (
         0 => 
         array (
@@ -2604,7 +2117,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      653 => 
+      654 => 
       array (
         0 => 
         array (
@@ -2626,7 +2139,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      677 => 
+      678 => 
       array (
         0 => 
         array (
@@ -2648,7 +2161,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      711 => 
+      712 => 
       array (
         0 => 
         array (
@@ -2671,7 +2184,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      734 => 
+      735 => 
       array (
         0 => 
         array (
@@ -2693,7 +2206,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      758 => 
+      759 => 
       array (
         0 => 
         array (
@@ -2715,7 +2228,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      798 => 
+      799 => 
       array (
         0 => 
         array (
@@ -2738,7 +2251,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      832 => 
+      833 => 
       array (
         0 => 
         array (
@@ -2761,7 +2274,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      866 => 
+      867 => 
       array (
         0 => 
         array (
@@ -2784,7 +2297,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      889 => 
+      890 => 
       array (
         0 => 
         array (
@@ -2806,7 +2319,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      913 => 
+      914 => 
       array (
         0 => 
         array (
@@ -2825,6 +2338,50 @@ app('router')->setCompiledRoutes(
           3 => NULL,
           4 => false,
           5 => true,
+          6 => NULL,
+        ),
+      ),
+      956 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'group_product_prices',
+          ),
+          1 => 
+          array (
+            0 => 'id',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      970 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'group_product_prices.delete',
+          ),
+          1 => 
+          array (
+          ),
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
           6 => NULL,
         ),
         1 => 
@@ -2989,7 +2546,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::wqQpxzpgObTa5V3H' => 
+    'generated::ICdOFVFlUQ26kB0C' => 
     array (
       'methods' => 
       array (
@@ -3006,13 +2563,13 @@ app('router')->setCompiledRoutes(
         ),
         'uses' => 'O:47:"Laravel\\SerializableClosure\\SerializableClosure":1:{s:12:"serializable";O:46:"Laravel\\SerializableClosure\\Serializers\\Signed":2:{s:12:"serializable";s:297:"O:46:"Laravel\\SerializableClosure\\Serializers\\Native":5:{s:3:"use";a:0:{}s:8:"function";s:79:"function (\\Illuminate\\Http\\Request $request) {
     return $request->user();
-}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000004e70000000000000000";}";s:4:"hash";s:44:"jk7LdoxeKCNAG8g7QfpHiD8D0z1mXt5QFft2pNr12wA=";}}',
+}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000004eb0000000000000000";}";s:4:"hash";s:44:"I61dRWYjfxNk1ry03OCSDDUzIupd7gp/XTntKT2sNV8=";}}',
         'namespace' => NULL,
         'prefix' => 'api',
         'where' => 
         array (
         ),
-        'as' => 'generated::wqQpxzpgObTa5V3H',
+        'as' => 'generated::ICdOFVFlUQ26kB0C',
       ),
       'fallback' => false,
       'defaults' => 
@@ -3028,7 +2585,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::xoRKMsusMIERGB3r' => 
+    'generated::xmOPkCrrI8fpSAVQ' => 
     array (
       'methods' => 
       array (
@@ -3044,13 +2601,13 @@ app('router')->setCompiledRoutes(
         ),
         'uses' => 'O:47:"Laravel\\SerializableClosure\\SerializableClosure":1:{s:12:"serializable";O:46:"Laravel\\SerializableClosure\\Serializers\\Signed":2:{s:12:"serializable";s:267:"O:46:"Laravel\\SerializableClosure\\Serializers\\Native":5:{s:3:"use";a:0:{}s:8:"function";s:49:"function () {
     return \\view(\'auth.login\');
-}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000004e90000000000000000";}";s:4:"hash";s:44:"dnZO9WOA6gdr1CAK6r8hzk0FlsvU8Qknu+YDQyZaA/U=";}}',
+}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000004ed0000000000000000";}";s:4:"hash";s:44:"Kg7ZR4rzO8SILxDrpSOoQw/dXIMzHqWZ5WFS3zrj9F8=";}}',
         'namespace' => NULL,
         'prefix' => '',
         'where' => 
         array (
         ),
-        'as' => 'generated::xoRKMsusMIERGB3r',
+        'as' => 'generated::xmOPkCrrI8fpSAVQ',
       ),
       'fallback' => false,
       'defaults' => 
@@ -3103,7 +2660,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::uFPm6obRGZhIWSNH' => 
+    'generated::01kFYjV5a8UFAN1p' => 
     array (
       'methods' => 
       array (
@@ -3123,7 +2680,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::uFPm6obRGZhIWSNH',
+        'as' => 'generated::01kFYjV5a8UFAN1p',
       ),
       'fallback' => false,
       'defaults' => 
@@ -3212,7 +2769,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::g6JG1xXoqEUChrsr' => 
+    'generated::PG2p95l2RbsBiFMg' => 
     array (
       'methods' => 
       array (
@@ -3232,7 +2789,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::g6JG1xXoqEUChrsr',
+        'as' => 'generated::PG2p95l2RbsBiFMg',
       ),
       'fallback' => false,
       'defaults' => 
@@ -3431,7 +2988,7 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::Ow3Zf0jC3qs8in96' => 
+    'generated::h3hPCY1Cuqbs61VM' => 
     array (
       'methods' => 
       array (
@@ -3451,7 +3008,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::Ow3Zf0jC3qs8in96',
+        'as' => 'generated::h3hPCY1Cuqbs61VM',
       ),
       'fallback' => false,
       'defaults' => 
@@ -3565,6 +3122,81 @@ app('router')->setCompiledRoutes(
         array (
         ),
         'as' => 'profile.update',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'shop.edit' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'users/shop-setting/{shop}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+        ),
+        'uses' => 'App\\Http\\Controllers\\ShopController@edit',
+        'controller' => 'App\\Http\\Controllers\\ShopController@edit',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'shop.edit',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'shop.update' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'users/shop-setting/update/{shop}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+        ),
+        'uses' => 'App\\Http\\Controllers\\ShopController@update',
+        'controller' => 'App\\Http\\Controllers\\ShopController@update',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'shop.update',
       ),
       'fallback' => false,
       'defaults' => 
@@ -3829,1356 +3461,6 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'takealot.product' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'takealot/product',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth',
-        ),
-        'uses' => 'App\\Http\\Controllers\\TakealotController@index',
-        'controller' => 'App\\Http\\Controllers\\TakealotController@index',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-        'as' => 'takealot.product',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'takealot.report' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'takealot/report',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth',
-        ),
-        'uses' => 'App\\Http\\Controllers\\TakealotController@report',
-        'controller' => 'App\\Http\\Controllers\\TakealotController@report',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-        'as' => 'takealot.report',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'takealot.sync' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'takealot/sync',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth',
-        ),
-        'uses' => 'App\\Http\\Controllers\\TakealotController@product_sync',
-        'controller' => 'App\\Http\\Controllers\\TakealotController@product_sync',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-        'as' => 'takealot.sync',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'takealot.update' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'POST',
-      ),
-      'uri' => 'update-takealot',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth',
-        ),
-        'uses' => 'App\\Http\\Controllers\\TakealotController@update',
-        'controller' => 'App\\Http\\Controllers\\TakealotController@update',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-        'as' => 'takealot.update',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'takealot.edit' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'POST',
-      ),
-      'uri' => 'edit-takealot',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth',
-        ),
-        'uses' => 'App\\Http\\Controllers\\TakealotController@edit',
-        'controller' => 'App\\Http\\Controllers\\TakealotController@edit',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-        'as' => 'takealot.edit',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'takealot.destroy' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'POST',
-      ),
-      'uri' => 'delete-takealot',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth',
-        ),
-        'uses' => 'App\\Http\\Controllers\\TakealotController@destroy',
-        'controller' => 'App\\Http\\Controllers\\TakealotController@destroy',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-        'as' => 'takealot.destroy',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'takealot.api.update' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'POST',
-      ),
-      'uri' => 'update-api-takealot',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth',
-        ),
-        'uses' => 'App\\Http\\Controllers\\TakealotController@api_update',
-        'controller' => 'App\\Http\\Controllers\\TakealotController@api_update',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-        'as' => 'takealot.api.update',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'takealot.import' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'POST',
-      ),
-      'uri' => 'takealot/import',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth',
-        ),
-        'uses' => 'App\\Http\\Controllers\\TakealotController@import',
-        'controller' => 'App\\Http\\Controllers\\TakealotController@import',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-        'as' => 'takealot.import',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'takealot.sales' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'takealot/sales',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth',
-        ),
-        'uses' => 'App\\Http\\Controllers\\TakealotSaleController@index',
-        'controller' => 'App\\Http\\Controllers\\TakealotSaleController@index',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-        'as' => 'takealot.sales',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'takealot.sales.sync' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'takealot/sync/sales',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth',
-        ),
-        'uses' => 'App\\Http\\Controllers\\TakealotSaleController@sales_sync',
-        'controller' => 'App\\Http\\Controllers\\TakealotSaleController@sales_sync',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-        'as' => 'takealot.sales.sync',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'takealotsales.import' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'POST',
-      ),
-      'uri' => 'takealot/sales/import',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth',
-        ),
-        'uses' => 'App\\Http\\Controllers\\TakealotSaleController@import',
-        'controller' => 'App\\Http\\Controllers\\TakealotSaleController@import',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-        'as' => 'takealotsales.import',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'takealot.quantity' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'takealot/update/quantity',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth',
-        ),
-        'uses' => 'App\\Http\\Controllers\\TakealotController@update_qty',
-        'controller' => 'App\\Http\\Controllers\\TakealotController@update_qty',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-        'as' => 'takealot.quantity',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'takealot.qty' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'takealot/update/qty',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth',
-        ),
-        'uses' => 'App\\Http\\Controllers\\TakealotController@update_qty_up',
-        'controller' => 'App\\Http\\Controllers\\TakealotController@update_qty_up',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-        'as' => 'takealot.qty',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'takealot.profit.calculation' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'takealot/profit/calculation',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth',
-        ),
-        'uses' => 'App\\Http\\Controllers\\TakealotController@profit_calculation',
-        'controller' => 'App\\Http\\Controllers\\TakealotController@profit_calculation',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-        'as' => 'takealot.profit.calculation',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'mypos.product' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'mypos/product',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth',
-        ),
-        'uses' => 'App\\Http\\Controllers\\MyPosController@index',
-        'controller' => 'App\\Http\\Controllers\\MyPosController@index',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-        'as' => 'mypos.product',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'mypos.sync' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'mypos/sync',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth',
-        ),
-        'uses' => 'App\\Http\\Controllers\\MyPosController@product_sync',
-        'controller' => 'App\\Http\\Controllers\\MyPosController@product_sync',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-        'as' => 'mypos.sync',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'mypos.api.update' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'POST',
-      ),
-      'uri' => 'update-api-mypos',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth',
-        ),
-        'uses' => 'App\\Http\\Controllers\\MyPosController@api_update',
-        'controller' => 'App\\Http\\Controllers\\MyPosController@api_update',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-        'as' => 'mypos.api.update',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'mypos.update' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'POST',
-      ),
-      'uri' => 'update-mypos',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth',
-        ),
-        'uses' => 'App\\Http\\Controllers\\MyPosController@update',
-        'controller' => 'App\\Http\\Controllers\\MyPosController@update',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-        'as' => 'mypos.update',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'mypos.edit' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'POST',
-      ),
-      'uri' => 'edit-mypos',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth',
-        ),
-        'uses' => 'App\\Http\\Controllers\\MyPosController@edit',
-        'controller' => 'App\\Http\\Controllers\\MyPosController@edit',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-        'as' => 'mypos.edit',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'mypos.import' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'POST',
-      ),
-      'uri' => 'mypos/import',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth',
-        ),
-        'uses' => 'App\\Http\\Controllers\\MyPosController@import',
-        'controller' => 'App\\Http\\Controllers\\MyPosController@import',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-        'as' => 'mypos.import',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'posminprice' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'posminprice',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth',
-        ),
-        'uses' => 'App\\Http\\Controllers\\PosMinPriceController@index',
-        'controller' => 'App\\Http\\Controllers\\PosMinPriceController@index',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-        'as' => 'posminprice',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'posminprice.sync' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'posminprice/sync',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth',
-        ),
-        'uses' => 'App\\Http\\Controllers\\PosMinPriceController@product_sync',
-        'controller' => 'App\\Http\\Controllers\\PosMinPriceController@product_sync',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-        'as' => 'posminprice.sync',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'posminprice.update' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'POST',
-      ),
-      'uri' => 'update-posminprice',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth',
-        ),
-        'uses' => 'App\\Http\\Controllers\\PosMinPriceController@update',
-        'controller' => 'App\\Http\\Controllers\\PosMinPriceController@update',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-        'as' => 'posminprice.update',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'posminprice.edit' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'POST',
-      ),
-      'uri' => 'edit-posminprice',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth',
-        ),
-        'uses' => 'App\\Http\\Controllers\\PosMinPriceController@edit',
-        'controller' => 'App\\Http\\Controllers\\PosMinPriceController@edit',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-        'as' => 'posminprice.edit',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'shopify.product' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'shopify/product',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth',
-        ),
-        'uses' => 'App\\Http\\Controllers\\ShopifyController@index',
-        'controller' => 'App\\Http\\Controllers\\ShopifyController@index',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-        'as' => 'shopify.product',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'shopify.sync' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'shopify/sync',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth',
-        ),
-        'uses' => 'App\\Http\\Controllers\\ShopifyController@product_sync',
-        'controller' => 'App\\Http\\Controllers\\ShopifyController@product_sync',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-        'as' => 'shopify.sync',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'shopify.update' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'POST',
-      ),
-      'uri' => 'update-shopify',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth',
-        ),
-        'uses' => 'App\\Http\\Controllers\\ShopifyController@update',
-        'controller' => 'App\\Http\\Controllers\\ShopifyController@update',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-        'as' => 'shopify.update',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'shopify.edit' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'POST',
-      ),
-      'uri' => 'edit-shopify',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth',
-        ),
-        'uses' => 'App\\Http\\Controllers\\ShopifyController@edit',
-        'controller' => 'App\\Http\\Controllers\\ShopifyController@edit',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-        'as' => 'shopify.edit',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'shopify.destroy' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'POST',
-      ),
-      'uri' => 'delete-shopify',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth',
-        ),
-        'uses' => 'App\\Http\\Controllers\\ShopifyController@destroy',
-        'controller' => 'App\\Http\\Controllers\\ShopifyController@destroy',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-        'as' => 'shopify.destroy',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'shopify.api.update' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'POST',
-      ),
-      'uri' => 'update-api-shopify',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth',
-        ),
-        'uses' => 'App\\Http\\Controllers\\ShopifyController@api_update',
-        'controller' => 'App\\Http\\Controllers\\ShopifyController@api_update',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-        'as' => 'shopify.api.update',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'shopify.import' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'POST',
-      ),
-      'uri' => 'shopify/import',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth',
-        ),
-        'uses' => 'App\\Http\\Controllers\\ShopifyController@import',
-        'controller' => 'App\\Http\\Controllers\\ShopifyController@import',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-        'as' => 'shopify.import',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'shopify.quantity' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'shopify/update/quantity',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth',
-        ),
-        'uses' => 'App\\Http\\Controllers\\ShopifyController@update_qty',
-        'controller' => 'App\\Http\\Controllers\\ShopifyController@update_qty',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-        'as' => 'shopify.quantity',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'shopify.qty' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'shopify/update/qty',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth',
-        ),
-        'uses' => 'App\\Http\\Controllers\\ShopifyController@update_qty_up',
-        'controller' => 'App\\Http\\Controllers\\ShopifyController@update_qty_up',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-        'as' => 'shopify.qty',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'shopify.sales' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'shopify/sales',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth',
-        ),
-        'uses' => 'App\\Http\\Controllers\\ShopifySaleController@index',
-        'controller' => 'App\\Http\\Controllers\\ShopifySaleController@index',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-        'as' => 'shopify.sales',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'shopify.sales.sync' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'shopify/sync/sales',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth',
-        ),
-        'uses' => 'App\\Http\\Controllers\\ShopifySaleController@sales_sync',
-        'controller' => 'App\\Http\\Controllers\\ShopifySaleController@sales_sync',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-        'as' => 'shopify.sales.sync',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-      'withTrashed' => false,
-    ),
-    'shopify.sales.import' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'POST',
-      ),
-      'uri' => 'shopify/sales/import',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth',
-        ),
-        'uses' => 'App\\Http\\Controllers\\ShopifySaleController@import',
-        'controller' => 'App\\Http\\Controllers\\ShopifySaleController@import',
-        'namespace' => NULL,
-        'prefix' => '',
-        'where' => 
-        array (
-        ),
-        'as' => 'shopify.sales.import',
       ),
       'fallback' => false,
       'defaults' => 
@@ -5884,8 +4166,8 @@ app('router')->setCompiledRoutes(
           0 => 'web',
           1 => 'auth',
         ),
-        'uses' => 'App\\Http\\Controllers\\unitController@index',
-        'controller' => 'App\\Http\\Controllers\\unitController@index',
+        'uses' => 'App\\Http\\Controllers\\UnitController@index',
+        'controller' => 'App\\Http\\Controllers\\UnitController@index',
         'namespace' => NULL,
         'prefix' => '',
         'where' => 
@@ -5922,8 +4204,8 @@ app('router')->setCompiledRoutes(
           0 => 'web',
           1 => 'auth',
         ),
-        'uses' => 'App\\Http\\Controllers\\unitController@create',
-        'controller' => 'App\\Http\\Controllers\\unitController@create',
+        'uses' => 'App\\Http\\Controllers\\UnitController@create',
+        'controller' => 'App\\Http\\Controllers\\UnitController@create',
         'namespace' => NULL,
         'prefix' => '',
         'where' => 
@@ -5959,8 +4241,8 @@ app('router')->setCompiledRoutes(
           0 => 'web',
           1 => 'auth',
         ),
-        'uses' => 'App\\Http\\Controllers\\unitController@store',
-        'controller' => 'App\\Http\\Controllers\\unitController@store',
+        'uses' => 'App\\Http\\Controllers\\UnitController@store',
+        'controller' => 'App\\Http\\Controllers\\UnitController@store',
         'namespace' => NULL,
         'prefix' => '',
         'where' => 
@@ -5997,8 +4279,8 @@ app('router')->setCompiledRoutes(
           0 => 'web',
           1 => 'auth',
         ),
-        'uses' => 'App\\Http\\Controllers\\unitController@edit',
-        'controller' => 'App\\Http\\Controllers\\unitController@edit',
+        'uses' => 'App\\Http\\Controllers\\UnitController@edit',
+        'controller' => 'App\\Http\\Controllers\\UnitController@edit',
         'namespace' => NULL,
         'prefix' => '',
         'where' => 
@@ -6034,8 +4316,8 @@ app('router')->setCompiledRoutes(
           0 => 'web',
           1 => 'auth',
         ),
-        'uses' => 'App\\Http\\Controllers\\unitController@update',
-        'controller' => 'App\\Http\\Controllers\\unitController@update',
+        'uses' => 'App\\Http\\Controllers\\UnitController@update',
+        'controller' => 'App\\Http\\Controllers\\UnitController@update',
         'namespace' => NULL,
         'prefix' => '',
         'where' => 
@@ -6071,8 +4353,8 @@ app('router')->setCompiledRoutes(
           0 => 'web',
           1 => 'auth',
         ),
-        'uses' => 'App\\Http\\Controllers\\unitController@destroy',
-        'controller' => 'App\\Http\\Controllers\\unitController@destroy',
+        'uses' => 'App\\Http\\Controllers\\UnitController@destroy',
+        'controller' => 'App\\Http\\Controllers\\UnitController@destroy',
         'namespace' => NULL,
         'prefix' => '',
         'where' => 
@@ -6211,10 +4493,9 @@ app('router')->setCompiledRoutes(
     array (
       'methods' => 
       array (
-        0 => 'GET',
-        1 => 'HEAD',
+        0 => 'POST',
       ),
-      'uri' => 'category/edit/{category}',
+      'uri' => 'category/edit',
       'action' => 
       array (
         'middleware' => 
@@ -6251,7 +4532,7 @@ app('router')->setCompiledRoutes(
       array (
         0 => 'POST',
       ),
-      'uri' => 'category/update/{category}',
+      'uri' => 'category/update',
       'action' => 
       array (
         'middleware' => 
@@ -6581,6 +4862,80 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
+    'product.getvarientvalue' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'product/getvarientvalue',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+        ),
+        'uses' => 'App\\Http\\Controllers\\ProductController@getvarientvalue',
+        'controller' => 'App\\Http\\Controllers\\ProductController@getvarientvalue',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'product.getvarientvalue',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'productCombo.price' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'product/productComboPrice',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+        ),
+        'uses' => 'App\\Http\\Controllers\\ProductController@productComboPrice',
+        'controller' => 'App\\Http\\Controllers\\ProductController@productComboPrice',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'productCombo.price',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
     'purchase.index' => 
     array (
       'methods' => 
@@ -6732,6 +5087,82 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
+    'purchase.product.search' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'purchase/product/search',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+        ),
+        'uses' => 'App\\Http\\Controllers\\PurchasesController@product_search',
+        'controller' => 'App\\Http\\Controllers\\PurchasesController@product_search',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'purchase.product.search',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'purchase.product.data' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'purchase/product/data',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+        ),
+        'uses' => 'App\\Http\\Controllers\\PurchasesController@product_variable_data',
+        'controller' => 'App\\Http\\Controllers\\PurchasesController@product_variable_data',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'purchase.product.data',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
     'sale.index' => 
     array (
       'methods' => 
@@ -6868,6 +5299,82 @@ app('router')->setCompiledRoutes(
         array (
         ),
         'as' => 'sale.price',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'sale.product.search' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'sale/product/search',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+        ),
+        'uses' => 'App\\Http\\Controllers\\SaleController@product_search',
+        'controller' => 'App\\Http\\Controllers\\SaleController@product_search',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'sale.product.search',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'sale.product.data' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'sale/product/data',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+        ),
+        'uses' => 'App\\Http\\Controllers\\SaleController@product_variable_data',
+        'controller' => 'App\\Http\\Controllers\\SaleController@product_variable_data',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'sale.product.data',
       ),
       'fallback' => false,
       'defaults' => 
@@ -7445,6 +5952,82 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
+    'toppurchase.report' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'report/top/purchase',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+        ),
+        'uses' => 'App\\Http\\Controllers\\ReportController@toppurchasereport',
+        'controller' => 'App\\Http\\Controllers\\ReportController@toppurchasereport',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'toppurchase.report',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'topsale.report' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'report/top/sale',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+        ),
+        'uses' => 'App\\Http\\Controllers\\ReportController@topsalereport',
+        'controller' => 'App\\Http\\Controllers\\ReportController@topsalereport',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'topsale.report',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
     'salereport.index' => 
     array (
       'methods' => 
@@ -7822,14 +6405,14 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'shop.index' => 
+    'price.group' => 
     array (
       'methods' => 
       array (
         0 => 'GET',
         1 => 'HEAD',
       ),
-      'uri' => 'shop',
+      'uri' => 'price/group',
       'action' => 
       array (
         'middleware' => 
@@ -7837,14 +6420,14 @@ app('router')->setCompiledRoutes(
           0 => 'web',
           1 => 'auth',
         ),
-        'uses' => 'App\\Http\\Controllers\\ShopController@index',
-        'controller' => 'App\\Http\\Controllers\\ShopController@index',
+        'uses' => 'App\\Http\\Controllers\\PriceGroupController@index',
+        'controller' => 'App\\Http\\Controllers\\PriceGroupController@index',
         'namespace' => NULL,
         'prefix' => '',
         'where' => 
         array (
         ),
-        'as' => 'shop.index',
+        'as' => 'price.group',
       ),
       'fallback' => false,
       'defaults' => 
@@ -7860,14 +6443,14 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'shop.create' => 
+    'price.group.create' => 
     array (
       'methods' => 
       array (
         0 => 'GET',
         1 => 'HEAD',
       ),
-      'uri' => 'shop/create',
+      'uri' => 'price/group/create',
       'action' => 
       array (
         'middleware' => 
@@ -7875,14 +6458,14 @@ app('router')->setCompiledRoutes(
           0 => 'web',
           1 => 'auth',
         ),
-        'uses' => 'App\\Http\\Controllers\\ShopController@create',
-        'controller' => 'App\\Http\\Controllers\\ShopController@create',
+        'uses' => 'App\\Http\\Controllers\\PriceGroupController@create',
+        'controller' => 'App\\Http\\Controllers\\PriceGroupController@create',
         'namespace' => NULL,
         'prefix' => '',
         'where' => 
         array (
         ),
-        'as' => 'shop.create',
+        'as' => 'price.group.create',
       ),
       'fallback' => false,
       'defaults' => 
@@ -7898,13 +6481,13 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'shop.store' => 
+    'price.group.store' => 
     array (
       'methods' => 
       array (
         0 => 'POST',
       ),
-      'uri' => 'shop/store',
+      'uri' => 'price/group/store',
       'action' => 
       array (
         'middleware' => 
@@ -7912,14 +6495,14 @@ app('router')->setCompiledRoutes(
           0 => 'web',
           1 => 'auth',
         ),
-        'uses' => 'App\\Http\\Controllers\\ShopController@store',
-        'controller' => 'App\\Http\\Controllers\\ShopController@store',
+        'uses' => 'App\\Http\\Controllers\\PriceGroupController@store',
+        'controller' => 'App\\Http\\Controllers\\PriceGroupController@store',
         'namespace' => NULL,
         'prefix' => '',
         'where' => 
         array (
         ),
-        'as' => 'shop.store',
+        'as' => 'price.group.store',
       ),
       'fallback' => false,
       'defaults' => 
@@ -7935,14 +6518,14 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'shop.edit' => 
+    'price.group.edit' => 
     array (
       'methods' => 
       array (
         0 => 'GET',
         1 => 'HEAD',
       ),
-      'uri' => 'shop/edit/{id}',
+      'uri' => 'price/group/{id}/edit',
       'action' => 
       array (
         'middleware' => 
@@ -7950,14 +6533,14 @@ app('router')->setCompiledRoutes(
           0 => 'web',
           1 => 'auth',
         ),
-        'uses' => 'App\\Http\\Controllers\\ShopController@edit',
-        'controller' => 'App\\Http\\Controllers\\ShopController@edit',
+        'uses' => 'App\\Http\\Controllers\\PriceGroupController@edit',
+        'controller' => 'App\\Http\\Controllers\\PriceGroupController@edit',
         'namespace' => NULL,
         'prefix' => '',
         'where' => 
         array (
         ),
-        'as' => 'shop.edit',
+        'as' => 'price.group.edit',
       ),
       'fallback' => false,
       'defaults' => 
@@ -7973,13 +6556,13 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'shop.update' => 
+    'price.group.update' => 
     array (
       'methods' => 
       array (
         0 => 'POST',
       ),
-      'uri' => 'shop/update/{shop}',
+      'uri' => 'price/group/{id}/update',
       'action' => 
       array (
         'middleware' => 
@@ -7987,14 +6570,14 @@ app('router')->setCompiledRoutes(
           0 => 'web',
           1 => 'auth',
         ),
-        'uses' => 'App\\Http\\Controllers\\ShopController@update',
-        'controller' => 'App\\Http\\Controllers\\ShopController@update',
+        'uses' => 'App\\Http\\Controllers\\PriceGroupController@update',
+        'controller' => 'App\\Http\\Controllers\\PriceGroupController@update',
         'namespace' => NULL,
         'prefix' => '',
         'where' => 
         array (
         ),
-        'as' => 'shop.update',
+        'as' => 'price.group.update',
       ),
       'fallback' => false,
       'defaults' => 
@@ -8010,13 +6593,13 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'shop.destroy' => 
+    'price.group.destroy' => 
     array (
       'methods' => 
       array (
         0 => 'DELETE',
       ),
-      'uri' => 'shop/destroy/{id}',
+      'uri' => 'price/group/{id}/destroy',
       'action' => 
       array (
         'middleware' => 
@@ -8024,14 +6607,126 @@ app('router')->setCompiledRoutes(
           0 => 'web',
           1 => 'auth',
         ),
-        'uses' => 'App\\Http\\Controllers\\ShopController@destroy',
-        'controller' => 'App\\Http\\Controllers\\ShopController@destroy',
+        'uses' => 'App\\Http\\Controllers\\PriceGroupController@destroy',
+        'controller' => 'App\\Http\\Controllers\\PriceGroupController@destroy',
         'namespace' => NULL,
         'prefix' => '',
         'where' => 
         array (
         ),
-        'as' => 'shop.destroy',
+        'as' => 'price.group.destroy',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'group_product_prices' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'group_product_prices/{id}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+        ),
+        'uses' => 'App\\Http\\Controllers\\PriceGroupController@group_product_prices',
+        'controller' => 'App\\Http\\Controllers\\PriceGroupController@group_product_prices',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'group_product_prices',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'group_product_prices.update' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'group_product_prices',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+        ),
+        'uses' => 'App\\Http\\Controllers\\PriceGroupController@group_product_prices_update',
+        'controller' => 'App\\Http\\Controllers\\PriceGroupController@group_product_prices_update',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'group_product_prices.update',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'group_product_prices.delete' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'group_product_prices/delete',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+        ),
+        'uses' => 'App\\Http\\Controllers\\PriceGroupController@group_product_prices_delete',
+        'controller' => 'App\\Http\\Controllers\\PriceGroupController@group_product_prices_delete',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'group_product_prices.delete',
       ),
       'fallback' => false,
       'defaults' => 

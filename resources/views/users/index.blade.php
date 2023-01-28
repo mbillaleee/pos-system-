@@ -54,7 +54,7 @@
 
             <div class="widget-content widget-content-area br-8">
 
-                <table id="zero-config" class="table table-striped dt-table-hover" style="width:100%">
+                <table id="zero-config" class="table table-striped dt-table-hover user_datatable" style="width:100%">
 
                     <thead>
 
@@ -64,7 +64,9 @@
 
                             <th>Photo</th>
 
-                            <th>Name</th>
+                            <th>First Name</th>
+
+                            <th>Last Name</th>
 
                             <th>Username</th>
 
@@ -74,6 +76,7 @@
 
                             @endif
 
+                            <th>Phone</th>
                             <th>Email</th>
 
                             <th width="70px">Action</th>
@@ -114,15 +117,21 @@
 
                             </td>
 
-                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->fname }}</td>
+
+                            <td>{{ $user->lname }}</td>
 
                             <td>{{ $user->username }}</td>
+
+                            
 
                             @if($user_role == 3)
 
                             <th><label class="badge badge-success">@if($user->user_role ==  1) Admin @elseif ($user->user_role == 2) Sales User @endif</label></th>
 
                             @endif
+
+                            <td>{{ $user->phone }}</td>
 
                             <td>{{ $user->email }}</td>
 
@@ -177,4 +186,44 @@
 </div>
 
 @endsection
+
+
+@push('js')
+
+<script>
+    $(document).ready(function () {
+        $('.user_datatable').DataTable({
+            lengthMenu: [
+            [25, 50, 100, 200, -1],
+            [25, 50, 100, 200, "All"]
+            ],
+            dom: 'Bfrtip',
+        buttons: [
+            'pageLength',
+
+            {
+
+                extend: 'csvHtml5',
+
+                exportOptions: {
+
+                    columns: [0, 1, 2, 3, 4, 5, 6]
+
+                },
+
+            },
+
+            {
+                extend: 'pdf',
+                exportOptions: {
+                    columns: [0, 1, 2, 3, 4, 5, 6]
+                }
+            },
+            // 'csvHtml5',
+            // 'pageLength'
+        ],
+        });
+    });
+</script>
+@endpush
 

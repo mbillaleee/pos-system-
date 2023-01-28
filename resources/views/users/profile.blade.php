@@ -74,79 +74,95 @@
 
                 @csrf
 
-                                        <div class="col-md-6">
+                <div class="col-md-6">
 
-                                            <label for="name" class="form-label">Full Name <span class="text-danger">*</span></label>
+                    <label for="name" class="form-label">First Name <span class="text-danger">*</span></label>
 
-                                            <input type="text" class="form-control" value="{{$user->name}}" id="name" name="name">
+                    <input type="text" class="form-control" value="{{$user->fname}}" id="fname" name="fname">
 
-                                        </div>
+                </div>
 
-                                        <div class="col-md-6">
+                <div class="col-md-6">
 
-                                            <label for="username" class="form-label">Username <span class="text-danger">*</span></label>
+                    <label for="name" class="form-label">Last Name <span class="text-danger">*</span></label>
 
-                                            <input type="text" class="form-control" value="{{$user->username}}" id="username" name="username">
+                    <input type="text" class="form-control" value="{{$user->lname}}" id="lname" name="lname">
 
-                                        </div>
+                </div>
 
-                                        <div class="col-md-6">
+                <div class="col-md-6">
 
-                                            <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
+                    <label for="username" class="form-label">Username <span class="text-danger">*</span></label>
 
-                                            <input type="email" class="form-control" value="{{$user->email}}" id="email" name="email">
+                    <input type="text" class="form-control" value="{{$user->username}}" id="username" name="username">
 
-                                        </div>
+                </div>
 
-                                        <div class="col-md-6">
+                <div class="col-md-6">
 
-                                            <label for="image" class="form-label">Photo</label>
+                    <label for="name" class="form-label">Phone <span class="text-danger">*</span></label>
 
-                                            <div class="row">
+                    <input type="text" class="form-control" value="{{$user->phone}}" id="phone" name="phone">
 
-                                                <div class="col-sm-8">
+                </div>
 
-                                                <input type="file" class="form-control" id="image" name="image" style="border: none;">
+                <div class="col-md-6">
 
-                                                </div>
+                    <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
 
-                                                <div class="col-sm-4">
+                    <input type="email" class="form-control" value="{{$user->email}}" id="email" name="email">
 
-                                                @if($user->image != null)<img src="{{asset('uploads/users/'.$user->image)}}" width="80" alt="{{$user->name}}">@endif
+                </div>
 
-                                                </div>
+                <div class="col-md-6">
 
-                                            </div>
+                    <label for="image" class="form-label">Photo</label>
 
-                                           
+                    <div class="row">
 
-                                        </div>
+                        <div class="col-sm-8">
 
-                                        <div class="col-md-6">
+                        <input type="file" class="form-control" id="image" name="image" style="border: none;">
 
-                                            <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
+                        </div>
 
-                                            <input type="password" class="form-control" id="password" name="password">
+                        <div class="col-sm-4">
 
-                                        </div>
+                        @if($user->image != null)<img src="{{asset('uploads/users/'.$user->image)}}" width="80" alt="{{$user->name}}">@endif
 
-                                        <div class="col-md-6">
+                        </div>
 
-                                            <label for="password" class="form-label">Confirm Password <span class="text-danger">*</span></label>
+                    </div>
 
-                                            <input type="password" class="form-control" id="confirm_password" name="confirm-password">
+                    
 
-                                        </div>
+                </div>
+
+                <div class="col-md-6">
+
+                    <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
+
+                    <input type="password" class="form-control" id="password" name="password">
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <label for="password" class="form-label">Confirm Password <span class="text-danger">*</span></label>
+
+                    <input type="password" class="form-control" id="confirm_password" name="confirm-password">
+
+                </div>
 
 
 
-                                        <div class="col-12">
+                <div class="col-12">
 
-                                            <button type="submit" class="btn btn-primary">Update</button>
+                    <button type="submit" class="btn btn-primary">Update</button>
 
-                                        </div>
+                </div>
 
-                                </form>
+            </form>
 
             </div>
 

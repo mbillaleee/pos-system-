@@ -10,7 +10,7 @@ class Value extends Model
 {
     use HasFactory;
 
-    protected $table = 'varient_values';
+    // protected $table = 'varient_values';
 
     protected $guarded = [];
 

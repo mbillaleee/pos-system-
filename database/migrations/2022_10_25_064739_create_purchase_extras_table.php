@@ -17,12 +17,17 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('product_id');
             $table->unsignedBigInteger('purchase_id');
+            $table->unsignedBigInteger('purchase_variants_id')->nullable();
+            $table->unsignedBigInteger('purchase_variants_value_id')->nullable();
+            $table->integer('product_type');
             $table->string('quantity');
-            $table->string('price');
+            $table->string('purchase_price');
             $table->string('total_amount');
             $table->timestamps();
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->foreign('purchase_id')->references('id')->on('purchases')->onDelete('cascade');
+            $table->foreign('purchase_variants_id')->references('id')->on('variants')->onDelete('cascade');
+            $table->foreign('purchase_variants_value_id')->references('id')->on('values')->onDelete('cascade');
         });
     }
 

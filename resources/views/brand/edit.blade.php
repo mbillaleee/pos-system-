@@ -42,44 +42,45 @@
 
     <div class="row layout-top-spacing">
 
-    
+    <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
 
-        <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
+<div class="widget-content widget-content-area br-8 p-5">
 
-            <div class="widget-content widget-content-area br-8 p-5">
+    <form class="row g-3" action="{{route('brand.update', $brand->id)}}" method="POST">
 
-                <form class="row g-3" action="{{route('brand.update', $brand->id)}}" method="POST">
+        @csrf
 
-                    @csrf
+        <div class="col-md-6 offset-md-3">
 
-                    <div class="col-md-6">
+        <div class="form-group mb-3">
 
-                        <label for="name" class="form-label">Full Name <span class="text-danger">*</span></label>
+            <label for="name" class="form-label">Name <span class="text-danger">*</span></label>
 
-                        <input type="text" class="form-control" id="name" name="name" value="{{ $brand->name }}">
-
-                    </div>
-
-                    
-                    <div class="col-12">
-
-                        <button type="submit" class="btn btn-primary">Create</button>
-
-                    </div>
-
-                </form>
-
-            </div>
+            <input type="text" class="form-control" id="name" name="name" value="{{ $brand->name }}" placeholder="Enter Name">
 
         </div>
 
+        <div class="form-group mb-3">
 
+            <label for="short_desc" class="form-label">Short Description</label>
 
-    </div>
+            <textarea class="form-control" name="short_desc" id="short_desc" cols="10" rows="3">{{ $brand->short_desc }}</textarea>
 
+        </div>
 
+        
+        <div class="col-12">
+
+            <button type="submit" class="btn btn-primary">Update</button>
+
+        </div>
+        </div>
+
+    </form>
 
 </div>
+
+
 
 
 

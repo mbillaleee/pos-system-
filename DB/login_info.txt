@@ -1,0 +1,7 @@
+ADMIN
+masum@admin.com
+admin@123
+
+SUPER ADMIN
+super@admin.com
+admin@123

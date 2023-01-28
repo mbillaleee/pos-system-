@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('pos_min_prices', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('shop_id');
             $table->integer('pos_id');
             $table->string('product_name');
             $table->string('product_price');
@@ -23,9 +24,8 @@ return new class extends Migration
             $table->string('tsin')->nullable();
             $table->string('rack_no')->nullable();
             $table->string('sku')->nullable();
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
+            $table->foreign('shop_id')->references('id')->on('shops')->onDelete('cascade');
         });
     }
 

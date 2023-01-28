@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('units', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('sort_name');
+            $table->string('short_name');
             $table->integer('status')->default(1)->comment('Active=1, Inactive=0');
             $table->timestamps();
         });

@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('takealots', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('shop_id');
             $table->string('tsin');
             $table->string('offer_id');
             $table->string('title');
@@ -25,8 +26,7 @@ return new class extends Migration
             $table->string('barcode');
             $table->string('status');
             $table->string('takealot_url');
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('shop_id')->references('id')->on('shops')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -7,12 +7,12 @@
         <div class="page-meta row">
             <nav class="breadcrumb-style-one float-start" aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Product</a></li>
+                    <li class="breadcrumb-item"><a href="#">Expense</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Create</li>
                 </ol>
             </nav>
             <div class="">
-            <a class="btn btn-primary float-end" href="{{ url('product') }}"> Back</a>
+            <a class="btn btn-primary float-end" href="{{ url('expense') }}"> Back</a>
             </div>
         </div>
         <div class="row layout-top-spacing">
@@ -71,7 +71,8 @@
 
                     <div class="col-md-6">
                         <label for="image" class="form-label">Date <span class="text-danger">*</span></label>
-                        <input type="date" class="form-control" id="date" name="date">
+                        <input id="basicFlatpickr" class="form-control flatpickr flatpickr-input active" type="text" placeholder="Select Date.." name="date">
+                        <!-- <input type="date" class="form-control" id="date" name="date"> -->
                     </div>
                     <div class="col-md-6">
                         <label for="att_document" class="form-label">Document <span class="text-danger">*</span></label>
@@ -127,5 +128,28 @@
   });
 });
 
+</script>
+
+
+<script>
+    var today = new Date();
+
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+    var yyyy = today.getFullYear();
+
+    if(dd<10) {
+        dd = '0'+dd
+    }
+
+    if(mm<10) {
+        mm = '0'+mm
+    }
+
+    // today = yyyy + '/' + mm + '/' + dd;
+    today = dd + '-' + mm + '-' + yyyy;
+
+    //    console.log(today);
+    document.getElementById('basicFlatpickr').value = today;
 </script>
 @endpush

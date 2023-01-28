@@ -4,25 +4,26 @@
 <div class="layout-px-spacing pdf_generate">
 <div class="container">
    <div class="col-md-12">
-      <div class="invoice">
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <input type="button" class="btn btn-primary" onclick="printDiv('printableArea')" value="print" />
+      </div>
+      <div class="invoice printableArea" id="printableArea">
          <!-- begin invoice-company -->
          <div class="invoice-company text-inverse f-w-600">
             <span class="pull-right hidden-print">
-            <a href="javascript:;" class="btn btn-sm btn-white m-b-10 p-l-5"><i class="fa fa-file t-plus-1 text-danger fa-fw fa-lg"></i> Export as PDF</a>
-            <a href="javascript:;" onclick="window.print()" class="btn btn-sm btn-white m-b-10 p-l-5"><i class="fa fa-print t-plus-1 fa-fw fa-lg"></i> Print</a>
-            <a href="" onClick="window.print();">Print</a>
 
             </span>
-            Company Name, Inc
+            {{Auth::user()->shops->business_name ?? 'Company Name'}}
          </div>
          <!-- end invoice-company -->
+         
          <!-- begin invoice-header -->
          <div class="invoice-header">
             <div class="invoice-from">
                <small>from</small>
                <address class="m-t-5 m-b-5">
                   <strong class="text-inverse"> Company  :{{ $purchases->suppliers->company_name ?? '' }}</strong><br>
-                   Supplier   : {{ $purchases->suppliers->name ?? '' }} <br>
+                  Supplier   : {{ $purchases->suppliers->name ?? '' }} <br>
                   Address     : {{ $purchases->suppliers->address }}<br>
                   City, Zip Code : {{ $purchases->customers->city ?? ''}}, {{ $purchases->customers->zip_code ?? '' }}<br>
                   Phone       : {{ $purchases->suppliers->phone ?? '' }}<br>
@@ -50,58 +51,73 @@
          </div>
          <!-- end invoice-header -->
          <!-- begin invoice-content -->
-         <div class="invoice-content">
+         <div class="invoice-content mb-3">
             <!-- begin table-responsive -->
             <div class="table-responsive">
-               <table class="table table-invoice">
+               <table class="invoice-table table-bordered" style="width:100%;">
                   <thead>
                      <tr>
-                        <th>Product</th>
+                        <th class="ps-2">Product</th>
                         <th class="text-center" width="10%">Quantity</th>
-                        <th class="text-center" width="10%">Due</th>
-                        <th class="text-right" width="20%">TOTAL</th>
+                        <th class="text-center" width="10%">Price</th>
+                        <th class="text-end pe-2" width="20%">Amount</th>
                      </tr>
                   </thead>
                   <tbody>
                      @foreach($purchase_extra as $purchase_extr)
-                     @php 
-                     $products = App\Models\Product::where('id',$purchase_extr->product_id)->first();
-                     @endphp
-                      <tr>
-                        <td>{{ $products->name }}</td>
+                     <tr>
+                        <td class="ps-2">{{ $purchase_extr->products->name }}    {{  $purchase_extr->variants->vari_name ?? '' }} : {{ $purchase_extr->values->value_name ?? '' }}</td>
                         <td class="text-center">{{$purchase_extr->quantity }}</td>
-                        <td class="text-center">{{$purchase_extr->price }}</td>
-                        <td class="text-right">{{$purchase_extr->total_amount }}</td>
+                        <td class="text-center">{{$purchase_extr->purchase_price }}</td>
+                        <td class="text-end pe-2">{{$purchase_extr->total_amount }}</td>
                      </tr>
                      @endforeach
-                  </tbody>
+                  
+                                        <tr>
+                                            <td colspan="3" class="text-end pe-2">Sub Total:</td>
+                                            <td class="text-end pe-2">
+                                            {{ $purchases->sub_total ?? 0 }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3" class="text-end pe-2">Discount (%):</td>
+                                            <td class="text-end pe-2">
+                                            {{ $purchases->discount_percent ?? 0 }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3" class="text-end pe-2">Grand Total:</td>
+                                            <td class="text-end pe-2">
+                                            {{ $purchases->grand_total ?? 0 }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3" class="text-end pe-2">Paid Amount:</td>
+                                            <td class="text-end pe-2">
+                                            {{ $purchases->paid_amount ?? 0 }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3" class="text-end pe-2">Due:</td>
+                                            <td class="text-end pe-2">
+                                            {{ $purchases->due_amount ?? 0 }}
+                                            </td>
+                                        </tr>
+                                    </tbody>
                </table>
             </div>
             <!-- end table-responsive -->
-            <!-- begin invoice-price -->
-            <div class="invoice-price">
-               <div class="invoice-price-left">
-                  <div class="invoice-price-row">
-                     <div class="sub-price">
-                        <small>SUBTOTAL</small>
-                        <span class="text-inverse">{{$purchase_extr->total_amount }}</span>
-                     </div>
-                     <div class="sub-price">
-                        <i class="fa fa-plus text-muted"></i>
-                     </div>
-                     <div class="sub-price">
-                        <small>PAYPAL FEE (5.4%)</small>
-                        <span class="text-inverse">$108.00</span>
-                     </div>
-                  </div>
-               </div>
-               <div class="invoice-price-right">
-                  <small class="text-white">TOTAL :</small> <span class="f-w-600">{{$purchase_extr->quantity * $purchase_extr->price }}</span>
-               </div>
-            </div>
+            <!-- begin invoice-price --> 
+
             <!-- end invoice-price -->
+            @if($purchases->note)
+            <div class="purchase_note mt-3">
+               <p><strong>Note:</strong> {{ $purchases->note}}</p>
+            </div>
+            @endif
          </div>
          <!-- end invoice-content -->
+         
       </div>
    </div>
 </div>
@@ -111,6 +127,57 @@
 
 @push('js')
 
+<script>
+    $(document).ready(function () {
+        $('#sale_datatable').DataTable({
+            lengthMenu: [
+            [25, 50, 100, 200, -1],
+            [25, 50, 100, 200, "All"]
+            ],
+            dom: 'Bfrtip',
+        buttons: [
+            'pageLength',
 
+            {
+
+                extend: 'csvHtml5',
+
+                exportOptions: {
+
+                    columns: [0, 1, 2, 3, 4, 5, 6]
+
+                },
+
+            },
+
+            {
+                extend: 'pdf',
+                exportOptions: {
+                    columns: [0, 1, 2, 3, 4, 5, 6]
+                }
+            },
+            // 'csvHtml5',
+            // 'pageLength'
+        ],
+        });
+    });
+
+    function printDiv(divName) {
+     var printContents = document.getElementById(divName).innerHTML;
+     var originalContents = document.body.innerHTML;
+
+     document.body.innerHTML = printContents;
+
+     window.print();
+
+     document.body.innerHTML = originalContents;
+
+     
+
+     
+}
+
+
+</script>
 
 @endpush

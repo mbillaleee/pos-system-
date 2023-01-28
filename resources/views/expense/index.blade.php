@@ -111,18 +111,11 @@ $(document).ready(function() {
 
             {
                 render: function(data, type, full, meta) {
-                    if(data==1){
-                    return "<span class='badge bg-info'>A</span>";
-                    }else if(data==2){
-                    return "<span class='badge bg-info'>L</span>";
-                    }
-                    else if(data==3){
-                    return "<span class='badge bg-info'>I</span>";
-                    }else{
-                        return "<span class='badge bg-info'>E</span>";
+                    if(data){
+                    return "<a class='badge bg-primary' href='uploads/document/expense/"+data+"' download>Download</a>";
                     }
                     },
-                targets: 3
+                targets: 2
             } ,
 
             {

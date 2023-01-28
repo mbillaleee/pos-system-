@@ -16,7 +16,7 @@ class Expense extends Model
 
     public function cartofacc()
     {
-        return $this->belongsTo(ChartOfAccount::class, 'cartofacc_id');
+        return $this->belongsTo(ChartOfAccount::class, 'expense_type');
     }
 
     public function child()

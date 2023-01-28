@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\ChartOfAccount;
+use App\Models\Shop;
 
 class User extends Authenticatable
 {
@@ -19,10 +20,16 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'fname',
+        'lname',
+        'username',
         'email',
         'password',
+        'phone',
+        'shop_id',
+        'user_role',
     ];
+    // protected $guarded = [];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -47,5 +54,10 @@ class User extends Authenticatable
     public function chart_of_accounts()
     {
         return $this->hasMany(Product::class);
+    }
+
+    public function shops()
+    {
+        return $this->belongsTo(Shop::class, 'shop_id');
     }
 }

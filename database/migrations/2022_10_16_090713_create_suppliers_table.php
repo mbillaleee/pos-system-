@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('suppliers', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('shop_id');
             $table->string('name');
-            $table->string('user_id');
-            $table->string('company_name');
+            $table->string('company_name')->nullable();
             $table->string('phone')->unique();
             $table->string('email')->unique();
             $table->date('date_of_birth');
@@ -25,11 +25,12 @@ return new class extends Migration
             $table->float('opening_balance');
             $table->string('address');
             $table->string('city');
-            $table->string('state');
+            $table->string('state')->nullable();
             $table->string('country');
             $table->string('zip_code');
-            $table->enum('status', ['0', '1']);
+            $table->integer('status')->default(1)->comment('Active=1, Inactive=0');
             $table->timestamps();
+            $table->foreign('shop_id')->references('id')->on('shops')->onDelete('cascade');
         });
     }
 

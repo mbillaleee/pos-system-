@@ -15,7 +15,7 @@ class Variant extends Model
 
 
     public function  varient_values()
-{
+    {
     return $this->hasMany(Value::class, 'variants_id', 'id');
-}
+    }
 }

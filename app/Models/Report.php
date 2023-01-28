@@ -12,5 +12,8 @@ class Report extends Model
 
     protected $guarded = [];
 
-    
+    public function Purchases()
+    {
+        return $this->hasMany(Product::class);
+    }
 }

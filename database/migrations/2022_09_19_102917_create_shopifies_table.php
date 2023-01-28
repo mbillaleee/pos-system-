@@ -15,20 +15,20 @@ return new class extends Migration
     {
         Schema::create('shopifies', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('shop_id');
             $table->string('product_id');
             $table->string('variants_id');
             $table->string('title');
-            $table->string('regular_price');
+            $table->string('regular_price')->nullable();
             $table->string('price');
             $table->string('qty');
-            $table->string('sku');
-            $table->string('barcode');
-            $table->string('image');
-            $table->string('link');
+            $table->string('sku')->nullable();
+            $table->string('barcode')->nullable();
+            $table->text('image')->nullable();
+            $table->text('link')->nullable();
             $table->longText('description');
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
+            $table->foreign('shop_id')->references('id')->on('shops')->onDelete('cascade');
         });
     }
 

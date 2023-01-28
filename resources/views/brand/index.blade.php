@@ -3,7 +3,11 @@
 
 
 @section('content')
+@php 
 
+$user_role = Auth::user()->user_role;
+
+@endphp
 <div class="layout-px-spacing">
 
 
@@ -27,24 +31,20 @@
             </ol>
 
         </nav>
-
+@if($user_role != 3)
         <div class="">
 
         <a class="btn btn-primary float-end" href="{{ route('brand.create') }}"> Add Brand</a>
 
         </div>
-
+@endif
         
 
     </div>
 
     <!-- /BREADCRUMB -->
 
-    @php 
-
-    $user_role = Auth::user()->user_role;
-
-    @endphp
+   
 
     <div class="row layout-top-spacing">
 
@@ -54,24 +54,15 @@
 
             <div class="widget-content widget-content-area br-8">
 
-                <table id="zero-config" class="table table-striped dt-table-hover" style="width:100%">
+                <table id="zero-config" class="table table-striped dt-table-hover brand_datatable" style="width:100%">
 
                     <thead>
 
                         <tr>
-
                             <th>#</th>
-
                             <th>Name</th>
-
-                            @if($user_role == 3)
-
+                            <th>Short Description</th>
                             <th width="70px">Action</th>
-
-                            @endif
-
-                            
-
                         </tr>
 
                     </thead>
@@ -83,12 +74,8 @@
                         <tr>
 
                             <td>{{$i++}}</td>
-
-                            @if($user_role == 3)
-
                             <td>{{ $brand->name }}</td>
-
-                            @endif
+                            <td>{{ $brand->short_desc }}</td>
                             <td class="text-center">
 
                             <!-- <a class="btn btn-info" href="{{ route('brand.edit',$brand->id) }}">Show</a> -->
@@ -141,4 +128,44 @@
 </div>
 
 @endsection
+
+
+@push('js')
+
+<script>
+    $(document).ready(function () {
+        $('.brand_datatable').DataTable({
+            lengthMenu: [
+            [25, 50, 100, 200, -1],
+            [25, 50, 100, 200, "All"]
+            ],
+            dom: 'Bfrtip',
+        buttons: [
+            'pageLength',
+
+            {
+
+                extend: 'csvHtml5',
+
+                exportOptions: {
+
+                    columns: [0, 1, 2, 3, 4, 5, 6]
+
+                },
+
+            },
+
+            {
+                extend: 'pdf',
+                exportOptions: {
+                    columns: [0, 1, 2, 3, 4, 5, 6]
+                }
+            },
+            // 'csvHtml5',
+            // 'pageLength'
+        ],
+        });
+    });
+</script>
+@endpush
 

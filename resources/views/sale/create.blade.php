@@ -1,59 +1,30 @@
-@extends('admin')
-
-
+@extends('admin') 
 
 @section('content')
 
 <div class="layout-px-spacing">
-
-
-
-<div class="middle-content container-xxl p-0">
-
-    
-
-    <!-- BREADCRUMB -->
-
-    <div class="page-meta row">
-
-        <nav class="breadcrumb-style-one float-start" aria-label="breadcrumb">
-
-            <ol class="breadcrumb">
-
-                <li class="breadcrumb-item"><a href="#">Purchase</a></li>
-
-                <li class="breadcrumb-item active" aria-current="page">Create</li>
-
-            </ol>
-
-        </nav>
-
-        <div class="">
-
-        <a class="btn btn-primary float-end" href="{{ url('purchase') }}"> Back</a>
-
+    <div class="middle-content container-xxl p-0">
+        <!-- BREADCRUMB -->
+        <div class="page-meta row">
+            <nav class="breadcrumb-style-one float-start" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Sales</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Create</li>
+                </ol>
+            </nav>
+            <div class="">
+            <a class="btn btn-primary float-end" href="{{ url('purchase') }}"> Back</a>
+            </div>
         </div>
-
-        
-
-    </div>
-
-
-
-    <div class="row layout-top-spacing">
-
-    
-
-        <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
-
-            <div class="widget-content widget-content-area br-8 p-5">
-
-                <form role="form" class="forms-sample" action="{{route('sale.store')}}" method="POST">
+        <div class="row layout-top-spacing">
+            <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
+                <div class="widget-content widget-content-area br-8 p-5">
+                    <form role="form" class="forms-sample" action="{{route('sale.store')}}" method="POST">
                         @csrf
-                        <div class="row">
+                        <div class="row"> 
                             <div class="col-lg-6 col-12">
                                 <div class="form-group row">
-                                    <label for="client_id" class="col-sm-4 col-form-label">{{ __('Customer Name') }} <span class="req-star">*</span></label>
+                                    <label for="client_id" class="col-sm-4 col-form-label">{{ __('Customer Name') }} <span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
                                         <select class="form-control customer_id" id="customer_id" name="customer_id" style="width:100%" required>
                                             <option selected disabled>Select Customer</option>
@@ -61,13 +32,19 @@
                                             <option value="{{ $customer->id}}">{{ $customer->name}}</option>
                                             @endforeach
                                         </select>
+                                        @error('customer_id')
+                                            <div class="error text-danger">{{ $message }}</div>
+                                         @enderror
                                     </div>
                                 </div><br>
                                 
                                 <div class="form-group row">
-                                    <label for="invoice_no" class="col-sm-4 col-form-label">{{ __('Reference Number') }} <span class="req-star">*</span></label>
+                                    <label for="invoice_no" class="col-sm-4 col-form-label">{{ __('Reference Number') }} <span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
                                         <input type="text" name="reference_num" value="" class="form-control p-input" id="reference_num" placeholder="Enter reference Number" >
+                                        @error('reference_num')
+                                            <div class="error text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div><br>
 
@@ -76,7 +53,7 @@
                             </div>
                             <div class="col-lg-6 col-12">
                                 <div class="form-group row">
-                                    <label for="invoice_date" class="col-sm-4 col-form-label">{{ __('Sale Date') }} <span class="req-star">*</span></label>
+                                    <label for="invoice_date" class="col-sm-4 col-form-label">{{ __('Sale Date') }} <span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
                                     <input id="basicFlatpickr" class="form-control flatpickr flatpickr-input active" type="text" placeholder="Select Date.." name="sale_date">
                                         <!-- <input type="date" name="purchase_date" class="form-control p-input datepickernew" id="purchase_date" placeholder="Enter Invoice Date"> -->
@@ -84,31 +61,50 @@
                                 </div><br>
 
                                 <div class="form-group row">
-                                    <label for="payment_type" class="col-sm-4 col-form-label">{{ __('Payment Method') }} <span class="req-star">*</span></label>
+                                    <label for="payment_type" class="col-sm-4 col-form-label">{{ __('Payment Method') }} <span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
                                         <select class="js-example-basic-single form-control" onchange="bank_paymet(this.value)" id="payment_method" name="payment_method" style="width:100%" required>
                                             <option  selected disabled>Select Type</option>
-                                            <option value="1">Cash</option>
-                                            <option value="0">Cheque</option>
+                                            <option value="9">Cash</option>
+                                            <option value="10">Bank</option>
                                         </select>
+                                        @error('payment_method')
+                                            <div class="error text-danger">{{ $message }}</div>
+                                         @enderror
                                     </div>
                                 </div>
+                            </div>
 
+                            <div class="form-group row">
+                                <div class="col-sm-8 offset-sm-2 mb-3 position-relative">
+                                    <!-- <select class="form-control product_id addRow" id="selectProgrammingLanguage" name="product_id[]"  required>
+                                            <option>Select Product</option>
+                                            @foreach($products as $product)
+                                            <option value="{{ $product->id}}">{{ $product->name}}</option>
+                                            @endforeach
+                                    </select> -->
+                                    <div class="input-group">
+                                        <span class="input-group-text" id="basic-addon1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zoom-in"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg></span>
+                                        <input type="text" id="product_search" class="form-control" placeholder="Enter Product Name / SKU / Barcode" aria-label="Enter Product Name / SKU / Barcode" aria-describedby="basic-addon1">
+                                    </div>
+                                    <ul id="product_search_value">
 
+                                    </ul>
+                                </div>
                             </div>
 
                             <table class="table table-bordered mt-4" id="tbl_posts">
                                 <thead>
                                 <tr>
-                                    <th width="25%">Product Name *</th>
-                                    <th>Qty *</th>
-                                    <th>Price *</th>
-                                    <th>Total</th>
-                                    <th style="text-align: center;"><button type="button" class="addRow btn btn-success"><i class="fa fa-plus"></i> </button></th>
+                                    <th width="25%">Product Name <span class="text-danger">*</span></th>
+                                    <th width="25%">Qty <span class="text-danger">*</span></th>
+                                    <th width="25%">Price <span class="text-danger">*</span></th>
+                                    <th width="25%">Total</th>
+                                    <!-- <th style="text-align: center;"><button type="button" class="addRow btn btn-success"><i class="fa fa-plus"></i> </button></th> -->
                                 </tr>
                                 </thead>
                                 <tbody id="sale_table">
-                                <tr>
+                                <!-- <tr>
                                     <td>
                                         <select class="form-control product_id" id="product_id" name="product_id[]" style="width: 100%;" required>
                                             <option  selected disabled>Select Product</option>
@@ -129,7 +125,7 @@
                                         <input type="number" class="form-control text-end total_amount" id="total_amount" name="total_amount[]" placeholder="0.00" readonly>
                                     </td>
                                     <td style="text-align: center;"><button type="button" class="remove btn btn-danger"><i class="fa fa-close"></i></button></td>
-                                </tr>
+                                </tr> -->
 
                                 </tbody>
                                 <tfoot>
@@ -154,7 +150,7 @@
                                 <tr>
                                     <th colspan="3" class="text-end">Paid Amount:</th>
                                     <th class="text-end">
-                                        <input type="number" class="form-control text-end paid_amount" value="{{old('paid_amount')}}" id="paid_amount" name="paid_amount" placeholder="0.00">
+                                        <input type="number" class="form-control text-end paid_amount" value="{{old('paid_amount')}}" id="paid_amount" name="paid_amount" placeholder="0.00" value="0" required>
                                     </th>
                                 </tr>
                                 <tr>
@@ -175,33 +171,20 @@
                             <div class="col-sm-4 text-center">
                                 <button type="submit" class="btn btn-success mt-4">{{ __('Submit') }}</button>
                             </div>
-
                         </div>
                     </form>
-
+                    
+                </div>
             </div>
-
         </div>
-
-
-
     </div>
-
-
-
-</div>
-
-
-
 </div>
 
 @endsection
 
-
 @push('js')
 <!-- <script src="{{ asset('assets/node_modules/jquery/dist/jquery.min.js') }}"></script> -->
-    <script type="text/javascript">
-
+    <!-- <script type="text/javascript">
         $('.addRow').on('click',function(){
             addRow();
         });
@@ -230,28 +213,16 @@
                 $(this).parent().parent().remove();
             }
         });
-    </script>
+    </script> -->
     <script>
-        function bank_paymet(val){
-            if(val==0){
-                document.getElementById('bankID').style.display = 'block';
-                document.getElementById('chequeID').style.display = 'block';
-                document.getElementById('bank_id').setAttribute("required", true);
-            }else{
-                document.getElementById('bankID').style.display = 'none';
-                document.getElementById('chequeID').style.display = 'none';
-                document.getElementById('bank_id').removeAttribute("required");
-            }
-
-         //   document.getElementById('bankID').style.display = style;
-        }
+    
 
 
-        $('tbody').delegate('.quantity, .price, .total_amount','change', function(){
+        $('tbody').delegate('.quantity, .sell_price, .total_amount','change', function(){
             var tr = $(this).parent().parent();
             var quantity = tr.find('.quantity').val();
-            var price = tr.find('.price').val();
-            var total_amount = (quantity * price);
+            var sell_price = tr.find('.sell_price').val();
+            var total_amount = (quantity * sell_price);
             tr.find('.total_amount').val(total_amount);
 
             subtotal();
@@ -294,25 +265,145 @@
         });
 
 
-        // Package Price
-        $('tbody').delegate('.product_id','change', function(){
-            var tr = $(this).parent().parent();
-            var id = tr.find('#product_id :selected').val();
-            var dataID = {'id':id};
+        $('#product_search').keyup(function () {
+            var product_search = $(this).val();
+
+            // console.log(product_search);
 
             $.ajax({
-                type:"GET",
-                url:"{{url('/purchase/productPrice')}}",
-                dataType: 'json',
-                data: dataID,
-                success:function (data) {
-                    // alert(data.name);
-                     tr.find('.price').val(data.sell_price);
+                    type:"GET",
+                    url:"{{url('sale/product/search')}}",
+                    dataType: 'json',
+                    data: {'product_search':product_search},
+                    success:function(data){
+                        // console.log(data);
+                        if(data){
+                            $("#product_search_value").empty();
+                            $.each(data,function(key,value){
+                                $("#product_search_value").append('<li data-product_id="'+value.id+'">'+value.name+'</li>');
+                            });
+                            
 
-                }
+                        }else{
+                            $("#product_search_value").empty();
+                        }
+                    }
+                });
 
-            });
         });
+        $(document).ready(function(){
+            $('#product_search_value').on('click','li', function(event){
+                var id = $(this).data("product_id");
+                var customer_id = $('#customer_id').val();
+                // console.log(customer_id);
+                $.ajax({
+                    type:"GET",
+                    url:"{{url('sale/product/data')}}",
+                    dataType: 'json',
+                    data: {'id':id,'customer_id':customer_id},
+                    success:function(data){
+                           console.log(data);
+                        if(data){
+                            $("#product_search_value").empty();
+                            // console.log(data.product_val);
+                                if(data.product_val.product_type == 2){
+                                    
+                                    $.each(data.variable_products, function(key,value){
+                                        console.log(value.sell_price);
+                                        if(value.sell_price == null){
+                                            var tr = '<tr>'+
+                                        '<td>'+data.product_val.name +' '+value.product_variants.vari_name+' '+value.product_variant_values.value_name+'<input type="hidden" name="product_id[]" value="'+data.product_val.id+'"><input type="hidden" name="sales_variants_id[]" value="'+value.product_variants_id+'"><input type="hidden" name="sales_variants_value_id[]" value="'+value.variants_value_id+'"><input type="hidden" name="product_type[]" value="'+data.product_val.product_type+'"></td>'+
+                                        '<td><input type="number" class="form-control text-end quantity" id="quantity" name="quantity[]" placeholder="0.00" value="1" required></td>'+
+                                        '<td><input type="number" class="form-control text-end sell_price" id="sell_price" value="'+data.product_val.sell_price+'" name="sell_price[]" placeholder="0.00"></td>'+
+                                        '<td><input type="number" class="form-control text-end total_amount" id="total_amount" value="'+data.product_val.sell_price+'" name="total_amount[]" placeholder="0.00" readonly></td>'+
+                                        '<td style="text-align: center;"><button type="button" class="btn btn-danger remove"><i class="fa fa-close"></i></button></td>'+
+                                        '</tr>';
+                                        $('#sale_table').append(tr);
+                                        }else{
+                                        var tr = '<tr>'+
+                                        '<td>'+data.product_val.name +' , '+value.product_variants.vari_name+' : '+value.product_variant_values.value_name+'<input type="hidden" name="product_id[]" value="'+data.product_val.id+'"><input type="hidden" name="sales_variants_id[]" value="'+value.product_variants_id+'"><input type="hidden" name="sales_variants_value_id[]" value="'+value.variants_value_id+'"><input type="hidden" name="product_type[]" value="'+data.product_val.product_type+'"></td>'+
+                                        '<td><input type="number" class="form-control text-end quantity" id="quantity" name="quantity[]" placeholder="0.00" value="1" required></td>'+
+                                        '<td><input type="number" class="form-control text-end sell_price" id="sell_price" value="'+value.sells_price+'" name="sell_price[]" placeholder="0.00"></td>'+
+                                        '<td><input type="number" class="form-control text-end total_amount" id="total_amount" value="'+value.sell_price+'" name="total_amount[]" placeholder="0.00" readonly></td>'+
+                                        '<td style="text-align: center;"><button type="button" class="btn btn-danger remove"><i class="fa fa-close"></i></button></td>'+
+                                        '</tr>';
+                                        $('#sale_table').append(tr);
+                                        
+                                        
+                                        }
+                                    });
+                                }else{
+                                if(data.product_group_price != null){
+                                    var tr = '<tr>'+
+                                        '<td>'+data.product_val.name+'<input type="hidden" name="product_id[]" value="'+data.product_val.id+'"><input type="hidden" name="product_type[]" value="'+data.product_val.product_type+'"></td>'+
+                                        '<td><input type="number" class="form-control text-end quantity" id="quantity" name="quantity[]" placeholder="0.00" value="1" required></td>'+
+                                        '<td><input type="number" class="form-control text-end sell_price" id="sell_price" value="'+data.product_group_price.price+'" name="sell_price[]" placeholder="0.00"></td>'+
+                                        '<td><input type="number" class="form-control text-end total_amount" id="total_amount" value="'+data.product_group_price.price+'" name="total_amount[]" placeholder="0.00" readonly></td>'+
+                                        '<td style="text-align: center;"><button type="button" class="btn btn-danger remove"><i class="fa fa-close"></i></button></td>'+
+                                        '</tr>';
+                                $('#sale_table').append(tr);
+                                }else{
+                                var tr = '<tr>'+
+                                        '<td>'+data.product_val.name+'<input type="hidden" name="product_id[]" value="'+data.product_val.id+'"><input type="hidden" name="product_type[]" value="'+data.product_val.product_type+'"></td>'+
+                                        '<td><input type="number" class="form-control text-end quantity" id="quantity" name="quantity[]" placeholder="0.00" value="1" required></td>'+
+                                        '<td><input type="number" class="form-control text-end sell_price" id="sell_price" value="'+data.product_val.sell_price+'" name="sell_price[]" placeholder="0.00"></td>'+
+                                        '<td><input type="number" class="form-control text-end total_amount" id="total_amount" value="'+data.product_val.sell_price+'" name="total_amount[]" placeholder="0.00" readonly></td>'+
+                                        '<td style="text-align: center;"><button type="button" class="btn btn-danger remove"><i class="fa fa-close"></i></button></td>'+
+                                        '</tr>';
+                                $('#sale_table').append(tr);
+                                }
+                                }
+                                $('tbody').on('click','.remove',function() {
+                                var l = $('tbody tr').length;
+                                if(l=0) {
+                                    alert('You can not remove last one');
+                                }else {
+                                    $(this).parent().parent().remove();
+                                }
+                            });
+
+                            var tr1 = $('tbody .product_id').parent().parent();
+                                var quantity = tr1.find('.quantity').val();
+                                var sell_price = tr1.find('.sell_price').val();
+                                var total_amount = (quantity * sell_price);
+                                tr1.find('.total_amount').val(total_amount);
+
+                                subtotal();
+                        }else{
+                            $("#product_search_value").empty();
+                        }
+                    }
+                });
+            });
+            // $("#product_search_value li").click(function(e){
+            //     console.log('yes');
+            //     // var product_id = $(this).data("product_id");
+            //     // console.log(product_id);
+            // //  ret = DetailsView.GetProject($(this).attr("#data-id"), OnComplete, OnTimeOut, OnError);
+            // // alert();
+            // });
+        });
+
+
+        // Package Price
+        // $('tbody').delegate('.product_id','change', function(){
+        //     var tr = $(this).parent().parent();
+        //     var id = tr.find('#product_id :selected').val();
+        //     var dataID = {'id':id};
+
+        //     $.ajax({
+        //         type:"GET",
+        //         url:"{{url('/purchase/productPrice')}}",
+        //         dataType: 'json',
+        //         data: dataID,
+        //         success:function (data) {
+        //             // alert(data.name);
+        //              tr.find('.price').val(data.sell_price);
+
+        //         }
+
+        //     });
+        // });
 
 
     </script>

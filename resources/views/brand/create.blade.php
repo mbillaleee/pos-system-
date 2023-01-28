@@ -59,6 +59,18 @@
 
                         <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name">
 
+                        @error('name')
+                            <div class="error text-danger">{{ $message }}</div>
+                        @enderror
+
+                    </div>
+
+                    <div class="form-group mb-3">
+
+                        <label for="short_desc" class="form-label">Short Description</label>
+
+                        <textarea class="form-control" name="short_desc" id="short_desc" cols="10" rows="3" placeholder="Enter Short description"></textarea>
+
                     </div>
 
                     
